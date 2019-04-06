@@ -1,0 +1,52 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["plugin:react/recommended", "prettier", "prettier/react"],
+  "plugins": ["react", "prettier"],
+  "globals": {},
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalDecorators": true
+    }
+  },
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "no-duplicate-imports": 0,
+    "no-unused-vars": 2,
+    "react/display-name": 0,
+    "react/jsx-no-bind": 1,
+    "react/jsx-boolean-value": 2,
+    "react/jsx-wrap-multilines": 2,
+    "react/no-unused-prop-types": 2,
+    "react/prefer-es6-class": [2, "always"],
+    "react/prop-types": [
+      1,
+      {
+        "skipUndeclared": true
+      }
+    ],
+    "react/self-closing-comp": 2,
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": true,
+        "jsxBracketSameLine": true,
+        "printWidth": 120,
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "useTabs": false
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "16.8"
+    }
+  }
+}

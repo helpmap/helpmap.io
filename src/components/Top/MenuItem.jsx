@@ -1,17 +1,14 @@
-import React from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import React from 'react';
+import { Menu, Icon } from 'semantic-ui-react';
+import { injectIntl } from 'react-intl';
 
-const MenuItem = ({ name, setActive, activeItem }) => {
+const MenuItem = ({ name, message, setActive, activeItem, intl }) => {
   return (
-    <Menu.Item 
-      name={name}
-      active={activeItem === name} 
-      onClick={(e, { name }) => setActive(name)}
-    >
-      <Icon name={activeItem === name ? 'circle' : 'circle outline'} />
-        {name}
+    <Menu.Item name={name} active={activeItem === name} onClick={(e, { name }) => setActive(name)}>
+      <Icon size="small" name={activeItem === name ? 'circle' : 'circle outline'} />
+      {intl.formatMessage(message)}
     </Menu.Item>
   );
 };
 
-export default MenuItem;
+export default injectIntl(MenuItem);
