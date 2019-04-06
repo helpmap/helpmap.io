@@ -2,10 +2,15 @@ import React from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import { ToggleButton } from '@appbaseio/reactivesearch';
 
-import Clothes from '../../assets/clothes.js';
-import Food from '../../assets/food.js';
-
 import './CategoryMenu.scss';
+
+import MenuItem from './MenuItem';
+import categories from './messages/menuMessages';
+
+const dataCategories = Object.keys(categories).map((name, index) => ({
+  label: <MenuItem key={index} name={name} icon={categories[name].icon} message={categories[name]} />,
+  value: name,
+}));
 
 const CategoryMenu = () => {
   // const [activeItem, setActive] = useState('');
@@ -21,35 +26,7 @@ const CategoryMenu = () => {
           dataField="types"
           multiSelect={false}
           showFilter={false}
-          data={[
-            {
-              label: (
-                <Menu.Item name="Food">
-                  <Food />
-                  <span>Food</span>
-                </Menu.Item>
-              ),
-              value: 'food',
-            },
-            {
-              label: (
-                <Menu.Item name="Books">
-                  <Icon name="book" />
-                  <span>Books</span>
-                </Menu.Item>
-              ),
-              value: 'books',
-            },
-            {
-              label: (
-                <Menu.Item name="Clothes">
-                  <Clothes />
-                  <span>Clothes</span>
-                </Menu.Item>
-              ),
-              value: 'clothes',
-            },
-          ]}
+          data={dataCategories}
         />
       </Menu>
     </div>
