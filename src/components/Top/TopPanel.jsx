@@ -3,12 +3,10 @@ import { Segment } from 'semantic-ui-react';
 
 import TopInfo from './TopInfo';
 
-const TopPanel = () => {
-  return (
-    <Segment basic>
-      <TopInfo />
-    </Segment>
-  );
-};
+const TopPanel = () => (
+  <Segment basic>
+    <TopInfo />
+  </Segment>
+);
 
 export default TopPanel;

@@ -1,11 +1,11 @@
-import React from "react";
-import { IntlProvider, addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
-import de from "react-intl/locale-data/de";
-import deTranslation from "./lang/de";
-import enTranslation from "./lang/en";
+import React from 'react';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import uk from 'react-intl/locale-data/uk';
+import uaTranslation from './lang/ua';
+import enTranslation from './lang/en';
 
-addLocaleData([...en, ...de]);
+addLocaleData([...en, ...uk]);
 
 const { Provider, Consumer } = React.createContext();
 
@@ -13,17 +13,15 @@ class IntlProviderWrapper extends React.Component {
   constructor(...args) {
     super(...args);
 
-    this.switchToEnglish = () =>
-      this.setState({ locale: "en", messages: enTranslation });
+    this.switchToEnglish = () => this.setState({ locale: 'en', messages: enTranslation });
 
-    this.switchToDeutsch = () =>
-      this.setState({ locale: "de", messages: deTranslation });
+    this.switchToUkrainian = () => this.setState({ locale: 'uk', messages: uaTranslation });
 
     this.state = {
-      locale: "en",
+      locale: 'en',
       messages: enTranslation,
-      switchToEnglish: this.switchToEnglish, 
-      switchToDeutsch: this.switchToDeutsch 
+      switchToEnglish: this.switchToEnglish,
+      switchToUkrainian: this.switchToUkrainian,
     };
   }
 
@@ -32,12 +30,7 @@ class IntlProviderWrapper extends React.Component {
     const { locale, messages } = this.state;
     return (
       <Provider value={this.state}>
-        <IntlProvider
-          key={locale}
-          locale={locale}
-          messages={messages}
-          defaultLocale="en"
-        >
+        <IntlProvider key={locale} locale={locale} messages={messages} defaultLocale="en">
           {children}
         </IntlProvider>
       </Provider>

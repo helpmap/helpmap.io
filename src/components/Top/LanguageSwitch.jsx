@@ -1,16 +1,12 @@
-import React from "react";
-import { IntlConsumer } from "../../IntlContext";
+import React from 'react';
+import { IntlConsumer } from '../../IntlContext';
 
 const LanguageSwitch = () => (
   <IntlConsumer>
-    {({ switchToEnglish, switchToDeutsch }) => (
+    {({ switchToEnglish, switchToUkrainian }) => (
       <React.Fragment>
-        <button onClick={switchToEnglish}>
-          English
-        </button>
-        <button onClick={switchToDeutsch}>
-          Deutsch
-        </button>
+        <button onClick={switchToEnglish}>English</button>
+        <button onClick={switchToUkrainian}>Ukrainian</button>
       </React.Fragment>
     )}
   </IntlConsumer>
