@@ -102,7 +102,7 @@ export default class Main extends Component {
             //     </span>
             //   )),
             // })}
-            react={{ and: ['GuestSensor', 'Types', 'search'] }}
+            react={{ and: ['Types'] }}
           />
           {this.renderFloatingButton()}
         </ReactiveBase>
