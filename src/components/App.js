@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
+import './App.scss';
 import TopPanel from './Top/TopPanel';
 import Main from './Main';
-import "./App.scss";
 
 class App extends Component {
   render() {

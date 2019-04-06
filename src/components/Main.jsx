@@ -1,13 +1,9 @@
-import React from "react";
-import { Grid } from "semantic-ui-react";
-import {
-  ReactiveBase,
-  SelectedFilters,
-  ToggleButton
-} from "@appbaseio/reactivesearch";
-import { ReactiveMap } from "@appbaseio/reactivemaps";
+import React from 'react';
+import { Grid } from 'semantic-ui-react';
+import { ReactiveBase, SelectedFilters, ToggleButton } from '@appbaseio/reactivesearch';
+import { ReactiveMap } from '@appbaseio/reactivemaps';
 
-import "./Main.scss";
+import './Main.scss';
 
 export default () => (
   <div className="container">
@@ -17,10 +13,9 @@ export default () => (
       // type="listing"
       theme={{
         colors: {
-          primaryColor: "#fff"
-        }
-      }}
-    >
+          primaryColor: '#fff',
+        },
+      }}>
       <ReactiveMap
         componentId="map"
         dataField="location"
@@ -34,27 +29,17 @@ export default () => (
         }}
         // onPopoverClick={this.onPopoverClick}
         showMarkerClusters={false}
-        showSearchAsMove={true}
-        searchAsMove={true}
+        showSearchAsMove
+        searchAsMove
         // showMapStyles={true}
         unit="km"
-        onAllData={(
-          hits,
-          streamHits,
-          loadMore,
-          renderMap,
-          renderPagination
-        ) => (
-          <div style={{ display: "flex" }}>
+        onAllData={(hits, streamHits, loadMore, renderMap, renderPagination) => (
+          <div style={{ display: 'flex' }}>
             <div className="card-container">
               <SelectedFilters />
               {hits.map(data => (
                 <div key={data._id} className="card">
-                  <div
-                    className="card__image"
-                    style={{ backgroundImage: `url(${data.image})` }}
-                    title={data.name}
-                  />
+                  <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
                   <div>
                     <h2>{data.name}</h2>
                     {data.types.map((type, i) => (
@@ -79,7 +64,7 @@ export default () => (
         //   )),
         // })}
         react={{
-          and: ["GuestSensor", "Types", "search"]
+          and: ['GuestSensor', 'Types', 'search'],
         }}
       />
     </ReactiveBase>
