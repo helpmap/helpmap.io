@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'semantic-ui-css/semantic.min.css'
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-import 'semantic-ui-css/semantic.min.css'
+import { IntlProvider } from './IntlContext';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <IntlProvider>
+    <App/>
+  </IntlProvider>, 
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

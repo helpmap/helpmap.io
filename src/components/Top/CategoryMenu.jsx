@@ -8,8 +8,9 @@ const CategoryMenu = () => {
   const categories = ['Books', 'Closes', 'Toys', 'Food', 'Others'];
   
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', padding: "10px" }}>
       <Segment.Inline>
+        <hr />
         <Menu compact icon='labeled'>
           {categories.map((el, index) => (
             <MenuItem key={index} name={el} activeItem={activeItem} setActive={setActive} />
