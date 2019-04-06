@@ -1,0 +1,39 @@
+.category-menu {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.toggle {
+  display: inline-flex;
+
+  > a > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  > a {
+    background-color: transparent;
+    color: #424242;
+
+    > .item > span {
+      padding-top: 5px;
+    }
+
+    &.active {
+      > .item {
+        color: blue;
+      }
+      fill: blue;
+
+      &:hover {
+        color: blue;
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: #424242;
+    }
+  }
+}
