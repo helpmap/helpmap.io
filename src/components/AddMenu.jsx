@@ -108,14 +108,17 @@ const AddMenu = ({ setMode, setShow, data }) => {
         ))}
       </Form.Group>
       <Form.TextArea
+        rows={9}
         label="Description"
         placeholder="Tell us more about your organisation..."
         value={description}
         onChange={e => handleDescription(e.target.value)}
       />
-      <Form.Button disabled={!canSubmit()} onClick={(e, data) => addNewPlace(e, data)}>
-        Add organisation
-      </Form.Button>
+      {!data && (
+        <Form.Button disabled={!canSubmit()} onClick={(e, data) => addNewPlace(e, data)}>
+          Add organisation
+        </Form.Button>
+      )}
     </Form>
   );
 };

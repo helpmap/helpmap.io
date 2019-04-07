@@ -31,8 +31,8 @@ export default {
     color: '#0fb706',
   },
   textils: {
-    id: 'Menu.Textils',
-    defaultMessage: 'Textils',
+    id: 'Menu.Textiles',
+    defaultMessage: 'Textiles',
     icon: <Clothes width={width} />,
     color: '#353db1',
   },
