@@ -52,7 +52,7 @@ const Main = () => {
 
   const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => (
     <Grid padded="horizontally">
-      <Grid.Row>
+      <Grid.Row style={{ padding: 0 }}>
         {show && (
           <Grid.Column width={4}>
             {hits.length > 0 && mode === 'multiResults' && renderResults(hits)}
@@ -179,7 +179,7 @@ const Main = () => {
         }}>
         <Grid.Row className="top-row">
           <Grid.Column>
-            <Segment basic>
+            <Segment>
               <CategoryMenu onSelect={onSelect} />
             </Segment>
           </Grid.Column>
@@ -188,6 +188,7 @@ const Main = () => {
           componentId="map"
           dataField="location"
           className="right-col"
+          style={{ height: '100%', padding: 0 }}
           defaultZoom={13}
           defaultCenter={{ lat: 49.8397, lng: 24.0297 }} // Lviv
           defaultMapStyle="Blue Essence"
