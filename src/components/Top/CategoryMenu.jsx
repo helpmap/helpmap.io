@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { ToggleButton } from '@appbaseio/reactivesearch';
 
 import './CategoryMenu.scss';
@@ -13,10 +13,6 @@ const dataCategories = Object.keys(categories).map((name, index) => ({
 }));
 
 const CategoryMenu = () => {
-  // const [activeItem, setActive] = useState('');
-
-  // const categories = ['Books', 'Closes', 'Toys', 'Food', 'Others'];
-
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Menu borderless className="category-menu">
