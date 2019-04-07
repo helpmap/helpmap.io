@@ -7,11 +7,13 @@ import { ReactiveBase } from '@appbaseio/reactivesearch';
 import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import categories from './Top/messages/menuMessages';
+import { injectIntl } from 'react-intl';
 
+import categories from './Top/messages/menuMessages';
 import CategoryMenu from './Top/CategoryMenu';
 import InfoPanel from './InfoPanel';
 import './Main.scss';
+import { Card } from 'antd';
 
 const apappbaseRef = Appbase({
   url: 'https://scalr.api.appbase.io/helpmap/',
@@ -31,31 +33,34 @@ const Main = () => {
   // const [category, handleChoosenCategorie] = useState('');
   const choosenTypes = new Set();
 
-  const renderResults = hits => (
-    <div className="card-container">
-      {hits.map(data => (
-        <div key={data._id} className="card">
-          <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
-          <div>
-            <h2>{data.name}</h2>
-            {data.types.map((type, i) => (
-              <div key={i} className="card__type">
-                {type}
-              </div>
-            ))}
-            <p className="card__description">{data.description}</p>
-          </div>
+  const renderResults = hits => {
+    return hits.map(data => (
+      <Card key={data._id}>
+        <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
+        <div>
+          <h2>{data.name}</h2>
+          {data.types.map((type, i) => (
+            <div key={i} className="card__type">
+              {type}
+            </div>
+          ))}
+          <p className="card__description">{data.description}</p>
         </div>
-      ))}
-    </div>
-  );
+      </Card>
+    ));
+  };
 
   const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => (
     <Grid padded="horizontally">
       <Grid.Row style={{ padding: 0 }}>
         {show && (
-          <Grid.Column width={4}>
-            {hits.length > 0 && mode === 'multiResults' && renderResults(hits)}
+          <Grid.Column className="left-col" width={4}>
+            {hits.length > 0 && mode === 'multiResults' ? (
+              renderResults(hits)
+            ) : (
+              // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
+              <h2>No results</h2>
+            )}
             {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
           </Grid.Column>
         )}
@@ -204,9 +209,7 @@ const Main = () => {
           // showMapStyles={true}
           unit="km"
           onAllData={renderLeftCol}
-          onData={result => ({
-            icon: '/pin.svg',
-          })}
+          onData={_ => ({ icon: '/pin.svg' })}
           // onData={data => ({
           //   label: data.types.map((type, i) => (
           //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>

@@ -20,7 +20,6 @@ class IntlProviderWrapper extends React.Component {
   };
 
   componentDidMount() {
-    console.log(navigator.language);
     if (navigator.language.startsWith('uk')) this.setState({ locale: 'uk', messages: ukTranslation });
   }
 
