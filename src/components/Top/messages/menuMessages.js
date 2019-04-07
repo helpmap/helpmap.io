@@ -7,15 +7,15 @@ import Electronic from '../../../assets/electronic';
 import Food from '../../../assets/food';
 import Kids from '../../../assets/kids';
 import Other from '../../../assets/other';
-import Volonteer from '../../../assets/volonteer';
+import Volunteer from '../../../assets/volunteer';
 
 const width = 20;
 
 export default {
-  volonteer: {
-    id: 'Menu.Volonteer',
-    defaultMessage: 'Volonteer',
-    icon: <Volonteer width={width} />,
+  volunteer: {
+    id: 'Menu.Volunteer',
+    defaultMessage: 'Volunteer',
+    icon: <Volunteer width={width} />,
     color: '#c41c1c',
   },
   kids: {
