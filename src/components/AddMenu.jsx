@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import Appbase from 'appbase-js';
-import { Grid, Segment, Modal, Form, Checkbox } from 'semantic-ui-react';
+import { Form, Checkbox } from 'semantic-ui-react';
 // import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import categories from './Top/messages/menuMessages';
 import GoogleSuggest from './GoogleSuggest';
@@ -19,7 +18,6 @@ const AddMenu = ({ setMode, setShow, data }) => {
   const [description, handleDescription] = useState('');
   const [location, setLocation] = useState({});
   const choosenTypes = new Set();
-  let id;
   let types;
 
   useEffect(() => {
@@ -43,9 +41,9 @@ const AddMenu = ({ setMode, setShow, data }) => {
 
     const jsonObject = {
       types: [`${types}`],
-      address: `${address}`,
-      name: `${name}`,
-      description: `${description}`,
+      address,
+      name,
+      description,
       location,
     };
 

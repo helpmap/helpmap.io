@@ -44,19 +44,20 @@ const Main = () => {
       <Grid.Row style={{ padding: 0 }}>
         {show && (
           <Grid.Column className="left-col" width={4}>
-            {hits.length > 0 && mode === 'multiResults' ? (
-              renderResults(hits)
-            ) : (
-              // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
-              <h2>No results</h2>
-            )}
+            {mode === 'multiResults' &&
+              (hits.length > 0 ? (
+                renderResults(hits)
+              ) : (
+                // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
+                <h2>No results</h2>
+              ))}
             {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
-            {hits.length > 0 && mode === 'singleResult' && (
+            {mode === 'singleResult' && hits.length > 0 && (
               <AddMenu data={result} setShow={setShow} setMode={setMode} />
             )}
           </Grid.Column>
         )}
-        <Grid.Column className="map-container" width={show ? 11 : 16}>
+        <Grid.Column className="map-container" width={show ? 12 : 16}>
           {renderMap()}
         </Grid.Column>
       </Grid.Row>
@@ -72,7 +73,7 @@ const Main = () => {
 
   const addPlace = () => {
     setShow(true);
-    console.log(mode);
+    console.log('addPlace');
     setMode('adding');
   };
 
@@ -138,8 +139,8 @@ const Main = () => {
           // })}
           react={{ and: ['Types'] }}
         />
-        {renderFloatingButton()}
       </ReactiveBase>
+      {renderFloatingButton()}
     </div>
   );
 };
