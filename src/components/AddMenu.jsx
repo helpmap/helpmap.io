@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import Appbase from 'appbase-js';
 import { Form, Checkbox } from 'semantic-ui-react';
@@ -17,7 +18,7 @@ const AddMenu = ({ setMode, setShow, data }) => {
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
   const [location, setLocation] = useState({});
-  const choosenTypes = new Set();
+  const [choosenTypes, chooseType] = useState([]);
   let types;
 
   useEffect(() => {
@@ -61,6 +62,16 @@ const AddMenu = ({ setMode, setShow, data }) => {
         console.log(error);
       });
   };
+
+  function onSelect(e, data) {
+    if (data.checked) {
+      chooseType([...choosenTypes, data.value]);
+      return;
+    }
+    const filter = choosenTypes.filter(c => c !== data.value);
+    chooseType(filter);
+  }
+
   return (
     <Form>
       <Form.Input
@@ -81,14 +92,8 @@ const AddMenu = ({ setMode, setShow, data }) => {
             label={el}
             control="input"
             type="checkbox"
-            checked={data ? (data.types.includes(el) ? true : false) : false}
-            onClick={(e, data) =>
-              data.checked
-                ? choosenTypes.add(data.value)
-                : choosenTypes.has(data.value)
-                ? choosenTypes.delete(data.value)
-                : ''
-            }
+            checked={data ? (data.types.includes(el) ? true : false) : choosenTypes.includes(el)}
+            onClick={onSelect}
           />
         ))}
       </Form.Group>
