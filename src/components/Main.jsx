@@ -100,7 +100,7 @@ const Main = () => {
             primaryColor: '#fff',
           },
         }}>
-        <Grid.Row className="top-row">
+        <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
             <Segment>
               <CategoryMenu onSelect={onSelect} />

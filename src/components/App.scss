@@ -26,6 +26,13 @@
   .top-row {
     padding-bottom: 0 !important;
   }
+  .top-row-cat {
+    .ui.segment {
+      border-top: 0;
+      border-bottom: 2px solid rgba(34, 36, 38, 0.15);
+      border-radius: 0;
+    }
+  }
 }
 
 .main-row {
