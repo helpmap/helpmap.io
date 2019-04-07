@@ -23,11 +23,11 @@ const AddMenu = ({ setMode, setShow, data }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       handleName(data.name);
       handleAddress(data.address);
       handleDescription(data.description);
       setLocation(data.location);
+      chooseType(data.types[0].split(' '));
       types = data.types;
     }
   }, [data]);
@@ -92,7 +92,7 @@ const AddMenu = ({ setMode, setShow, data }) => {
             label={el}
             control="input"
             type="checkbox"
-            checked={data ? (data.types.includes(el) ? true : false) : choosenTypes.includes(el)}
+            checked={data && choosenTypes.includes(el)}
             onClick={onSelect}
           />
         ))}
