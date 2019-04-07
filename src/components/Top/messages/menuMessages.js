@@ -44,7 +44,7 @@ export default {
   },
   electronic: {
     id: 'Menu.Electronic',
-    defaultMessage: 'Electronic',
+    defaultMessage: 'Electronics',
     icon: <Electronic width={width} />,
     color: '#115b0f',
   },
