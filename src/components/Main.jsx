@@ -114,7 +114,7 @@ const Main = () => {
           style={{ height: '100%', padding: 0 }}
           defaultZoom={13}
           defaultCenter={{ lat: 49.8397, lng: 24.0297 }} // Lviv
-          defaultMapStyle="Blue Essence"
+          defaultMapStyle="Flat Map"
           // pagination
           // onPageChange={() => {
           //   window.scrollTo(0, 0);
