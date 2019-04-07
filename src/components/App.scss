@@ -22,10 +22,17 @@
   color: #61dafb;
 }
 
+.ui.centered.grid {
+  .top-row {
+    padding-bottom: 0 !important;
+  }
+}
+
 .main-row {
   padding: 0 !important;
-
   .top-row {
+    padding: 0 !important;
+
     .segment {
       border-top: 0;
       margin-bottom: 14px;

@@ -25,7 +25,7 @@ const TopPanel = ({ intl }) => {
         <FormattedHTMLMessage id="Info" />
       </Modal>
       <Header as="h2" icon size="medium" style={{ margin: '0 auto' }}>
-        <Logo />
+        <Logo height="4rem" />
         <Header.Subheader>{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
       </Header>
       <div className="language-switch">
