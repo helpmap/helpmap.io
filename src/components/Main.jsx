@@ -8,16 +8,10 @@ import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import categories from './Top/messages/menuMessages';
-
 import CategoryMenu from './Top/CategoryMenu';
 import InfoPanel from './InfoPanel';
+import AddMenu from './AddMenu';
 import './Main.scss';
-
-const apappbaseRef = Appbase({
-  url: 'https://scalr.api.appbase.io/helpmap/',
-  app: 'helpmap',
-  credentials: 'FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3',
-});
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -25,11 +19,6 @@ const Main = () => {
   const [show, setShow] = useState(false);
   const [result, setResult] = useState({});
   const [modalOpen, handleModal] = useState(false);
-  const [name, handleName] = useState('');
-  const [address, handleAddress] = useState('');
-  const [description, handleDescription] = useState('');
-  // const [category, handleChoosenCategorie] = useState('');
-  const choosenTypes = new Set();
 
   const renderResults = hits => (
     <div className="card-container">
@@ -55,6 +44,7 @@ const Main = () => {
       <Grid.Row>
         {show && (
           <Grid.Column width={4}>
+            {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
             {hits.length > 0 && mode === 'multiResults' && renderResults(hits)}
             {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
           </Grid.Column>
@@ -66,92 +56,18 @@ const Main = () => {
     </Grid>
   );
 
-  const addNewPlace = e => {
-    e.preventDefault();
-    setMode('adding');
-    const jsonObject = {
-      name: `${name}`,
-      types: `${Array.from(choosenTypes).join(' ')}`,
-      address: `${address}`,
-      location: {
-        lat: 1.34,
-        long: 2.4,
-      },
-      description: `${description}`,
-    };
-
-    apappbaseRef
-      .index({
-        type: `${Math.random()}`,
-        body: jsonObject,
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-    handleModal(false);
-  };
-
   // FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3
   const renderFloatingButton = () => (
-    <Modal
-      trigger={
-        <Fab onClick={() => handleModal(true)} className="fab" aria-label="Add Location" disableRipple color="primary">
-          <AddIcon />
-        </Fab>
-      }
-      open={modalOpen}
-      onClose={() => handleModal(false)}>
-      <Modal.Header>Add organisation</Modal.Header>
-      <Modal.Content>
-        <Form>
-          <Form.Group widths="equal">
-            <Form.Input
-              fluid
-              label="Name of Organisation"
-              placeholder="Name of Organisation"
-              value={name}
-              onChange={e => handleName(e.target.value)}
-            />
-            <Form.Input
-              fluid
-              label="Adress"
-              placeholder="Adress"
-              value={address}
-              onChange={e => handleAddress(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group inline>
-            <label>Categories</label>
-            {Object.keys(categories).map((el, index) => (
-              <Checkbox
-                value={el}
-                key={index}
-                label={el}
-                control="input"
-                type="checkbox"
-                onChange={(e, data) =>
-                  data.checked
-                    ? choosenTypes.add(data.value) && console.log(choosenTypes)
-                    : choosenTypes.delete(data.value)
-                }
-              />
-            ))}
-          </Form.Group>
-          <Form.TextArea
-            label="Description"
-            placeholder="Tell us more about your organisation..."
-            value={description}
-            onChange={e => handleDescription(e.target.value)}
-          />
-          <Form.Button onClick={(e, data) => addNewPlace(e, data)}>Add organisation</Form.Button>
-        </Form>
-      </Modal.Content>
-    </Modal>
+    <Fab onClick={addPlace} className="fab" aria-label="Add Location" disableRipple color="primary">
+      <AddIcon />
+    </Fab>
   );
+
+  const addPlace = () => {
+    setShow(true);
+    console.log(mode);
+    setMode('adding');
+  };
 
   const onPopoverClick = data => {
     setMode('singleResult');
@@ -192,6 +108,7 @@ const Main = () => {
           // }}
           onPopoverClick={onPopoverClick}
           showMarkerClusters={false}
+          onClick={e => console.log(e)}
           // autoClosePopover
           showSearchAsMove
           searchAsMove
