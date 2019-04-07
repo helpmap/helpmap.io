@@ -5,11 +5,11 @@ const LanguageSwitch = () => (
   <IntlConsumer>
     {({ switchToEnglish, switchToUkrainian, locale }) => (
       <React.Fragment>
-        <span className={locale == 'en' ? 'active' : 'en'} onClick={switchToEnglish}>
+        <span className={locale === 'en' ? 'active' : 'en'} onClick={switchToEnglish}>
           English
         </span>
         &nbsp;/&nbsp;
-        <span className={locale == 'uk' ? 'active' : 'uk'} onClick={switchToUkrainian}>
+        <span className={locale === 'uk' ? 'active' : 'uk'} onClick={switchToUkrainian}>
           Українська
         </span>
       </React.Fragment>
