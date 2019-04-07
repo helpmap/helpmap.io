@@ -59,8 +59,8 @@ const Main = () => {
             {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
           </Grid.Column>
         )}
-        <Grid.Column width={show ? 12 : 16}>
-          <div className="map-container">{renderMap()}</div>
+        <Grid.Column className="map-container" width={show ? 12 : 16}>
+          {renderMap()}
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -95,7 +95,6 @@ const Main = () => {
     handleModal(false);
   };
 
-  // FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3
   const renderFloatingButton = () => (
     <Modal
       trigger={
@@ -160,6 +159,12 @@ const Main = () => {
     return null;
   };
 
+  const onSelect = () => {
+    setMode('multiResults');
+    setShow(true);
+    return null;
+  };
+
   return (
     <div className="container">
       <ReactiveBase
@@ -175,7 +180,7 @@ const Main = () => {
         <Grid.Row className="top-row">
           <Grid.Column>
             <Segment basic>
-              <CategoryMenu />
+              <CategoryMenu onSelect={onSelect} />
             </Segment>
           </Grid.Column>
         </Grid.Row>
