@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Appbase from 'appbase-js';
 import { Form, Checkbox } from 'semantic-ui-react';
 // import { Form, Icon, Input, Button, Checkbox } from 'antd';
+
 import categories from './Top/messages/menuMessages';
 import GoogleSuggest from './GoogleSuggest';
+
+import './AddMenu.scss';
 
 const apappbaseRef = Appbase({
   url: 'https://scalr.api.appbase.io/helpmap/',
@@ -72,8 +75,15 @@ const AddMenu = ({ setMode, setShow, data }) => {
     chooseType(filter);
   }
 
+  function canSubmit() {
+    if (data) {
+      return data.name && data.address && data.description && data.location.lat && data.types.length > 0;
+    }
+    return name && address && description && location && location.lat && choosenTypes.length > 0;
+  }
+
   return (
-    <Form>
+    <Form className="add-menu">
       <Form.Input
         label="Name of Organisation"
         placeholder="Name of Organisation"
@@ -103,7 +113,9 @@ const AddMenu = ({ setMode, setShow, data }) => {
         value={description}
         onChange={e => handleDescription(e.target.value)}
       />
-      <Form.Button onClick={(e, data) => addNewPlace(e, data)}>Add organisation</Form.Button>
+      <Form.Button disabled={!canSubmit()} onClick={(e, data) => addNewPlace(e, data)}>
+        Add organisation
+      </Form.Button>
     </Form>
   );
 };
