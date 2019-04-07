@@ -24,11 +24,17 @@ const Main = () => {
         <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
         <div>
           <h2>{data.name}</h2>
-          {data.types.map((type, i) => (
+          {/* {data.types.map((type, i) => (
             <div key={i} className="card__type">
               {type}
             </div>
-          ))}
+          ))} */}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`http://maps.google.com/?ie=UTF8&hq=&ll=${data.location.lat},${data.location.lon}&z=13`}>
+            {data.address}
+          </a>
           <p className="card__description">{data.description}</p>
         </div>
       </Card>
