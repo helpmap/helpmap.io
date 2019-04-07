@@ -13,8 +13,8 @@ import { Card } from 'antd';
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
-  const [mode, setMode] = useState('adding');
-  const [show, setShow] = useState(true);
+  const [mode, setMode] = useState('browsing');
+  const [show, setShow] = useState(false);
   const [result, setResult] = useState({});
   // const [modalOpen, handleModal] = useState(false);
 
