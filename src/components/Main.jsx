@@ -49,8 +49,8 @@ const Main = () => {
             {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
           </Grid.Column>
         )}
-        <Grid.Column width={show ? 12 : 16}>
-          <div className="map-container">{renderMap()}</div>
+        <Grid.Column className="map-container" width={show ? 12 : 16}>
+          {renderMap()}
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -72,6 +72,23 @@ const Main = () => {
   const onPopoverClick = data => {
     setMode('singleResult');
     setResult(data);
+  };
+
+  const renderFloatingButton = () => (
+    <Fab onClick={() => handleModal(true)} className="fab" aria-label="Add Location" disableRipple color="primary">
+      <AddIcon />
+    </Fab>
+  );
+
+  const onPopoverClick = data => {
+    setMode('singleResult');
+    setResult(data);
+    setShow(true);
+    return null;
+  };
+
+  const onSelect = () => {
+    setMode('multiResults');
     setShow(true);
     return null;
   };
@@ -91,7 +108,7 @@ const Main = () => {
         <Grid.Row className="top-row">
           <Grid.Column>
             <Segment basic>
-              <CategoryMenu />
+              <CategoryMenu onSelect={onSelect} />
             </Segment>
           </Grid.Column>
         </Grid.Row>
@@ -108,7 +125,6 @@ const Main = () => {
           // }}
           onPopoverClick={onPopoverClick}
           showMarkerClusters={false}
-          onClick={e => console.log(e)}
           // autoClosePopover
           showSearchAsMove
           searchAsMove

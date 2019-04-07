@@ -12,49 +12,49 @@ import Volonteer from '../../../assets/volonteer';
 const width = 20;
 
 export default {
-  Volonteer: {
-    id: 'Menu.Volonteer',
-    defaultMessage: 'Volonteer',
+  volunteer: {
+    id: 'Menu.Volunteer',
+    defaultMessage: 'Volunteer',
     icon: <Volonteer width={width} />,
     color: '#c41c1c',
   },
-  Kids: {
+  kids: {
     id: 'Menu.Kids',
     defaultMessage: 'Kids',
     icon: <Kids width={width} />,
     color: '#a20cd4',
   },
-  Food: {
+  food: {
     id: 'Menu.Food',
     defaultMessage: 'Food',
     icon: <Food width={width} />,
     color: '#0fb706',
   },
-  Textils: {
+  textils: {
     id: 'Menu.Textils',
     defaultMessage: 'Textils',
     icon: <Clothes width={width} />,
     color: '#353db1',
   },
-  Animal: {
+  animal: {
     id: 'Menu.Animal',
     defaultMessage: 'Animal',
     icon: <Animal width={width} />,
     color: '#7b5c23',
   },
-  Electronic: {
+  electronic: {
     id: 'Menu.Electronic',
     defaultMessage: 'Electronic',
     icon: <Electronic width={width} />,
     color: '#115b0f',
   },
-  Books: {
+  books: {
     id: 'Menu.Books',
     defaultMessage: 'Books',
     icon: <Books width={width} />,
     color: '#e0ac00',
   },
-  Other: {
+  other: {
     id: 'Menu.Other',
     defaultMessage: 'Other',
     icon: <Other width={width} />,

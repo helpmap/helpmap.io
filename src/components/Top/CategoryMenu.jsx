@@ -12,7 +12,7 @@ const dataCategories = Object.keys(categories).map((name, index) => ({
   value: name,
 }));
 
-const CategoryMenu = () => {
+const CategoryMenu = ({ onSelect }) => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Menu borderless className="category-menu">
@@ -23,6 +23,7 @@ const CategoryMenu = () => {
           multiSelect={false}
           showFilter={false}
           data={dataCategories}
+          onValueChange={onSelect}
         />
       </Menu>
     </div>

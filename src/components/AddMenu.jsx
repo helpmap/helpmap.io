@@ -52,17 +52,15 @@ const AddMenu = ({ setMode, setShow }) => {
 
   return (
     <Form>
-      <Form.Group widths="equal">
-        <Form.Input
-          label="Name of Organisation"
-          placeholder="Name of Organisation"
-          value={name}
-          onChange={e => handleName(e.target.value)}
-        />
-        <Form.Field>
-          <GoogleSuggest result={address} handleAddress={handleAddress} setLocation={setLocation} />
-        </Form.Field>
-      </Form.Group>
+      <Form.Input
+        label="Name of Organisation"
+        placeholder="Name of Organisation"
+        value={name}
+        onChange={e => handleName(e.target.value)}
+      />
+      <Form.Field>
+        <GoogleSuggest result={address} handleAddress={handleAddress} setLocation={setLocation} />
+      </Form.Field>
       <Form.Group inline>
         <label>Categories</label>
         {Object.keys(categories).map((el, index) => (
