@@ -204,6 +204,9 @@ const Main = () => {
           // showMapStyles={true}
           unit="km"
           onAllData={renderLeftCol}
+          onData={result => ({
+            icon: '/pin.svg',
+          })}
           // onData={data => ({
           //   label: data.types.map((type, i) => (
           //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>
