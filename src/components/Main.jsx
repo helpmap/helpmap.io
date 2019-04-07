@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Appbase from 'appbase-js';
 import { Grid, Segment, Modal, Form, Checkbox } from 'semantic-ui-react';
@@ -64,9 +66,8 @@ const Main = () => {
     </Grid>
   );
 
-  const addNewPlace = (e, data) => {
+  const addNewPlace = e => {
     e.preventDefault();
-    console.log(choosenTypes);
     setMode('adding');
     const jsonObject = {
       name: `${name}`,
@@ -189,7 +190,7 @@ const Main = () => {
           // onPageChange={() => {
           //   window.scrollTo(0, 0);
           // }}
-          onPopoverClick={e => onPopoverClick(e)}
+          onPopoverClick={onPopoverClick}
           showMarkerClusters={false}
           // autoClosePopover
           showSearchAsMove
@@ -204,7 +205,7 @@ const Main = () => {
           //     </span>
           //   )),
           // })}
-          react={{ and: ['GuestSensor', 'Types', 'search'] }}
+          react={{ and: ['Types'] }}
         />
         {renderFloatingButton()}
       </ReactiveBase>
