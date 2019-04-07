@@ -10,20 +10,24 @@ addLocaleData([...en, ...uk]);
 const { Provider, Consumer } = React.createContext();
 
 class IntlProviderWrapper extends React.Component {
+  switchToEnglish = () => this.setState({ locale: 'en', messages: enTranslation });
+  switchToUkrainian = () => this.setState({ locale: 'uk', messages: ukTranslation });
   state = {
     locale: 'en',
     messages: enTranslation,
+    switchToEnglish: this.switchToEnglish,
+    switchToUkrainian: this.switchToUkrainian,
   };
 
-  switchToEnglish = () => this.setState({ locale: 'en', messages: enTranslation });
-
-  switchToUkrainian = () => this.setState({ locale: 'uk', messages: ukTranslation });
+  componentDidMount() {
+    if (navigator.language.startsWith('uk')) this.setState({ locale: 'uk', messages: ukTranslation });
+  }
 
   render() {
-    const { locale, messages } = this.state;
+    const { locale } = this.state;
     return (
-      <Provider value={this.state}>
-        <IntlProvider key={locale} locale={locale} messages={messages} defaultLocale="en">
+      <Provider value={this.state} switchToUkrainian={this.switchToUkrainian} switchToEnglish={this.switchToEnglish}>
+        <IntlProvider key={locale} {...this.state} defaultLocale={locale}>
           {this.props.children}
         </IntlProvider>
       </Provider>

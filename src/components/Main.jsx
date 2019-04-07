@@ -7,11 +7,13 @@ import { ReactiveBase } from '@appbaseio/reactivesearch';
 import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import { injectIntl } from 'react-intl';
 import categories from './Top/messages/menuMessages';
 import CategoryMenu from './Top/CategoryMenu';
 import InfoPanel from './InfoPanel';
 import AddMenu from './AddMenu';
 import './Main.scss';
+import { Card } from 'antd';
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -20,32 +22,35 @@ const Main = () => {
   const [result, setResult] = useState({});
   const [modalOpen, handleModal] = useState(false);
 
-  const renderResults = hits => (
-    <div className="card-container">
-      {hits.map(data => (
-        <div key={data._id} className="card">
-          <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
-          <div>
-            <h2>{data.name}</h2>
-            {data.types.map((type, i) => (
-              <div key={i} className="card__type">
-                {type}
-              </div>
-            ))}
-            <p className="card__description">{data.description}</p>
-          </div>
+  const renderResults = hits => {
+    return hits.map(data => (
+      <Card key={data._id}>
+        <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} />
+        <div>
+          <h2>{data.name}</h2>
+          {data.types.map((type, i) => (
+            <div key={i} className="card__type">
+              {type}
+            </div>
+          ))}
+          <p className="card__description">{data.description}</p>
         </div>
-      ))}
-    </div>
-  );
+      </Card>
+    ));
+  };
 
   const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => (
     <Grid padded="horizontally">
-      <Grid.Row>
+      <Grid.Row style={{ padding: 0 }}>
         {show && (
-          <Grid.Column width={5}>
+          <Grid.Column className="left-col" width={4}>
+            {hits.length > 0 && mode === 'multiResults' ? (
+              renderResults(hits)
+            ) : (
+              // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
+              <h2>No results</h2>
+            )}
             {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
-            {hits.length > 0 && mode === 'multiResults' && renderResults(hits)}
             {hits.length > 0 && mode === 'singleResult' && (
               <AddMenu data={result} setShow={setShow} setMode={setMode} />
             )}
@@ -98,7 +103,7 @@ const Main = () => {
         }}>
         <Grid.Row className="top-row">
           <Grid.Column>
-            <Segment basic>
+            <Segment>
               <CategoryMenu onSelect={onSelect} />
             </Segment>
           </Grid.Column>
@@ -107,6 +112,7 @@ const Main = () => {
           componentId="map"
           dataField="location"
           className="right-col"
+          style={{ height: '100%', padding: 0 }}
           defaultZoom={13}
           defaultCenter={{ lat: 49.8397, lng: 24.0297 }} // Lviv
           defaultMapStyle="Blue Essence"
@@ -122,6 +128,7 @@ const Main = () => {
           // showMapStyles={true}
           unit="km"
           onAllData={renderLeftCol}
+          onData={_ => ({ icon: '/pin.svg' })}
           // onData={data => ({
           //   label: data.types.map((type, i) => (
           //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>

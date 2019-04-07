@@ -1,0 +1,17 @@
+.language-switch {
+  position: absolute;
+  right: 14px;
+
+  span {
+    cursor: pointer;
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
+
+.info-div {
+  cursor: pointer;
+  left: 14px;
+  position: absolute;
+}

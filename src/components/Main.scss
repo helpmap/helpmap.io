@@ -19,26 +19,9 @@ nav {
 }
 
 .left-col {
-  width: 280px;
-  height: 100%;
-  padding: 15px 20px;
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  border-right: 1px solid #f0f0f0;
-
-  & > div {
-    margin: 40px 0;
-  }
-
-  @media all and (max-width: 768px) {
-    position: static;
-    width: 100%;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
+  height: calc(100vh - 214px);
+  padding: 0 !important;
+  overflow-y: scroll;
 }
 
 .right-col {
@@ -114,8 +97,8 @@ nav {
   }
 
   .map-container {
+    height: calc(100vh - 214px);
     padding: 0 !important;
-    height: 100vh;
     width: 100%;
   }
 

@@ -3,10 +3,15 @@ import { IntlConsumer } from '../../IntlContext';
 
 const LanguageSwitch = () => (
   <IntlConsumer>
-    {({ switchToEnglish, switchToUkrainian }) => (
+    {({ switchToEnglish, switchToUkrainian, locale }) => (
       <React.Fragment>
-        <button onClick={switchToEnglish}>English</button>
-        <button onClick={switchToUkrainian}>Ukrainian</button>
+        <span className={locale === 'en' ? 'active' : 'en'} onClick={switchToEnglish}>
+          English
+        </span>
+        &nbsp;/&nbsp;
+        <span className={locale === 'uk' ? 'active' : 'uk'} onClick={switchToUkrainian}>
+          Українська
+        </span>
       </React.Fragment>
     )}
   </IntlConsumer>
