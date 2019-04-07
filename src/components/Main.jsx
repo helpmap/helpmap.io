@@ -66,17 +66,17 @@ const Main = () => {
 
   const addNewPlace = (e, data) => {
     e.preventDefault();
-    console.log(choosenTypes)
+    console.log(choosenTypes);
     setMode('adding');
     const jsonObject = {
-      name: `"${name}"`,
-      types: `"${Array.from(choosenTypes).join(' ')}"`,
-      address: `"${address}"`,
-      // "location": {
-      //   "lat": "1.34",
-      //   "long": "2.4"
-      // },
-      description: `"${description}"`,
+      name: `${name}`,
+      types: `${Array.from(choosenTypes).join(' ')}`,
+      address: `${address}`,
+      location: {
+        lat: 1.34,
+        long: 2.4,
+      },
+      description: `${description}`,
     };
 
     apappbaseRef
@@ -90,7 +90,7 @@ const Main = () => {
       .catch(function(error) {
         console.log(error);
       });
-  
+
     handleModal(false);
   };
 
@@ -132,7 +132,11 @@ const Main = () => {
                 label={el}
                 control="input"
                 type="checkbox"
-                onChange={(e, data) => (data.checked ? choosenTypes.add(data.value) && console.log(choosenTypes) : choosenTypes.delete(data.value))}
+                onChange={(e, data) =>
+                  data.checked
+                    ? choosenTypes.add(data.value) && console.log(choosenTypes)
+                    : choosenTypes.delete(data.value)
+                }
               />
             ))}
           </Form.Group>
@@ -152,7 +156,7 @@ const Main = () => {
     setMode('singleResult');
     setResult(data);
     setShow(true);
-    return '';
+    return null;
   };
 
   return (
