@@ -117,8 +117,8 @@ const Main = () => {
             />
             <Form.Input
               fluid
-              label="Adress"
-              placeholder="Adress"
+              label="Address"
+              placeholder="Address"
               value={address}
               onChange={e => handleAddress(e.target.value)}
             />
