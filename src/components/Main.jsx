@@ -35,7 +35,7 @@ const Main = () => {
             href={`http://maps.google.com/?ie=UTF8&hq=&ll=${data.location.lat},${data.location.lon}&z=13`}>
             {data.address}
           </a>
-          <p className="card__description">{data.description}</p>
+          {/* <p className="card__description">{data.description}</p> */}
         </div>
       </Card>
     ));
