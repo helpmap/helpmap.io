@@ -1,3 +1,7 @@
+# Helpmap
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/519535b5-4eac-490c-bfd6-b08b707a1a6f/deploy-status)](https://app.netlify.com/sites/helpmap/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
