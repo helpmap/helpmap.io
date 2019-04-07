@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Appbase from 'appbase-js';
 import { Grid, Segment, Modal, Form, Checkbox } from 'semantic-ui-react';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
@@ -8,18 +8,12 @@ import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { injectIntl } from 'react-intl';
-
 import categories from './Top/messages/menuMessages';
 import CategoryMenu from './Top/CategoryMenu';
 import InfoPanel from './InfoPanel';
+import AddMenu from './AddMenu';
 import './Main.scss';
 import { Card } from 'antd';
-
-const apappbaseRef = Appbase({
-  url: 'https://scalr.api.appbase.io/helpmap/',
-  app: 'helpmap',
-  credentials: 'FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3',
-});
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -27,11 +21,6 @@ const Main = () => {
   const [show, setShow] = useState(false);
   const [result, setResult] = useState({});
   const [modalOpen, handleModal] = useState(false);
-  const [name, handleName] = useState('');
-  const [address, handleAddress] = useState('');
-  const [description, handleDescription] = useState('');
-  // const [category, handleChoosenCategorie] = useState('');
-  const choosenTypes = new Set();
 
   const renderResults = hits => {
     return hits.map(data => (
@@ -61,101 +50,31 @@ const Main = () => {
               // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
               <h2>No results</h2>
             )}
-            {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
+            {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
+            {hits.length > 0 && mode === 'singleResult' && (
+              <AddMenu data={result} setShow={setShow} setMode={setMode} />
+            )}
           </Grid.Column>
         )}
-        <Grid.Column className="map-container" width={show ? 12 : 16}>
+        <Grid.Column className="map-container" width={show ? 11 : 16}>
           {renderMap()}
         </Grid.Column>
       </Grid.Row>
     </Grid>
   );
 
-  const addNewPlace = e => {
-    e.preventDefault();
-    setMode('adding');
-    const jsonObject = {
-      name: `${name}`,
-      types: `${Array.from(choosenTypes).join(' ')}`,
-      address: `${address}`,
-      location: {
-        lat: 1.34,
-        long: 2.4,
-      },
-      description: `${description}`,
-    };
-
-    apappbaseRef
-      .index({
-        type: `${Math.random()}`,
-        body: jsonObject,
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-    handleModal(false);
-  };
-
+  // FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3
   const renderFloatingButton = () => (
-    <Modal
-      trigger={
-        <Fab onClick={() => handleModal(true)} className="fab" aria-label="Add Location" disableRipple color="primary">
-          <AddIcon />
-        </Fab>
-      }
-      open={modalOpen}
-      onClose={() => handleModal(false)}>
-      <Modal.Header>Add organisation</Modal.Header>
-      <Modal.Content>
-        <Form>
-          <Form.Group widths="equal">
-            <Form.Input
-              fluid
-              label="Name of Organisation"
-              placeholder="Name of Organisation"
-              value={name}
-              onChange={e => handleName(e.target.value)}
-            />
-            <Form.Input
-              fluid
-              label="Address"
-              placeholder="Address"
-              value={address}
-              onChange={e => handleAddress(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group inline>
-            <label>Categories</label>
-            {Object.keys(categories).map((el, index) => (
-              <Checkbox
-                value={el}
-                key={index}
-                label={el}
-                control="input"
-                type="checkbox"
-                onChange={(e, data) =>
-                  data.checked
-                    ? choosenTypes.add(data.value) && console.log(choosenTypes)
-                    : choosenTypes.delete(data.value)
-                }
-              />
-            ))}
-          </Form.Group>
-          <Form.TextArea
-            label="Description"
-            placeholder="Tell us more about your organisation..."
-            value={description}
-            onChange={e => handleDescription(e.target.value)}
-          />
-          <Form.Button onClick={(e, data) => addNewPlace(e, data)}>Add organisation</Form.Button>
-        </Form>
-      </Modal.Content>
-    </Modal>
+    <Fab className="fab" aria-label="Add Location" disableRipple color="primary">
+      <AddIcon onClick={addPlace} />
+    </Fab>
   );
+
+  const addPlace = () => {
+    setShow(true);
+    console.log(mode);
+    setMode('adding');
+  };
 
   const onPopoverClick = data => {
     setMode('singleResult');

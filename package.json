@@ -13,7 +13,10 @@
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-google-maps-loader": "^4.2.5",
+    "react-google-places-suggest": "^3.7.1",
     "react-intl": "^2.8.0",
+    "react-places-autocomplete": "^7.2.1",
     "react-scripts": "2.1.8",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0"
