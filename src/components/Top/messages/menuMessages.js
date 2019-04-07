@@ -9,7 +9,7 @@ import Kids from '../../../assets/kids';
 import Other from '../../../assets/other';
 import Volunteer from '../../../assets/volunteer';
 
-const width = 20;
+const width = 30;
 
 export default {
   volunteer: {
