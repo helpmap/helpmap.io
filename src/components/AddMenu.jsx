@@ -50,7 +50,7 @@ const AddMenu = ({ setMode, setShow, data }) => {
 
     apappbaseRef
       .index({
-        type: 'doc',
+        type: `${Math.random(100)}`,
         body: jsonObject,
       })
       .then(function(response) {
