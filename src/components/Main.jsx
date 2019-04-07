@@ -1,26 +1,22 @@
 /* eslint-disable react/jsx-no-bind */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import Appbase from 'appbase-js';
-import { Grid, Segment, Modal, Form, Checkbox } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Grid, Segment } from 'semantic-ui-react';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
 import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import { injectIntl } from 'react-intl';
-import categories from './Top/messages/menuMessages';
+
 import CategoryMenu from './Top/CategoryMenu';
-import InfoPanel from './InfoPanel';
 import AddMenu from './AddMenu';
 import './Main.scss';
 import { Card } from 'antd';
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
-  const [mode, setMode] = useState('browsing');
-  const [show, setShow] = useState(false);
+  const [mode, setMode] = useState('adding');
+  const [show, setShow] = useState(true);
   const [result, setResult] = useState({});
-  const [modalOpen, handleModal] = useState(false);
+  // const [modalOpen, handleModal] = useState(false);
 
   const renderResults = hits => {
     return hits.map(data => (
@@ -39,22 +35,7 @@ const Main = () => {
     ));
   };
 
-  const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => (
-    <Grid padded="horizontally">
-      <Grid.Row style={{ padding: 0 }}>
-        {show && (
-          <Grid.Column className="left-col" width={4}>
-            {mode === 'multiResults' &&
-              (hits.length > 0 ? (
-                renderResults(hits)
-              ) : (
-                // <h2>{injectIntl.formatMessage({ id: 'no_results' })}</h2>
-                <h2>No results</h2>
-              ))}
-            {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
-            {mode === 'singleResult' && hits.length > 0 && (
-              <AddMenu data={result} setShow={setShow} setMode={setMode} />
-            )}
+  const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => {
           </Grid.Column>
         )}
         <Grid.Column className="map-container" width={show ? 12 : 16}>
