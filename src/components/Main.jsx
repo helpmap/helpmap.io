@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Appbase from 'appbase-js';
 import { Grid, Segment, Modal, Form, Checkbox } from 'semantic-ui-react';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
@@ -43,13 +43,15 @@ const Main = () => {
     <Grid padded="horizontally">
       <Grid.Row>
         {show && (
-          <Grid.Column width={4}>
+          <Grid.Column width={5}>
             {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
             {hits.length > 0 && mode === 'multiResults' && renderResults(hits)}
-            {hits.length > 0 && mode === 'singleResult' && <InfoPanel data={result} />}
+            {hits.length > 0 && mode === 'singleResult' && (
+              <AddMenu data={result} setShow={setShow} setMode={setMode} />
+            )}
           </Grid.Column>
         )}
-        <Grid.Column className="map-container" width={show ? 12 : 16}>
+        <Grid.Column className="map-container" width={show ? 11 : 16}>
           {renderMap()}
         </Grid.Column>
       </Grid.Row>
@@ -58,8 +60,8 @@ const Main = () => {
 
   // FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3
   const renderFloatingButton = () => (
-    <Fab onClick={addPlace} className="fab" aria-label="Add Location" disableRipple color="primary">
-      <AddIcon />
+    <Fab className="fab" aria-label="Add Location" disableRipple color="primary">
+      <AddIcon onClick={addPlace} />
     </Fab>
   );
 
@@ -68,17 +70,6 @@ const Main = () => {
     console.log(mode);
     setMode('adding');
   };
-
-  const onPopoverClick = data => {
-    setMode('singleResult');
-    setResult(data);
-  };
-
-  const renderFloatingButton = () => (
-    <Fab onClick={() => handleModal(true)} className="fab" aria-label="Add Location" disableRipple color="primary">
-      <AddIcon />
-    </Fab>
-  );
 
   const onPopoverClick = data => {
     setMode('singleResult');

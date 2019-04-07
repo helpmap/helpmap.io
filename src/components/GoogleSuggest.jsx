@@ -6,7 +6,7 @@ const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
     handleAddress(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => setLocation({ lat: latLng.lat, long: latLng.lng }))
+      .then(latLng => setLocation({ lat: latLng.lat, lon: latLng.lng }))
       .catch(error => console.error('Error', error));
   };
   return (
