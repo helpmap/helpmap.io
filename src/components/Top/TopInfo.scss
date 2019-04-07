@@ -1,0 +1,11 @@
+.language-switch {
+  position: absolute;
+  right: 10px;
+
+  span {
+    cursor: pointer;
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
