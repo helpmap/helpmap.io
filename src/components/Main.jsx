@@ -36,7 +36,7 @@ const Main = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={`http://maps.google.com/?ie=UTF8&hq=&ll=${data.location.lat},${data.location.lon}&z=13`}>
+            href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
             {data.address}
           </a>
         </div>

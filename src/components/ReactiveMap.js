@@ -803,7 +803,7 @@ class ReactiveMap extends Component {
   onMarkerClick = item => {
     this.props.onMarkerClick && this.props.onMarkerClick(item);
     // this.setState({ selectedMarker: item._id })
-    if (!this.state.markerOnTop !== item._id) this.increaseMarkerZIndex(item._id);
+    if (this.state.markerOnTop !== item._id) this.increaseMarkerZIndex(item._id);
     else this.removeMarkerZIndex();
   };
 
