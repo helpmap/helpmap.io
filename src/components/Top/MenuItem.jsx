@@ -5,7 +5,6 @@ import { injectIntl } from 'react-intl';
 const MenuItem = ({ name, message, icon, intl }) => {
   return (
     <Menu.Item name={name}>
-      {/* <Icon size="small" name={icon} /> */}
       {icon}
       <span>{intl.formatMessage(message)}</span>
     </Menu.Item>

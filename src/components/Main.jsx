@@ -2,14 +2,22 @@
 import React, { useState } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import { ReactiveMap } from '@appbaseio/reactivemaps';
+// import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import { Card } from 'antd';
+import Appbase from 'appbase-js';
 
+import ReactiveMap from './ReactiveMap';
 import CategoryMenu from './Top/CategoryMenu';
 import AddMenu from './AddMenu';
 import './Main.scss';
-import { Card } from 'antd';
+
+export const appbaseRef = Appbase({
+  url: 'https://scalr.api.appbase.io/',
+  app: 'helpmap',
+  credentials: '6Oc2N0Ats:cd4782b5-de89-4675-9a48-e4b5423cd9e2',
+});
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -36,11 +44,8 @@ const Main = () => {
     );
   }
 
-  const renderLeftCol = (hits, streamHits, loadMore, renderMap, renderPagination) => {
-    return renderMap();
-  };
+  const renderLeftCol = (hits, streamHits, loadMore, renderMap) => renderMap();
 
-  // FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3
   const renderFloatingButton = () => (
     <Fab className="fab" aria-label="Add Location" disableRipple color="primary">
       <AddIcon onClick={addPlace} />
@@ -52,13 +57,6 @@ const Main = () => {
     setMode('adding');
   };
 
-  const onPopoverClick = data => {
-    setMode('singleResult');
-    setResult(data);
-    setShow(true);
-    return null;
-  };
-
   const onSelect = selections => {
     if (selections.length > 0) {
       setMode('multiResults');
@@ -68,6 +66,18 @@ const Main = () => {
     setMode('browsing');
     setShow(false);
     return null;
+  };
+
+  const onMarkerClick = async selectedMarkerData => {
+    if (result && result._id == selectedMarkerData._id) {
+      setMode('browsing');
+      setResult({});
+      setShow(false);
+      return;
+    }
+    setMode('singleResult');
+    setResult(selectedMarkerData);
+    setShow(true);
   };
 
   return (
@@ -120,16 +130,25 @@ const Main = () => {
                 // onPageChange={() => {
                 //   window.scrollTo(0, 0);
                 // }}
-                onPopoverClick={onPopoverClick}
+                // onPopoverClick={onPopoverClick}
                 showMarkerClusters={false}
                 // autoClosePopover
                 showSearchAsMove
                 searchAsMove
                 // showMapStyles
+                // mapProps={{ onClick: () => console.log('onClick') }}
                 unit="km"
                 onAllData={renderLeftCol}
                 // eslint-disable-next-line no-unused-vars
-                onData={_ => ({ icon: '/pin.svg' })}
+                // onData={_ => ({ custom: null })}
+                onMarkerClick={onMarkerClick}
+                // markerProps={{
+                //   onClick: e => {
+                //     debugger;
+                //     console.log(e);
+                //   },
+                // }}
+                onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
                 // onData={data => ({
                 //   label: data.types.map((type, i) => (
                 //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>

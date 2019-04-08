@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, Button, Header, Container } from 'semantic-ui-react';
+
 import categories from './Top/messages/menuMessages';
 
 const showCategories = types => <div>{types.map(type => categories[type].icon)}</div>;

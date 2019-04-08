@@ -1,20 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
-import Appbase from 'appbase-js';
 import { Form, Checkbox } from 'semantic-ui-react';
 // import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import categories from './Top/messages/menuMessages';
 import GoogleSuggest from './GoogleSuggest';
+import { appbaseRef } from './Main';
 
 import './AddMenu.scss';
-
-const apappbaseRef = Appbase({
-  url: 'https://scalr.api.appbase.io/helpmap/',
-  app: 'doc',
-  credentials: 'FSgW29GYr:1f6ad732-faf2-4466-aa4b-4a1f35fd09d3',
-});
 
 const AddMenu = ({ setMode, setShow, data }) => {
   const [name, handleName] = useState('');
@@ -51,9 +45,10 @@ const AddMenu = ({ setMode, setShow, data }) => {
       location,
     };
 
-    apappbaseRef
+    appbaseRef
       .index({
-        type: `${Math.random(100)}`,
+        // type: `${Math.random() * 100}`,
+        type: 'doc',
         body: jsonObject,
       })
       .then(function(response) {
