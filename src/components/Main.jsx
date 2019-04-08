@@ -60,9 +60,14 @@ const Main = () => {
     return null;
   };
 
-  const onSelect = () => {
-    setMode('multiResults');
-    setShow(true);
+  const onSelect = selections => {
+    if (selections.length > 0) {
+      setMode('multiResults');
+      setShow(true);
+      return;
+    }
+    setMode('browsing');
+    setShow(false);
     return null;
   };
 
@@ -94,7 +99,7 @@ const Main = () => {
                     className="results-list"
                     react={{ and: ['Types'] }}
                     componentId="SearchResult"
-                    dataField={null}
+                    dataField=""
                     showResultStats={false}
                     renderItem={renderItem}
                   />
