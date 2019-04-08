@@ -49,7 +49,6 @@ const Main = () => {
 
   const addPlace = () => {
     setShow(true);
-    console.log('addPlace');
     setMode('adding');
   };
 
@@ -116,7 +115,7 @@ const Main = () => {
                 style={{ height: '100%', padding: 0 }}
                 defaultZoom={13}
                 defaultCenter={{ lat: 49.8397, lng: 24.0297 }} // Lviv
-                defaultMapStyle="Flat Map"
+                // defaultMapStyle="Flat Map"
                 // pagination
                 // onPageChange={() => {
                 //   window.scrollTo(0, 0);
@@ -126,7 +125,7 @@ const Main = () => {
                 // autoClosePopover
                 showSearchAsMove
                 searchAsMove
-                // showMapStyles={true}
+                // showMapStyles
                 unit="km"
                 onAllData={renderLeftCol}
                 // eslint-disable-next-line no-unused-vars

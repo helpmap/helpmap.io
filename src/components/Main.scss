@@ -9,8 +9,14 @@
     width: 100%;
   }
 
-  .results-list > div:nth-child(2) {
-    height: calc(100vh - 232px) !important;
+  .results-list {
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    > div:nth-child(2) {
+      height: calc(100vh - 232px) !important;
+    }
   }
 }
 
@@ -19,9 +25,10 @@
 }
 
 .fab {
+  bottom: 40px;
+  background-color: red !important;
   position: absolute !important;
   right: 100px;
-  bottom: 40px;
 }
 
 .right-col {

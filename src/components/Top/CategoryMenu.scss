@@ -16,8 +16,12 @@
     background-color: transparent;
     color: #424242;
 
-    > .item > span {
-      padding-top: 5px;
+    > .item {
+      //FIXME:
+      // padding: 0 1.14285714em !important;
+      > span {
+        padding-top: 5px;
+      }
     }
 
     &.active {

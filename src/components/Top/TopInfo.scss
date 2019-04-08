@@ -1,7 +1,3 @@
-.sub.header {
-  font-size: 20px;
-}
-
 .language-switch {
   position: absolute;
   right: 21px;
@@ -20,4 +16,14 @@
   left: 21px;
   top: 21px;
   position: absolute;
+}
+
+.info-modal {
+  .ant-modal-title {
+    text-align: center;
+  }
+
+  .ant-modal-body {
+    padding: 24px 54px 54px;
+  }
 }
