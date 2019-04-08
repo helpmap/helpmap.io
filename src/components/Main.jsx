@@ -91,9 +91,11 @@ const Main = () => {
               <Grid.Column className="left-col" width={4}>
                 {mode === 'multiResults' && (
                   <ReactiveList
+                    className="results-list"
                     react={{ and: ['Types'] }}
                     componentId="SearchResult"
-                    dataField=""
+                    dataField={null}
+                    showResultStats={false}
                     renderItem={renderItem}
                   />
                 )}
