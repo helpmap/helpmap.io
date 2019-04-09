@@ -729,7 +729,7 @@ class ReactiveMap extends Component {
   };
 
   getMarkers = resultsToRender => {
-    const { showMarkers, onData, markerProps } = this.props;
+    const { showMarkers, onData } = this.props;
     if (!showMarkers) return;
     return resultsToRender.map(item => {
       const markerProps = {

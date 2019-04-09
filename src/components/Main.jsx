@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 // import { ReactiveMap } from '@appbaseio/reactivemaps';
@@ -23,8 +23,29 @@ const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
   const [mode, setMode] = useState('browsing');
   const [show, setShow] = useState(false);
+  const [shouldShowMap, showMap] = useState(false);
+  const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
-  // const [modalOpen, handleModal] = useState(false);
+
+  const options = {
+    enableHighAccuracy: false,
+    timeout: 20 * 1000,
+    maximumAge: 10 * 60 * 1000, // 10 mins
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+        showMap(true);
+      },
+      err => {
+        showMap(true);
+        setLocation({ lat: 49.8397, lng: 24.0297 });
+      },
+      options
+    );
+  }, []);
 
   function renderItem(data) {
     if (data.length < 1) return <h2>No results</h2>;
@@ -69,7 +90,7 @@ const Main = () => {
   };
 
   const onMarkerClick = async selectedMarkerData => {
-    if (result && result._id == selectedMarkerData._id) {
+    if (result && result._id === selectedMarkerData._id) {
       setMode('browsing');
       setResult({});
       setShow(false);
@@ -118,46 +139,48 @@ const Main = () => {
               </Grid.Column>
             )}
             <Grid.Column className="map-container" width={show ? 12 : 16}>
-              <ReactiveMap
-                componentId="map"
-                dataField="location"
-                className="right-col"
-                style={{ height: '100%', padding: 0 }}
-                defaultZoom={13}
-                defaultCenter={{ lat: 49.8397, lng: 24.0297 }} // Lviv
-                // defaultMapStyle="Flat Map"
-                // pagination
-                // onPageChange={() => {
-                //   window.scrollTo(0, 0);
-                // }}
-                // onPopoverClick={onPopoverClick}
-                showMarkerClusters={false}
-                // autoClosePopover
-                showSearchAsMove
-                searchAsMove
-                // showMapStyles
-                // mapProps={{ onClick: () => console.log('onClick') }}
-                unit="km"
-                onAllData={renderLeftCol}
-                // eslint-disable-next-line no-unused-vars
-                // onData={_ => ({ custom: null })}
-                onMarkerClick={onMarkerClick}
-                // markerProps={{
-                //   onClick: e => {
-                //     debugger;
-                //     console.log(e);
-                //   },
-                // }}
-                onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
-                // onData={data => ({
-                //   label: data.types.map((type, i) => (
-                //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>
-                //       {type}
-                //     </span>
-                //   )),
-                // })}
-                react={{ and: ['Types'] }}
-              />
+              {shouldShowMap && (
+                <ReactiveMap
+                  componentId="map"
+                  dataField="location"
+                  className="right-col"
+                  style={{ height: '100%', padding: 0 }}
+                  defaultZoom={13}
+                  defaultCenter={location} // Lviv
+                  // defaultMapStyle="Flat Map"
+                  // pagination
+                  // onPageChange={() => {
+                  //   window.scrollTo(0, 0);
+                  // }}
+                  // onPopoverClick={onPopoverClick}
+                  showMarkerClusters={false}
+                  // autoClosePopover
+                  showSearchAsMove
+                  searchAsMove
+                  // showMapStyles
+                  // mapProps={{ onClick: () => console.log('onClick') }}
+                  unit="km"
+                  onAllData={renderLeftCol}
+                  // eslint-disable-next-line no-unused-vars
+                  // onData={_ => ({ custom: null })}
+                  onMarkerClick={onMarkerClick}
+                  // markerProps={{
+                  //   onClick: e => {
+                  //     debugger;
+                  //     console.log(e);
+                  //   },
+                  // }}
+                  onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
+                  // onData={data => ({
+                  //   label: data.types.map((type, i) => (
+                  //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>
+                  //       {type}
+                  //     </span>
+                  //   )),
+                  // })}
+                  react={{ and: ['Types'] }}
+                />
+              )}
             </Grid.Column>
           </Grid.Row>
         </Grid>
