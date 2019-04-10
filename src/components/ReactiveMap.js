@@ -239,9 +239,7 @@ class ReactiveMap extends Component {
       if (nextProps.onPageChange) {
         nextProps.onPageChange();
       }
-      this.setState({
-        isLoading: false,
-      });
+      this.setState({ isLoading: false });
     }
 
     if (
@@ -250,9 +248,7 @@ class ReactiveMap extends Component {
       nextProps.hits &&
       (this.props.hits.length < nextProps.hits.length || nextProps.hits.length === nextProps.total)
     ) {
-      this.setState({
-        isLoading: false,
-      });
+      this.setState({ isLoading: false });
     }
 
     if (!nextProps.pagination && nextProps.hits && this.props.hits && nextProps.hits.length < this.props.hits.length) {
@@ -291,9 +287,7 @@ class ReactiveMap extends Component {
     }
 
     if (this.props.defaultMapStyle !== nextProps.defaultMapStyle) {
-      this.setState({
-        currentMapStyle: this.mapStyles.find(style => style.label === nextProps.defaultMapStyle) || this.mapStyles[0],
-      });
+      this.setMapStyle(this.mapStyles.find(style => style.label === nextProps.defaultMapStyle) || this.mapStyles[0]);
     }
   }
 
@@ -479,9 +473,7 @@ class ReactiveMap extends Component {
         true
       );
     } else if (this.state.isLoading) {
-      this.setState({
-        isLoading: false,
-      });
+      this.setState({ isLoading: false });
     }
   };
 
@@ -528,11 +520,7 @@ class ReactiveMap extends Component {
     };
   }
 
-  setMapStyle = currentMapStyle => {
-    this.setState({
-      currentMapStyle,
-    });
-  };
+  setMapStyle = currentMapStyle => this.setState({ currentMapStyle });
 
   getCenter = hits => {
     if (this.props.center) {
@@ -614,41 +602,34 @@ class ReactiveMap extends Component {
     if (this.props.mapProps.onZoomChanged) this.props.mapProps.onZoomChanged();
   };
 
-  toggleSearchAsMove = () => {
-    this.setState({
-      searchAsMove: !this.state.searchAsMove,
-    });
-  };
+  toggleSearchAsMove = () => this.setState({ searchAsMove: !this.state.searchAsMove });
 
   renderSearchAsMove = () => {
-    if (this.props.showSearchAsMove) {
-      return (
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 30,
-            left: 10,
-            width: 240,
-            backgroundColor: '#fff',
-            padding: '8px 10px',
-            boxShadow: 'rgba(0,0,0,0.3) 0px 1px 4px -1px',
-            borderRadius: 2,
-          }}
-          className={getClassName(this.props.innerClass, 'checkboxContainer') || null}>
-          <Checkbox
-            className={getClassName(this.props.innerClass, 'checkbox') || null}
-            id="searchasmove"
-            onChange={this.toggleSearchAsMove}
-            checked={this.state.searchAsMove}
-          />
-          <label className={getClassName(this.props.innerClass, 'label') || null} htmlFor="searchasmove">
-            Search as I move the map
-          </label>
-        </div>
-      );
-    }
-
-    return null;
+    if (!this.props.showSearchAsMove) return null;
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 30,
+          left: 10,
+          width: 240,
+          backgroundColor: '#fff',
+          padding: '8px 10px',
+          boxShadow: 'rgba(0,0,0,0.3) 0px 1px 4px -1px',
+          borderRadius: 2,
+        }}
+        className={getClassName(this.props.innerClass, 'checkboxContainer') || null}>
+        <Checkbox
+          className={getClassName(this.props.innerClass, 'checkbox') || null}
+          id="searchasmove"
+          onChange={this.toggleSearchAsMove}
+          checked={this.state.searchAsMove}
+        />
+        <label className={getClassName(this.props.innerClass, 'label') || null} htmlFor="searchasmove">
+          Search as I move the map
+        </label>
+      </div>
+    );
   };
 
   openMarkerInfo = id => {
@@ -660,6 +641,7 @@ class ReactiveMap extends Component {
   };
 
   closeMarkerInfo = id => {
+    // eslint-disable-next-line no-unused-vars
     const { [id]: del, ...activeMarkers } = this.state.openMarkers;
     const openMarkers = this.props.autoClosePopover ? {} : activeMarkers;
 

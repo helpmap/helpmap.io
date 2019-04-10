@@ -18,6 +18,7 @@ export const appbaseRef = Appbase({
   app: 'helpmap',
   credentials: '6Oc2N0Ats:cd4782b5-de89-4675-9a48-e4b5423cd9e2',
 });
+const GreenEssence = require('./GreenEssence');
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -158,6 +159,7 @@ const Main = () => {
                   showSearchAsMove
                   searchAsMove
                   // showMapStyles
+                  mapProps={{ options: { styles: GreenEssence } }}
                   // mapProps={{ onClick: () => console.log('onClick') }}
                   unit="km"
                   onAllData={renderLeftCol}
