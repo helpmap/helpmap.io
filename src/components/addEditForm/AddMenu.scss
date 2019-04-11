@@ -2,30 +2,27 @@
   padding: 1em;
   margin-top: 1em;
 }
-.header {
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-}
-.edit {
+
+.edit-btn {
   position: absolute;
   right: 0;
   top: 5px;
   background: none !important;
-  color: #dede4d;
   margin-top: 5px;
 }
 .category-menu {
-  // text-align: center;
-  margin-top: 5px;
+  margin: 15px 0;
 }
-.category-icon {
-  margin: 2px;
-  padding: 4px;
-}
+
 .category-icon > svg {
-  width: 20px;
+  width: 30px;
+  padding: 0 4px;
+
+  &:nth-child(1) {
+    padding-left: 0;
+  }
 }
 .description {
-  margin: 5px 1px 1px 10px;
-  font-family: Georgia, 'Times New Roman', Times, serif; 
+  font-family: Georgia, "Times New Roman", Times, serif;
+  white-space: pre-wrap;
 }

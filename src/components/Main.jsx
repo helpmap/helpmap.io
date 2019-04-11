@@ -16,7 +16,7 @@ import './Main.scss';
 export const appbaseRef = Appbase({
   url: 'https://scalr.api.appbase.io/',
   app: 'helpmap',
-  credentials: '6Oc2N0Ats:cd4782b5-de89-4675-9a48-e4b5423cd9e2',
+  credentials: 'IOa16MiOe:224b8ae4-f21a-4c25-9c01-e9212f90a0b5',
 });
 const GreenEssence = require('./GreenEssence');
 
@@ -81,8 +81,8 @@ const Main = () => {
       setMode('adding');
       return;
     }
-    setShow(false);
     setMode('browsing');
+    setShow(false);
   };
 
   const onSelect = selections => {
@@ -93,7 +93,6 @@ const Main = () => {
     }
     setMode('browsing');
     setShow(false);
-    return null;
   };
 
   const onMarkerClick = async selectedMarkerData => {

@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import { Form, Checkbox } from 'semantic-ui-react';
+import { injectIntl } from 'react-intl';
 // import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import categories from '../Top/messages/menuMessages';
@@ -10,7 +11,7 @@ import { appbaseRef } from '../Main';
 
 import './AddMenu.scss';
 
-const Edit = ({ setMode, setShow, data }) => {
+const Edit = ({ setMode, setShow, id }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
@@ -19,17 +20,23 @@ const Edit = ({ setMode, setShow, data }) => {
   let types;
 
   useEffect(() => {
-    if (data) {
-      handleName(data.name);
-      handleAddress(data.address);
-      handleDescription(data.description);
-      setLocation(data.location);
-      chooseType(data.types[0].split(' '));
-      types = data.types;
-    }
-  }, [data]);
+    if (id) {
+      const fetchData = async () => {
+        const { _source: data } = await appbaseRef.get({ type: 'doc', id });
 
-  const addNewPlace = e => {
+        console.log(data);
+        handleName(data.name);
+        handleAddress(data.address);
+        handleDescription(data.description);
+        setLocation(data.location);
+        chooseType(data.types[0].split(' '));
+        types = data.types;
+      };
+      fetchData();
+    }
+  }, [id]);
+
+  const updatePlace = e => {
     e.preventDefault();
     types =
       types ||
@@ -47,7 +54,7 @@ const Edit = ({ setMode, setShow, data }) => {
 
     appbaseRef
       .index({
-        // type: `${Math.random() * 100}`,
+        id,
         type: 'doc',
         body: jsonObject,
       })
@@ -72,11 +79,10 @@ const Edit = ({ setMode, setShow, data }) => {
   }
 
   function canSubmit() {
-    if (data) {
-      return data.name && data.address && data.description && data.location.lat && data.types.length > 0;
-    }
     return name && address && description && location && location.lat && choosenTypes.length > 0;
   }
+
+  if (!name) return null;
 
   return (
     <Form className="add-menu">
@@ -98,7 +104,7 @@ const Edit = ({ setMode, setShow, data }) => {
             label={el}
             control="input"
             type="checkbox"
-            checked={data && choosenTypes.includes(el)}
+            checked={choosenTypes.includes(el)}
             onClick={onSelect}
           />
         ))}
@@ -111,7 +117,7 @@ const Edit = ({ setMode, setShow, data }) => {
         onChange={e => handleDescription(e.target.value)}
       />
       {
-        <Form.Button disabled={!canSubmit()} onClick={(e, data) => addNewPlace(e, data)}>
+        <Form.Button disabled={!canSubmit()} onClick={updatePlace}>
           Save
         </Form.Button>
       }
@@ -119,4 +125,4 @@ const Edit = ({ setMode, setShow, data }) => {
   );
 };
 
-export default Edit;
+export default injectIntl(Edit);
