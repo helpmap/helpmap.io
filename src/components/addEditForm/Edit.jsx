@@ -8,10 +8,11 @@ import { appbaseRef } from '../Main';
 
 import './AddMenu.scss';
 
-const Edit = ({ setMode, setShow, id }) => {
+const Edit = ({ setMode, setShow, id, intl }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
+  const [visible, setVisible] = useState(false);
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
   let types;
@@ -27,6 +28,7 @@ const Edit = ({ setMode, setShow, id }) => {
         setLocation(data.location);
         chooseType(data.types[0].split(' '));
         types = data.types;
+        setVisible(true);
       };
       fetchData();
     }
@@ -78,13 +80,13 @@ const Edit = ({ setMode, setShow, id }) => {
     return name && address && description && location && location.lat && choosenTypes.length > 0;
   }
 
-  if (id && !name) return null;
+  if (id && !visible) return null;
 
   return (
     <Form className="add-menu">
       <Form.Input
-        label="Name of Organisation"
-        placeholder="Name of Organisation"
+        label={intl.formatMessage({ id: 'Add.Name_Organization' })}
+        placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
         value={name}
         onChange={e => handleName(e.target.value)}
       />
@@ -97,7 +99,7 @@ const Edit = ({ setMode, setShow, id }) => {
             value={el}
             style={{ padding: '0.5em' }}
             key={index}
-            label={el}
+            label={intl.formatMessage({ id: categories[el].id })}
             control="input"
             type="checkbox"
             checked={choosenTypes.includes(el)}
@@ -107,14 +109,14 @@ const Edit = ({ setMode, setShow, id }) => {
       </Form.Group>
       <Form.TextArea
         rows={9}
-        label="Description"
-        placeholder="Tell us more about your organisation..."
+        label={intl.formatMessage({ id: 'Add.Description' })}
+        placeholder={intl.formatMessage({ id: 'Add.Description.Placeholder' })}
         value={description}
         onChange={e => handleDescription(e.target.value)}
       />
       {
         <Form.Button disabled={!canSubmit()} onClick={updatePlace}>
-          Save
+          {intl.formatMessage({ id: 'Save' })}
         </Form.Button>
       }
     </Form>

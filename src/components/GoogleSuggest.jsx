@@ -1,7 +1,8 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import { injectIntl } from 'react-intl';
 
-const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
+const GoogleSuggest = ({ result, handleAddress, setLocation, intl }) => {
   const handleSelect = address => {
     handleAddress(address);
     geocodeByAddress(address)
@@ -15,7 +16,7 @@ const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
         <div>
           <input
             {...getInputProps({
-              placeholder: 'Search Places ...',
+              placeholder: intl.formatMessage({ id: 'Add.Address.Placeholder' }),
               className: 'location-search-input',
             })}
           />
@@ -45,4 +46,4 @@ const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
   );
 };
 
-export default GoogleSuggest;
+export default injectIntl(GoogleSuggest);

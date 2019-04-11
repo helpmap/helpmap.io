@@ -13,7 +13,10 @@
   "Add.Add_Organization": "Add organisation",
   "Add.Name_Organization": "Name of organisation",
   "Add.Description": "Description",
+  "Add.Description.Placeholder": "What does this non-profit do, when is it open, how to contact them",
   "Add.Categories": "Categories",
   "Add.Address": "Address",
-  "Add.Add_button": "Add on the map"
+  "Add.Address.Placeholder": "Search Address ...",
+  "Add.Add_button": "Add on the map",
+  "Save": "Save"
 }
