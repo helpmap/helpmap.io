@@ -10,13 +10,13 @@ import Appbase from 'appbase-js';
 
 import ReactiveMap from './ReactiveMap';
 import CategoryMenu from './Top/CategoryMenu';
-import AddMenu from './AddMenu';
+import AddMenu from './addEditForm/AddMenu';
 import './Main.scss';
 
 export const appbaseRef = Appbase({
   url: 'https://scalr.api.appbase.io/',
   app: 'helpmap',
-  credentials: '6Oc2N0Ats:cd4782b5-de89-4675-9a48-e4b5423cd9e2',
+  credentials: 'IOa16MiOe:224b8ae4-f21a-4c25-9c01-e9212f90a0b5',
 });
 const GreenEssence = require('./GreenEssence');
 
@@ -40,7 +40,7 @@ const Main = () => {
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
         showMap(true);
       },
-      err => {
+      () => {
         showMap(true);
         setLocation({ lat: 49.8397, lng: 24.0297 });
       },
@@ -48,20 +48,21 @@ const Main = () => {
     );
   }, []);
 
+  useEffect(() => {
+    setMode(mode);
+  }, [mode]);
+
   function renderItem(data) {
     if (data.length < 1) return <h2>No results</h2>;
     return (
       <Card key={data._id}>
-        {/* <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} /> */}
-        <div>
-          <h2>{data.name}</h2>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
-            {data.address}
-          </a>
-        </div>
+        <h2>{data.name}</h2>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
+          {data.address}
+        </a>
       </Card>
     );
   }
@@ -75,8 +76,13 @@ const Main = () => {
   );
 
   const addPlace = () => {
-    setShow(true);
-    setMode('adding');
+    if (mode !== 'adding') {
+      setShow(true);
+      setMode('adding');
+      return;
+    }
+    setMode('browsing');
+    setShow(false);
   };
 
   const onSelect = selections => {
@@ -87,7 +93,6 @@ const Main = () => {
     }
     setMode('browsing');
     setShow(false);
-    return null;
   };
 
   const onMarkerClick = async selectedMarkerData => {
@@ -125,7 +130,7 @@ const Main = () => {
           <Grid.Row style={{ padding: 0 }}>
             {show && (
               <Grid.Column className="left-col" width={4}>
-                {mode === 'multiResults' && (
+                {mode === 'multiResults' ? (
                   <ReactiveList
                     className="results-list"
                     react={{ and: ['Types'] }}
@@ -134,9 +139,9 @@ const Main = () => {
                     showResultStats={false}
                     renderItem={renderItem}
                   />
+                ) : (
+                  <AddMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />
                 )}
-                {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
-                {mode === 'singleResult' && <AddMenu data={result} setShow={setShow} setMode={setMode} />}
               </Grid.Column>
             )}
             <Grid.Column className="map-container" width={show ? 12 : 16}>
@@ -187,7 +192,7 @@ const Main = () => {
           </Grid.Row>
         </Grid>
       </ReactiveBase>
-      {renderFloatingButton()}
+      {shouldShowMap && renderFloatingButton()}
     </div>
   );
 };

@@ -10,7 +10,7 @@ const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
       .catch(error => console.error('Error', error));
   };
   return (
-    <PlacesAutocomplete value={result} onChange={e => handleAddress(e)} onSelect={handleSelect}>
+    <PlacesAutocomplete value={result} onChange={handleAddress} onSelect={handleSelect}>
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <input

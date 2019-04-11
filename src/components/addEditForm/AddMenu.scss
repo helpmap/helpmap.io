@@ -1,0 +1,28 @@
+.add-menu {
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.edit-btn {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  background: none !important;
+  margin-top: 5px;
+}
+.category-menu {
+  margin: 15px 0;
+}
+
+.category-icon > svg {
+  width: 30px;
+  padding: 0 4px;
+
+  &:nth-child(1) {
+    padding-left: 0;
+  }
+}
+.description {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  white-space: pre-wrap;
+}
