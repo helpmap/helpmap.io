@@ -10,7 +10,7 @@ import Appbase from 'appbase-js';
 
 import ReactiveMap from './ReactiveMap';
 import CategoryMenu from './Top/CategoryMenu';
-import AddMenu from './AddMenu';
+import AddMenu from './addEditForm/AddMenu';
 import './Main.scss';
 
 export const appbaseRef = Appbase({
@@ -47,6 +47,10 @@ const Main = () => {
       options
     );
   }, []);
+
+  useEffect(() => {
+    setMode(mode);
+  }, [mode]);
 
   function renderItem(data) {
     if (data.length < 1) return <h2>No results</h2>;
@@ -135,8 +139,8 @@ const Main = () => {
                     renderItem={renderItem}
                   />
                 )}
-                {mode === 'adding' && <AddMenu setShow={setShow} setMode={setMode} />}
-                {mode === 'singleResult' && <AddMenu data={result} setShow={setShow} setMode={setMode} />}
+                {<AddMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />}
+                {/* {mode === 'singleResult' && <AddMenu data={result} setShow={setShow} setMode={setMode} />} */}
               </Grid.Column>
             )}
             <Grid.Column className="map-container" width={show ? 12 : 16}>

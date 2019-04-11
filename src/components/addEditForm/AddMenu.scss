@@ -1,0 +1,31 @@
+.add-menu {
+  padding: 1em;
+  margin-top: 1em;
+}
+.header {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+.edit {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  background: none !important;
+  color: #dede4d;
+  margin-top: 5px;
+}
+.category-menu {
+  // text-align: center;
+  margin-top: 5px;
+}
+.category-icon {
+  margin: 2px;
+  padding: 4px;
+}
+.category-icon > svg {
+  width: 20px;
+}
+.description {
+  margin: 5px 1px 1px 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+}
