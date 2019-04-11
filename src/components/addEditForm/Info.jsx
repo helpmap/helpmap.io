@@ -20,10 +20,9 @@ const Info = ({ setMode, id }) => {
     const fetchData = async () => {
       const { _source: data } = await appbaseRef.get({ type: 'doc', id });
 
-      console.log(data);
       setData(data);
     };
-    fetchData();
+    if (id) fetchData();
   }, [id]);
 
   if (!data) return null;
@@ -31,9 +30,7 @@ const Info = ({ setMode, id }) => {
   return (
     <Container text fluid>
       <Card>
-        <Button icon className="edit-btn" onClick={() => setMode('editing')}>
-          <Icon name="edit" />
-        </Button>
+        <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} />
         <h2>{data.name}</h2>
         <a
           target="_blank"

@@ -23,6 +23,11 @@
 .map-container {
   padding: 0 !important;
 }
+.vertical-align {
+  display: flex !important;
+  align-items: center;
+  min-height: 15em;
+}
 
 .fab {
   bottom: 40px;

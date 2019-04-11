@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment, Loader } from 'semantic-ui-react';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 // import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
@@ -41,8 +41,8 @@ const Main = () => {
         showMap(true);
       },
       () => {
-        showMap(true);
         setLocation({ lat: 49.8397, lng: 24.0297 });
+        showMap(true);
       },
       options
     );
@@ -144,8 +144,10 @@ const Main = () => {
                 )}
               </Grid.Column>
             )}
-            <Grid.Column className="map-container" width={show ? 12 : 16}>
-              {shouldShowMap && (
+            <Grid.Column className={!shouldShowMap ? 'vertical-align' : 'map-container'} width={show ? 12 : 16}>
+              {!shouldShowMap ? (
+                <Loader active inline="centered" size="large" />
+              ) : (
                 <ReactiveMap
                   componentId="map"
                   dataField="location"

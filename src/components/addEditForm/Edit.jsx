@@ -1,9 +1,6 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import { Form, Checkbox } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
-// import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
@@ -24,7 +21,6 @@ const Edit = ({ setMode, setShow, id }) => {
       const fetchData = async () => {
         const { _source: data } = await appbaseRef.get({ type: 'doc', id });
 
-        console.log(data);
         handleName(data.name);
         handleAddress(data.address);
         handleDescription(data.description);
@@ -82,7 +78,7 @@ const Edit = ({ setMode, setShow, id }) => {
     return name && address && description && location && location.lat && choosenTypes.length > 0;
   }
 
-  if (!name) return null;
+  if (id && !name) return null;
 
   return (
     <Form className="add-menu">
