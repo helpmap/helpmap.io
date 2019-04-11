@@ -40,7 +40,7 @@ const Main = () => {
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
         showMap(true);
       },
-      err => {
+      () => {
         showMap(true);
         setLocation({ lat: 49.8397, lng: 24.0297 });
       },
@@ -56,16 +56,13 @@ const Main = () => {
     if (data.length < 1) return <h2>No results</h2>;
     return (
       <Card key={data._id}>
-        {/* <div className="card__image" style={{ backgroundImage: `url(${data.image})` }} title={data.name} /> */}
-        <div>
-          <h2>{data.name}</h2>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
-            {data.address}
-          </a>
-        </div>
+        <h2>{data.name}</h2>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
+          {data.address}
+        </a>
       </Card>
     );
   }
@@ -79,8 +76,13 @@ const Main = () => {
   );
 
   const addPlace = () => {
-    setShow(true);
-    setMode('adding');
+    if (mode !== 'adding') {
+      setShow(true);
+      setMode('adding');
+      return;
+    }
+    setShow(false);
+    setMode('browsing');
   };
 
   const onSelect = selections => {
@@ -129,7 +131,7 @@ const Main = () => {
           <Grid.Row style={{ padding: 0 }}>
             {show && (
               <Grid.Column className="left-col" width={4}>
-                {mode === 'multiResults' && (
+                {mode === 'multiResults' ? (
                   <ReactiveList
                     className="results-list"
                     react={{ and: ['Types'] }}
@@ -138,9 +140,9 @@ const Main = () => {
                     showResultStats={false}
                     renderItem={renderItem}
                   />
+                ) : (
+                  <AddMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />
                 )}
-                {<AddMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />}
-                {/* {mode === 'singleResult' && <AddMenu data={result} setShow={setShow} setMode={setMode} />} */}
               </Grid.Column>
             )}
             <Grid.Column className="map-container" width={show ? 12 : 16}>
@@ -191,7 +193,7 @@ const Main = () => {
           </Grid.Row>
         </Grid>
       </ReactiveBase>
-      {renderFloatingButton()}
+      {shouldShowMap && renderFloatingButton()}
     </div>
   );
 };
