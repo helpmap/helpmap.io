@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Segment, Loader } from 'semantic-ui-react';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-// import { ReactiveMap } from '@appbaseio/reactivemaps';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { Card } from 'antd';
@@ -10,7 +9,7 @@ import Appbase from 'appbase-js';
 
 import ReactiveMap from './ReactiveMap';
 import CategoryMenu from './Top/CategoryMenu';
-import AddMenu from './addEditForm/AddMenu';
+import SideMenu from './addEditForm/SideMenu';
 import './Main.scss';
 
 export const appbaseRef = Appbase({
@@ -27,6 +26,7 @@ const Main = () => {
   const [shouldShowMap, showMap] = useState(false);
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
+  const [highlighted, setHighlight] = useState();
 
   const options = {
     enableHighAccuracy: false,
@@ -52,11 +52,18 @@ const Main = () => {
     setMode(mode);
   }, [mode]);
 
+  function showSingleFromList(data) {
+    setHighlight(data._id);
+    setMode('singleResult');
+    setResult(data);
+    setShow(true);
+  }
+
   function renderItem(data) {
     if (data.length < 1) return <h2>No results</h2>;
     return (
       <Card key={data._id}>
-        <h2>{data.name}</h2>
+        <h2 onClick={() => showSingleFromList(data)}>{data.name}</h2>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -133,14 +140,14 @@ const Main = () => {
                 {mode === 'multiResults' ? (
                   <ReactiveList
                     className="results-list"
-                    react={{ and: ['Types'] }}
                     componentId="SearchResult"
                     dataField=""
+                    react={{ and: ['Types'] }}
                     showResultStats={false}
                     renderItem={renderItem}
                   />
                 ) : (
-                  <AddMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />
+                  <SideMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />
                 )}
               </Grid.Column>
             )}
@@ -173,6 +180,7 @@ const Main = () => {
                   // eslint-disable-next-line no-unused-vars
                   // onData={_ => ({ custom: null })}
                   onMarkerClick={onMarkerClick}
+                  highlighted={highlighted}
                   // markerProps={{
                   //   onClick: e => {
                   //     debugger;

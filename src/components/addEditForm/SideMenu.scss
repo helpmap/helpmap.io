@@ -3,11 +3,22 @@
   margin-top: 1em;
 }
 
-.edit-btn {
+.edit-btn,
+.back-btn {
   position: absolute;
-  right: 0;
   background: none !important;
+  padding: 0.38571429em !important;
+  top: 0.25em;
 }
+
+.back-btn {
+  left: 0;
+  // padding: 0.38571429em !important;
+}
+.edit-btn {
+  right: 0;
+}
+
 .category-menu {
   margin: 15px 0;
 }

@@ -6,7 +6,7 @@ import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
 import { appbaseRef } from '../Main';
 
-import './AddMenu.scss';
+import './SideMenu.scss';
 
 const Edit = ({ setMode, setShow, id, intl }) => {
   const [name, handleName] = useState('');

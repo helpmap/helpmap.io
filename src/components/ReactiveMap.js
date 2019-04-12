@@ -289,6 +289,10 @@ class ReactiveMap extends Component {
     if (this.props.defaultMapStyle !== nextProps.defaultMapStyle) {
       this.setMapStyle(this.mapStyles.find(style => style.label === nextProps.defaultMapStyle) || this.mapStyles[0]);
     }
+
+    if (this.props.highlighted !== nextProps.highlighted && this.state.markerOnTop !== nextProps.highlighted)
+      this.increaseMarkerZIndex(nextProps.highlighted);
+    else this.removeMarkerZIndex();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -774,6 +778,7 @@ class ReactiveMap extends Component {
           // onFocus={() => this.increaseMarkerZIndex(item._id)}
           // onClick={() => this.openMarkerInfo(item._id)}
           onClick={() => this.onMarkerClick(item)}
+          // animation={window.google.maps.Animation.DROP}
           {...markerProps}
           {...this.props.markerProps}>
           {this.props.onPopoverClick ? this.renderPopover(item) : null}
@@ -928,6 +933,7 @@ ReactiveMap.propTypes = {
   defaultPin: types.string,
   defaultQuery: types.func,
   defaultZoom: types.number,
+  highlighted: types.string,
   innerClass: types.style,
   innerRef: types.func,
   loader: types.title,

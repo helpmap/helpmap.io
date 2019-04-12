@@ -17,6 +17,10 @@
     > div:nth-child(2) {
       height: calc(100vh - 232px) !important;
     }
+
+    > div:nth-child(3) {
+      margin: 1em 0 0;
+    }
   }
 }
 
@@ -38,4 +42,10 @@
 
 .right-col {
   height: calc(100vh - 232px) !important;
+}
+
+.results-list {
+  h2 {
+    cursor: pointer;
+  }
 }

@@ -3,9 +3,9 @@ import React from 'react';
 import Edit from './Edit';
 import Info from './Info';
 
-import './AddMenu.scss';
+import './SideMenu.scss';
 
-const AddMenu = ({ setMode, setShow, data, mode }) => {
+const SideMenu = ({ setMode, setShow, data, mode }) => {
   switch (mode) {
     case 'adding':
       return <Edit id={null} setMode={setMode} setShow={setShow} />;
@@ -20,4 +20,4 @@ const AddMenu = ({ setMode, setShow, data, mode }) => {
   }
 };
 
-export default AddMenu;
+export default SideMenu;

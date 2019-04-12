@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Icon, Button } from 'semantic-ui-react';
-import categories from '../Top/messages/menuMessages';
-
-import './AddMenu.scss';
-import { appbaseRef } from '../Main';
+import { Container, Button } from 'semantic-ui-react';
 import { Card } from 'antd';
+
+import './SideMenu.scss';
+import categories from '../Top/messages/menuMessages';
+import { appbaseRef } from '../Main';
 
 const showCategories = types =>
   types.split(' ').map((name, i) => (
@@ -31,6 +31,7 @@ const Info = ({ setMode, id }) => {
     <Container text fluid>
       <Card>
         <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} />
+        <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} />
         <h2>{data.name}</h2>
         <a
           target="_blank"
