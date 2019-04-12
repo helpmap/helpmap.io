@@ -85,7 +85,6 @@ const Edit = ({ setMode, setShow, id, intl }) => {
   return (
     <Form className="add-menu">
       <Form.Input
-        label={intl.formatMessage({ id: 'Add.Name_Organization' })}
         placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
         value={name}
         onChange={e => handleName(e.target.value)}
@@ -109,7 +108,6 @@ const Edit = ({ setMode, setShow, id, intl }) => {
       </Form.Group>
       <Form.TextArea
         rows={9}
-        label={intl.formatMessage({ id: 'Add.Description' })}
         placeholder={intl.formatMessage({ id: 'Add.Description.Placeholder' })}
         value={description}
         onChange={e => handleDescription(e.target.value)}

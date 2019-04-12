@@ -7,16 +7,23 @@
 .back-btn {
   position: absolute;
   background: none !important;
-  padding: 0.38571429em !important;
-  top: 0.25em;
+  margin-top: 0.5em;
+  padding: 0 !important;
+  fill: #999 !important;
 }
 
 .back-btn {
-  left: 0;
+  left: 24px;
+  top: 0.25em;
+  width: 1em !important;
+  height: 1em !important;
   // padding: 0.38571429em !important;
 }
 .edit-btn {
-  right: 0;
+  width: 0.8em !important;
+  height: 0.8em !important;
+  right: 24px;
+  top: 0.4em;
 }
 
 .category-menu {
@@ -34,4 +41,10 @@
 .description {
   font-family: Georgia, "Times New Roman", Times, serif;
   white-space: pre-wrap;
+}
+
+.info-container {
+  h2 {
+    margin-top: 1.6em;
+  }
 }

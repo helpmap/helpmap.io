@@ -10,6 +10,10 @@
   }
 
   .results-list {
+    .ant-card-bordered {
+      border-top: 0;
+    }
+
     h2 {
       font-size: 1.3rem;
     }
@@ -48,4 +52,8 @@
   h2 {
     cursor: pointer;
   }
+}
+
+.ant-modal-header {
+  padding: 26px 24px;
 }

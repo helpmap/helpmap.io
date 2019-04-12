@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import BackIcon from '@material-ui/icons/ArrowBack';
+import EditIcon from '@material-ui/icons/Edit';
 import { Card } from 'antd';
 
 import './SideMenu.scss';
@@ -28,10 +30,12 @@ const Info = ({ setMode, id }) => {
   if (!data) return null;
 
   return (
-    <Container text fluid>
-      <Card>
-        <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} />
-        <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} />
+    <Container text fluid className="info-container">
+      <Card bordered={false}>
+        {/* <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} /> */}
+        {/* <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} /> */}
+        <EditIcon className="edit-btn" onClick={() => setMode('editing')} />
+        <BackIcon className="back-btn" onClick={() => setMode('multiResults')} />
         <h2>{data.name}</h2>
         <a
           target="_blank"

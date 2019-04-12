@@ -1,6 +1,15 @@
 .category-menu {
   border: 0 !important;
   box-shadow: none !important;
+  text-align: center;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  .item {
+    max-width: 70px;
+    min-width: 70px;
+  }
 }
 
 .toggle {
@@ -20,18 +29,23 @@
       //FIXME:
       // padding: 0 1.14285714em !important;
       > span {
+        color: #616161;
         padding-top: 5px;
       }
+      fill: #616161;
     }
 
     &.active {
       > .item {
-        color: blue;
+        > span {
+          font-weight: 600;
+          color: black;
+        }
+        fill: black;
       }
-      fill: blue;
 
       &:hover {
-        color: blue;
+        color: black;
       }
     }
 
