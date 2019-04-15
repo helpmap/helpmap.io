@@ -1,6 +1,7 @@
 .top-row-cat {
   .category-menu {
     @media screen and (max-width: 768px) {
+      padding: 0 1rem;
       width: 100vw;
     }
   }
@@ -35,7 +36,7 @@
 
     @media screen and (max-width: 768px) {
       padding: 10px !important;
-      max-width: 55px;
+      max-width: 73px;
       min-width: 37px;
 
       svg {
