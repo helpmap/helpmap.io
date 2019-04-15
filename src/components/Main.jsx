@@ -19,6 +19,8 @@ export const appbaseRef = Appbase({
 });
 const GreenEssence = require('./GreenEssence');
 
+const defaultZoomIn = 14;
+
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
   const [mode, setMode] = useState('browsing');
@@ -27,6 +29,7 @@ const Main = () => {
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
   const [highlighted, setHighlight] = useState();
+  const [zoom, setZoom] = useState(13);
 
   const options = {
     enableHighAccuracy: false,
@@ -51,13 +54,6 @@ const Main = () => {
   useEffect(() => {
     setMode(mode);
   }, [mode]);
-
-  function showSingleFromList(data) {
-    setHighlight(data._id);
-    setMode('singleResult');
-    setResult(data);
-    setShow(true);
-  }
 
   function renderItem(data) {
     if (data.length < 1) return <h2>No results</h2>;
@@ -97,12 +93,14 @@ const Main = () => {
   const backToResults = () => {
     setShow(true);
     setMode('multiResults');
+    setZoom(13);
     setHighlight(null);
   };
 
-  const onSelect = selections => {
+  const onSelectCategory = categories => {
     setHighlight(null);
-    if (selections.length > 0) {
+    setZoom(13);
+    if (categories.length > 0) {
       setMode('multiResults');
       setShow(true);
       return;
@@ -111,17 +109,24 @@ const Main = () => {
     setShow(false);
   };
 
+  const showSingleFromList = data => {
+    setHighlight(data._id);
+    setMode('singleResult');
+    setResult(data);
+    setShow(true);
+    setZoom(defaultZoomIn);
+  };
+
   const onMarkerClick = async selectedMarkerData => {
     if (result && result._id === selectedMarkerData._id) {
       setMode('browsing');
       setHighlight(null);
       setResult({});
       setShow(false);
+      setZoom(13);
       return;
     }
-    setMode('singleResult');
-    setResult(selectedMarkerData);
-    setShow(true);
+    showSingleFromList(selectedMarkerData);
   };
 
   return (
@@ -139,12 +144,13 @@ const Main = () => {
             componentId="Filter"
             customQuery={() => ({
               query: { ids: { values: [highlighted] } },
+            })}
           />
         )}
         <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
             <Segment>
-              <CategoryMenu onSelect={onSelect} />
+              <CategoryMenu onSelect={onSelectCategory} />
             </Segment>
           </Grid.Column>
         </Grid.Row>
@@ -183,7 +189,7 @@ const Main = () => {
                   dataField="location"
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
-                  defaultZoom={13}
+                  defaultZoom={zoom}
                   defaultCenter={location}
                   // defaultMapStyle="Flat Map"
                   // pagination
