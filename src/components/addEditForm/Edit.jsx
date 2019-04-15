@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Checkbox } from 'semantic-ui-react';
+import { Form, Checkbox, Icon } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 
 import categories from '../Top/messages/menuMessages';
@@ -13,6 +13,7 @@ const Edit = ({ setMode, setShow, id, intl }) => {
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
   const [visible, setVisible] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
   let types;
@@ -56,9 +57,9 @@ const Edit = ({ setMode, setShow, id, intl }) => {
         type: 'doc',
         body: jsonObject,
       })
-      .then(function(response) {
-        console.log(response);
-        setMode('singleResult');
+      .then(() => {
+        // console.log(response);
+        setSuccess(true);
       })
       .catch(function(error) {
         console.log(error);
@@ -81,6 +82,13 @@ const Edit = ({ setMode, setShow, id, intl }) => {
   }
 
   if (id && !visible) return null;
+
+  if (success)
+    return (
+      <div className="success-container vertical-align">
+        <Icon color="green" name="check circle" size="huge" />
+      </div>
+    );
 
   return (
     <Form className="add-menu">
