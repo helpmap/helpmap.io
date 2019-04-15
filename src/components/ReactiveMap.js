@@ -332,53 +332,51 @@ class ReactiveMap extends Component {
   getHitsCenter = hits => {
     const data = hits.map(hit => hit[this.props.dataField]);
 
-    if (data.length) {
-      const numCoords = data.length;
+    if (!data.length) return false;
 
-      let X = 0.0;
-      let Y = 0.0;
-      let Z = 0.0;
+    const numCoords = data.length;
 
-      data.forEach(location => {
-        if (location) {
-          let lat = 0.0;
-          let lng = 0.0;
+    let X = 0.0;
+    let Y = 0.0;
+    let Z = 0.0;
 
-          if (Array.isArray(location)) {
-            lat = (location[0] * Math.PI) / 180;
-            lng = (location[1] * Math.PI) / 180;
-          } else {
-            lat = (location.lat * Math.PI) / 180;
-            lng = ((location.lng !== undefined ? location.lng : location.lon) * Math.PI) / 180;
-          }
+    data.forEach(location => {
+      if (location) {
+        let lat, lng;
 
-          const a = Math.cos(lat) * Math.cos(lng);
-          const b = Math.cos(lat) * Math.sin(lng);
-          const c = Math.sin(lat);
-
-          X += a;
-          Y += b;
-          Z += c;
+        if (Array.isArray(location)) {
+          lat = (location[0] * Math.PI) / 180;
+          lng = (location[1] * Math.PI) / 180;
+        } else {
+          lat = (location.lat * Math.PI) / 180;
+          lng = ((location.lng !== undefined ? location.lng : location.lon) * Math.PI) / 180;
         }
-      });
 
-      X /= numCoords;
-      Y /= numCoords;
-      Z /= numCoords;
+        const a = Math.cos(lat) * Math.cos(lng);
+        const b = Math.cos(lat) * Math.sin(lng);
+        const c = Math.sin(lat);
 
-      const lng = Math.atan2(Y, X);
-      const hyp = Math.sqrt(X * X + Y * Y);
-      const lat = Math.atan2(Z, hyp);
+        X += a;
+        Y += b;
+        Z += c;
+      }
+    });
 
-      const newX = (lat * 180) / Math.PI;
-      const newY = (lng * 180) / Math.PI;
+    X /= numCoords;
+    Y /= numCoords;
+    Z /= numCoords;
 
-      return {
-        lat: newX,
-        lng: newY,
-      };
-    }
-    return false;
+    const lng = Math.atan2(Y, X);
+    const hyp = Math.sqrt(X * X + Y * Y);
+    const lat = Math.atan2(Z, hyp);
+
+    const newX = (lat * 180) / Math.PI;
+    const newY = (lng * 180) / Math.PI;
+
+    return {
+      lat: newX,
+      lng: newY,
+    };
   };
 
   // getArrPosition = location => [location.lat, location.lon || location.lng];
@@ -386,61 +384,58 @@ class ReactiveMap extends Component {
 
   getGeoDistanceQuery = () => {
     const center = this.props.center || this.props.defaultCenter;
-    if (center && this.props.defaultRadius) {
-      // skips geo bounding box query on initial load
-      this.skipBoundingBox = true;
-      return {
-        geo_distance: {
-          distance: `${this.props.defaultRadius}${this.props.unit}`,
-          [this.props.dataField]: this.getArrPosition(center),
-        },
-      };
-    }
-    return null;
+    if (!center || !this.props.defaultRadius) return null;
+
+    // skips geo bounding box query on initial load
+    this.skipBoundingBox = true;
+    return {
+      geo_distance: {
+        distance: `${this.props.defaultRadius}${this.props.unit}`,
+        [this.props.dataField]: this.getArrPosition(center),
+      },
+    };
   };
 
   getGeoQuery = (props = this.props) => {
     this.defaultQuery = props.defaultQuery ? props.defaultQuery() : null;
 
-    if (this.mapRef) {
-      const mapBounds = this.mapRef.getBounds();
-      const north = mapBounds.getNorthEast().lat();
-      const south = mapBounds.getSouthWest().lat();
-      const east = mapBounds.getNorthEast().lng();
-      const west = mapBounds.getSouthWest().lng();
-      const boundingBoxCoordinates = {
-        top_left: [west, north],
-        bottom_right: [east, south],
-      };
+    // return the defaultQuery (if set) or null when map query not available
+    if (!this.mapRef) return this.defaultQuery ? this.defaultQuery.query : null;
 
-      this.setState({
-        mapBoxBounds: boundingBoxCoordinates,
-      });
+    const mapBounds = this.mapRef.getBounds();
+    const north = mapBounds.getNorthEast().lat();
+    const south = mapBounds.getSouthWest().lat();
+    const east = mapBounds.getNorthEast().lng();
+    const west = mapBounds.getSouthWest().lng();
+    const boundingBoxCoordinates = {
+      top_left: [west, north],
+      bottom_right: [east, south],
+    };
 
-      const geoQuery = {
-        geo_bounding_box: {
-          [this.props.dataField]: boundingBoxCoordinates,
-        },
-      };
+    this.setState({
+      mapBoxBounds: boundingBoxCoordinates,
+    });
 
-      if (this.defaultQuery) {
-        const { query } = this.defaultQuery;
+    const geoQuery = {
+      geo_bounding_box: {
+        [this.props.dataField]: boundingBoxCoordinates,
+      },
+    };
 
-        if (query) {
-          // adds defaultQuery's query to geo-query
-          // to generate a map query
+    if (this.defaultQuery) {
+      const { query } = this.defaultQuery;
 
-          return {
-            must: [geoQuery, query],
-          };
-        }
+      if (query) {
+        // adds defaultQuery's query to geo-query
+        // to generate a map query
+
+        return {
+          must: [geoQuery, query],
+        };
       }
-
-      return geoQuery;
     }
 
-    // return the defaultQuery (if set) or null when map query not available
-    return this.defaultQuery ? this.defaultQuery.query : null;
+    return geoQuery;
   };
 
   setGeoQuery = (executeUpdate = false) => {
@@ -503,10 +498,9 @@ class ReactiveMap extends Component {
   };
 
   getPosition = result => {
-    if (result) {
-      return this.parseLocation(result[this.props.dataField]);
-    }
-    return null;
+    if (!result) return null;
+
+    return this.parseLocation(result[this.props.dataField]);
   };
 
   parseLocation(location) {
@@ -572,14 +566,9 @@ class ReactiveMap extends Component {
 
   handleOnDragEnd = () => {
     if (this.state.searchAsMove) {
-      this.setState(
-        {
-          preserveCenter: true,
-        },
-        () => {
-          this.setGeoQuery(true);
-        }
-      );
+      this.setState({ preserveCenter: true }, () => {
+        this.setGeoQuery(true);
+      });
     }
     if (this.props.mapProps.onDragEnd) this.props.mapProps.onDragEnd();
   };
@@ -597,9 +586,7 @@ class ReactiveMap extends Component {
         }
       );
     } else {
-      this.setState({
-        zoom,
-      });
+      this.setState({ zoom });
     }
     if (this.props.mapProps.onZoomChanged) this.props.mapProps.onZoomChanged();
   };
@@ -844,7 +831,7 @@ class ReactiveMap extends Component {
           {this.props.showMarkers && this.props.markers}
           {this.renderSearchAsMove()}
         </MapComponent>
-        {this.props.showMapStyles ? (
+        {this.props.showMapStyles && (
           <div
             style={{
               position: 'absolute',
@@ -863,7 +850,7 @@ class ReactiveMap extends Component {
               small
             />
           </div>
-        ) : null}
+        )}
       </div>
     );
   };
@@ -889,12 +876,12 @@ class ReactiveMap extends Component {
       <div style={{ ...style, ...this.props.style }} className={this.props.className}>
         {this.props.onAllData
           ? this.props.onAllData(
-            parseHits(this.props.hits),
-            parseHits(this.props.streamHits),
-            this.loadMore,
-            this.renderMap,
-            this.renderPagination,
-          ) // prettier-ignore
+              parseHits(this.props.hits),
+              parseHits(this.props.streamHits),
+              this.loadMore,
+              this.renderMap,
+              this.renderPagination
+            )
           : this.renderMap()}
       </div>
     );
