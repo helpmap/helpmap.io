@@ -683,14 +683,14 @@ class ReactiveMap extends Component {
   increaseMarkerZIndex = id => {
     this.setState({
       markerOnTop: id,
-      preserveCenter: true,
+      // preserveCenter: true,
     });
   };
 
   removeMarkerZIndex = () => {
     this.setState({
       markerOnTop: null,
-      preserveCenter: true,
+      // preserveCenter: true,
     });
   };
 

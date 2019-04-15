@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
 import { Grid, Segment, Loader } from 'semantic-ui-react';
-import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
+import { ReactiveBase, ReactiveList, ReactiveComponent } from '@appbaseio/reactivesearch';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { Card } from 'antd';
@@ -86,13 +86,22 @@ const Main = () => {
     if (mode !== 'adding') {
       setShow(true);
       setMode('adding');
+      setHighlight(null);
       return;
     }
     setMode('browsing');
+    setHighlight(null);
     setShow(false);
   };
 
+  const backToResults = () => {
+    setShow(true);
+    setMode('multiResults');
+    setHighlight(null);
+  };
+
   const onSelect = selections => {
+    setHighlight(null);
     if (selections.length > 0) {
       setMode('multiResults');
       setShow(true);
@@ -105,6 +114,7 @@ const Main = () => {
   const onMarkerClick = async selectedMarkerData => {
     if (result && result._id === selectedMarkerData._id) {
       setMode('browsing');
+      setHighlight(null);
       setResult({});
       setShow(false);
       return;
@@ -120,12 +130,17 @@ const Main = () => {
         app="helpmap"
         // analytics
         credentials="6Oc2N0Ats:cd4782b5-de89-4675-9a48-e4b5423cd9e2"
-        // type="listing"
+        // type="doc"
         theme={{
-          colors: {
-            primaryColor: '#fff',
-          },
+          colors: { primaryColor: '#fff' },
         }}>
+        {highlighted && (
+          <ReactiveComponent
+            componentId="Filter"
+            customQuery={() => ({
+              query: { ids: { values: [highlighted] } },
+          />
+        )}
         <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
             <Segment>
@@ -142,12 +157,19 @@ const Main = () => {
                     className="results-list"
                     componentId="SearchResult"
                     dataField=""
-                    react={{ and: ['Types'] }}
+                    react={{ and: ['Types', 'Filter'] }}
                     showResultStats={false}
                     renderItem={renderItem}
                   />
                 ) : (
-                  <SideMenu mode={mode} data={result} setShow={setShow} setMode={setMode} />
+                  <SideMenu
+                    mode={mode}
+                    data={result}
+                    addPlace={addPlace}
+                    setShow={setShow}
+                    backToResults={backToResults}
+                    setMode={setMode}
+                  />
                 )}
               </Grid.Column>
             )}
@@ -156,12 +178,13 @@ const Main = () => {
                 <Loader active inline="centered" size="large" />
               ) : (
                 <ReactiveMap
+                  autoCenter
                   componentId="map"
                   dataField="location"
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
                   defaultZoom={13}
-                  defaultCenter={location} // Lviv
+                  defaultCenter={location}
                   // defaultMapStyle="Flat Map"
                   // pagination
                   // onPageChange={() => {
@@ -195,7 +218,7 @@ const Main = () => {
                   //     </span>
                   //   )),
                   // })}
-                  react={{ and: ['Types'] }}
+                  react={{ and: ['Types', mode == 'singleResult' ? 'Filter' : ''] }}
                 />
               )}
             </Grid.Column>
