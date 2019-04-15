@@ -57,6 +57,23 @@
       type="text/javascript"
       src="https://maps.google.com/maps/api/js?key=AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q&v=weekly&libraries=places"
     ></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyB6ILvlbmjx4t9lV9NNdE7c5Ou8vlnL2pE",
+        authDomain: "givebox-9a93e.firebaseapp.com",
+        databaseURL: "https://givebox-9a93e.firebaseio.com",
+        projectId: "givebox-9a93e",
+        storageBucket: "givebox-9a93e.appspot.com",
+        messagingSenderId: "743421796244",
+        appId: "1:743421796244:web:6ed47ff365d15bc6"
+      };
+      // prettier-ignore
+      (function(sa,fbc){function load(f,c){var a=document.createElement('script');
+      a.async=1;a.src=f;a.onload=c;var s=document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(a,s);}load(sa);window.onload = function()
+      {firebase.initializeApp(fbc).performance();};
+      })('https://fireperffw.firebaseapp.com/v002/firebase-performance-standalone.js', firebaseConfig);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
