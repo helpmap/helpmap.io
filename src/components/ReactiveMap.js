@@ -203,9 +203,7 @@ class ReactiveMap extends Component {
     }
 
     if (!isEqual(this.props.hits, nextProps.hits)) {
-      this.setState({
-        openMarkers: {},
-      });
+      this.setState({ openMarkers: {} });
     }
 
     if (nextProps.defaultQuery && !isEqual(nextProps.defaultQuery(), this.defaultQuery)) {
@@ -446,7 +444,7 @@ class ReactiveMap extends Component {
   };
 
   setGeoQuery = (executeUpdate = false) => {
-    // execute a new query on theinitial mount
+    // execute a new query on the initial mount
     // or whenever searchAsMove is true and the map is dragged
     if (executeUpdate || (!this.skipBoundingBox && !this.state.mapBoxBounds)) {
       this.defaultQuery = this.getGeoQuery();

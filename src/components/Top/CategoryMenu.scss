@@ -6,9 +6,36 @@
   display: flex;
   justify-content: space-evenly;
 
+  overflow-x: scroll;
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+
+    a {
+      padding: 0;
+    }
+  }
+
+  &.menu::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+  }
+
+  -ms-overflow-style: none; // IE 10+
+  scrollbar-width: none; // Firefox
+
   .item {
     max-width: 70px;
     min-width: 70px;
+
+    @media screen and (max-width: 768px) {
+      padding: 10px !important;
+      max-width: 55px;
+      min-width: 37px;
+
+      svg {
+        width: 20px;
+      }
+    }
   }
 }
 

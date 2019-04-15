@@ -32,12 +32,19 @@
       border-radius: 0;
       box-shadow: 0px 6px 6px -5px #adadad;
       z-index: 111;
+
+      @media screen and (max-width: 768px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
 }
 
 .main-row {
-  padding: 0 !important;
+  @media screen and (min-width: 768px) {
+    padding: 0 !important;
+  }
   .top-row {
     padding: 0 !important;
 
@@ -45,5 +52,16 @@
       border-top: 0;
       margin-bottom: 14px;
     }
+  }
+  @media screen and (max-width: 768px) {
+    .column {
+      padding: 0 !important;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .ui.grid {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

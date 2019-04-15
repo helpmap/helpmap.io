@@ -1,9 +1,13 @@
+$height-top-xl: 232px;
+$height-top-xs: 228px;
+
 .left-col {
-  height: calc(100vh - 232px) !important;
+  height: calc(100vh - #{$height-top-xl}) !important;
   padding: 0 !important;
   overflow-y: scroll;
 
   @media all and (max-width: 768px) {
+    height: calc(100vh - #{$height-top-xs}) !important;
     position: static;
     padding: 25px 15px;
     width: 100%;
@@ -19,7 +23,11 @@
     }
 
     > div:nth-child(2) {
-      height: calc(100vh - 232px) !important;
+      height: calc(100vh - #{$height-top-xl}) !important;
+
+      @media all and (max-width: 768px) {
+        height: calc(100vh - #{$height-top-xs}) !important;
+      }
     }
 
     > div:nth-child(3) {
@@ -45,7 +53,11 @@
 }
 
 .right-col {
-  height: calc(100vh - 232px) !important;
+  height: calc(100vh - #{$height-top-xl}) !important;
+
+  @media all and (max-width: 768px) {
+    height: calc(100vh - #{$height-top-xs}) !important;
+  }
 }
 
 .results-list {
