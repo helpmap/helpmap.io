@@ -113,7 +113,7 @@ const Edit = ({ setMode, setShow, id, intl }) => {
         onChange={e => handleDescription(e.target.value)}
       />
       {
-        <Form.Button disabled={!canSubmit()} onClick={updatePlace}>
+        <Form.Button color="red" disabled={!canSubmit()} onClick={updatePlace}>
           {intl.formatMessage({ id: 'Save' })}
         </Form.Button>
       }

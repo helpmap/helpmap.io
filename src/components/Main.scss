@@ -1,6 +1,11 @@
 $height-top-xl: 232px;
 $height-top-xs: 228px;
 
+@media all and (max-width: 768px) {
+  .ui.grid > .row > [class*="four wide"].column {
+    width: 100% !important;
+  }
+}
 .left-col {
   height: calc(100vh - #{$height-top-xl}) !important;
   padding: 0 !important;
@@ -8,9 +13,6 @@ $height-top-xs: 228px;
 
   @media all and (max-width: 768px) {
     height: calc(100vh - #{$height-top-xs}) !important;
-    position: static;
-    padding: 25px 15px;
-    width: 100%;
   }
 
   .results-list {
@@ -38,7 +40,12 @@ $height-top-xs: 228px;
 
 .map-container {
   padding: 0 !important;
+
+  @media only screen and (min-width: 933px) {
+    display: none;
+  }
 }
+
 .vertical-align {
   align-items: center;
   display: flex !important;
