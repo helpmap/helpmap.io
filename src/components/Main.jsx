@@ -198,7 +198,7 @@ const Main = () => {
               </Grid.Column>
             )}
             <Grid.Column
-              only="large screen"
+              only={mode === 'browsing' ? null : 'large screen'}
               className={!shouldShowMap ? 'vertical-align' : 'map-container'}
               width={show ? 12 : 16}>
               {!shouldShowMap ? (
