@@ -20,7 +20,7 @@ module.exports = [
         visibility: 'on',
       },
       {
-        color: '#eaeaea',
+        color: '#ececec',
       },
     ],
   },
@@ -29,7 +29,7 @@ module.exports = [
     elementType: 'labels',
     stylers: [
       {
-        color: '#6cbfff',
+        color: '#00b5ff',
       },
     ],
   },
@@ -41,7 +41,7 @@ module.exports = [
         visibility: 'on',
       },
       {
-        color: '#b4e8ca',
+        color: '#aaeecb',
       },
     ],
   },
@@ -50,7 +50,7 @@ module.exports = [
     elementType: 'geometry.fill',
     stylers: [
       {
-        color: '#000000',
+        color: '#ededed',
       },
       {
         visibility: 'on',
@@ -77,7 +77,7 @@ module.exports = [
         visibility: 'on',
       },
       {
-        color: '#dadada',
+        color: '#e5e5e5',
       },
     ],
   },
