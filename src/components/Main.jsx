@@ -179,7 +179,10 @@ const Main = () => {
                 )}
               </Grid.Column>
             )}
-            <Grid.Column className={!shouldShowMap ? 'vertical-align' : 'map-container'} width={show ? 12 : 16}>
+            <Grid.Column
+              only="large screen"
+              className={!shouldShowMap ? 'vertical-align' : 'map-container'}
+              width={show ? 12 : 16}>
               {!shouldShowMap ? (
                 <Loader active inline="centered" size="large" />
               ) : (
