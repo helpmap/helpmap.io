@@ -70,6 +70,22 @@ const Main = () => {
     );
   }
 
+  const defaultQuery = () => ({
+    sort: [
+      {
+        _geo_distance: {
+          location: {
+            lat: location.lat,
+            lon: location.lng,
+          },
+          order: 'asc',
+          unit: 'km',
+          distance_type: 'plane',
+        },
+      },
+    ],
+  });
+
   const renderLeftCol = (hits, streamHits, loadMore, renderMap) => renderMap();
 
   const renderFloatingButton = () => (
@@ -143,6 +159,7 @@ const Main = () => {
           <ReactiveComponent
             componentId="Filter"
             customQuery={() => ({
+              // TODO: try to update the `center` prop instead
               query: { ids: { values: [highlighted] } },
             })}
           />
@@ -166,6 +183,7 @@ const Main = () => {
                     react={{ and: ['Types', 'Filter'] }}
                     showResultStats={false}
                     renderItem={renderItem}
+                    defaultQuery={defaultQuery}
                   />
                 ) : (
                   <SideMenu
@@ -187,7 +205,7 @@ const Main = () => {
                 <Loader active inline="centered" size="large" />
               ) : (
                 <ReactiveMap
-                  autoCenter
+                  // autoCenter
                   componentId="map"
                   dataField="location"
                   className="right-col"
@@ -206,6 +224,7 @@ const Main = () => {
                   searchAsMove
                   // showMapStyles
                   mapProps={{ options: { styles: GreenEssence } }}
+                  defaultQuery={defaultQuery}
                   // mapProps={{ onClick: () => console.log('onClick') }}
                   unit="km"
                   onAllData={renderLeftCol}

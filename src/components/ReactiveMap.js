@@ -214,7 +214,7 @@ class ReactiveMap extends Component {
       const { sort, query } = this.defaultQuery;
 
       if (sort) {
-        options.sort = this.defaultQuery.sort;
+        options.sort = sort;
         nextProps.setQueryOptions(nextProps.componentId, options, !query);
       }
 
@@ -234,9 +234,8 @@ class ReactiveMap extends Component {
 
     // called when page is changed
     if (this.props.pagination && this.state.isLoading) {
-      if (nextProps.onPageChange) {
-        nextProps.onPageChange();
-      }
+      if (nextProps.onPageChange) nextProps.onPageChange();
+
       this.setState({ isLoading: false });
     }
 
@@ -250,9 +249,8 @@ class ReactiveMap extends Component {
     }
 
     if (!nextProps.pagination && nextProps.hits && this.props.hits && nextProps.hits.length < this.props.hits.length) {
-      if (nextProps.onPageChange) {
-        nextProps.onPageChange();
-      }
+      if (nextProps.onPageChange) nextProps.onPageChange();
+
       this.setState({
         from: 0,
         isLoading: false,
@@ -267,9 +265,7 @@ class ReactiveMap extends Component {
     }
 
     if (this.props.searchAsMove !== nextProps.searchAsMove) {
-      this.setState({
-        searchAsMove: nextProps.searchAsMove,
-      });
+      this.setState({ searchAsMove: nextProps.searchAsMove });
       // no need to execute the map query since the component will
       // get re-rendered and the new query will be automatically evaluated
     }
@@ -279,9 +275,7 @@ class ReactiveMap extends Component {
       !isNaN(nextProps.defaultZoom) && // eslint-disable-line
       nextProps.defaultZoom
     ) {
-      this.setState({
-        zoom: nextProps.defaultZoom,
-      });
+      this.setState({ zoom: nextProps.defaultZoom });
     }
 
     if (this.props.defaultMapStyle !== nextProps.defaultMapStyle) {
