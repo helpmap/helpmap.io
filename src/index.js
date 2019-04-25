@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate, render } from 'react-dom';
+
 import 'semantic-ui-css/semantic.min.css';
 import 'antd/dist/antd.css';
 
@@ -9,12 +10,23 @@ import * as serviceWorker from './serviceWorker';
 
 import { IntlProvider } from './IntlContext';
 
-ReactDOM.render(
-  <IntlProvider>
-    <App />
-  </IntlProvider>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement.hasChildNodes()) {
+  hydrate(
+    <IntlProvider>
+      <App />
+    </IntlProvider>,
+    rootElement
+  );
+} else {
+  render(
+    <IntlProvider>
+      <App />
+    </IntlProvider>,
+    rootElement
+  );
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
