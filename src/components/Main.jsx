@@ -246,7 +246,7 @@ const Main = () => {
                   //     </span>
                   //   )),
                   // })}
-                  react={{ and: ['Types', mode == 'singleResult' ? 'Filter' : ''] }}
+                  react={{ and: ['Types', mode === 'singleResult' ? 'Filter' : ''] }}
                 />
               )}
             </Grid.Column>
