@@ -43,8 +43,5 @@
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4",
     "react-snap": "^1.23.0"
-  },
-  "reactSnap": {
-    "skipThirdPartyRequests": true
   }
 }
