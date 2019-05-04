@@ -16,7 +16,7 @@ const showCategories = (types, intl) =>
     </span>
   ));
 
-const Info = ({ addPlace, backToResults, id, intl }) => {
+const Info = ({ addPlace, setMode, backToResults, id, intl }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Info = ({ addPlace, backToResults, id, intl }) => {
       <Card bordered={false}>
         {/* <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} /> */}
         {/* <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} /> */}
-        <EditIcon className="edit-btn" onClick={addPlace} />
+        <EditIcon className="edit-btn" onClick={() => setMode('editing')} />
         <BackIcon className="back-btn" onClick={backToResults} />
         <h2>{data.name}</h2>
         <a
