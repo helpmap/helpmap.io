@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 import './App.scss';
-import TopPanel from './Top/TopPanel';
+
+import TopInfo from './Top/TopInfo';
 import Main from './Main';
 
 class App extends Component {
@@ -10,7 +11,9 @@ class App extends Component {
       <Grid centered>
         <Grid.Row className="top-row">
           <Grid.Column>
-            <TopPanel />
+            <Segment basic style={{ paddingBottom: 0 }}>
+              <TopInfo />
+            </Segment>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row className="main-row">

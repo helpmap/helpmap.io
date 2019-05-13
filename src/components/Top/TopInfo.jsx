@@ -9,7 +9,7 @@ import Logo from '../../assets/logo';
 
 import './TopInfo.scss';
 
-const TopPanel = ({ intl }) => {
+const TopInfo = ({ intl }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -36,4 +36,4 @@ const TopPanel = ({ intl }) => {
   );
 };
 
-export default injectIntl(TopPanel);
+export default injectIntl(TopInfo);
