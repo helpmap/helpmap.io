@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { Card } from 'antd';
 import Appbase from 'appbase-js';
 
-import ReactiveMap from './ReactiveMap';
+import ReactiveGoogleMap from './ReactiveGoogleMap';
 import CategoryMenu from './Top/CategoryMenu';
 import SideMenu from './addEditForm/SideMenu';
 import './Main.scss';
@@ -204,7 +204,7 @@ const Main = () => {
               {!shouldShowMap ? (
                 <Loader active inline="centered" size="large" />
               ) : (
-                <ReactiveMap
+                <ReactiveGoogleMap
                   // autoCenter
                   componentId="map"
                   dataField="location"
@@ -238,7 +238,9 @@ const Main = () => {
                   //     console.log(e);
                   //   },
                   // }}
-                  onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
+                  // onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
+                  selectedPin="/pinHighlighted.svg"
+                  defaultPin="/pin.svg"
                   // onData={data => ({
                   //   label: data.types.map((type, i) => (
                   //     <span key={i} style={{ width: 40, display: 'block', textAlign: 'center' }}>
