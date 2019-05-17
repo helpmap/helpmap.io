@@ -39,7 +39,7 @@
   }
 }
 .description {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   white-space: pre-wrap;
 }
 
@@ -52,4 +52,8 @@
 .success-container {
   flex-direction: column;
   justify-content: center;
+}
+
+.add-more-btn {
+  margin-top: 1rem !important;
 }

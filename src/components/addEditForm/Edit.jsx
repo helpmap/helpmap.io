@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Checkbox, Icon } from 'semantic-ui-react';
+import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 
 import categories from '../Top/messages/menuMessages';
@@ -78,7 +78,16 @@ const Edit = ({ setMode, setShow, id, intl }) => {
   }
 
   function canSubmit() {
-    return name && address && description && location && location.lat && choosenTypes.length > 0;
+    return name && address && description.trim() && location && location.lat && choosenTypes.length > 0;
+  }
+
+  function reset() {
+    setSuccess(false);
+    handleName('');
+    handleAddress('');
+    handleDescription('');
+    setLocation('');
+    chooseType([]);
   }
 
   if (id && !visible) return null;
@@ -87,6 +96,10 @@ const Edit = ({ setMode, setShow, id, intl }) => {
     return (
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
+        <Button positive className="add-more-btn" onClick={() => reset()}>
+          {intl.formatMessage({ id: 'Add more' })}
+        </Button>
+        {/* translate */}
       </div>
     );
 
@@ -95,6 +108,7 @@ const Edit = ({ setMode, setShow, id, intl }) => {
       <Form.Input
         placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
         value={name}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={e => handleName(e.target.value)}
       />
       <Form.Field>
