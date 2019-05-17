@@ -228,6 +228,15 @@ class ReactiveGoogleMap extends Component {
     });
   };
 
+  onMapMounted = (ref) => {
+    this.setState({ mapRef: ref });
+    if (this.props.innerRef && ref) {
+      const map = Object.values(ref.context)[0];
+      const mapRef = { ...ref, map };
+      this.props.innerRef(mapRef);
+    }
+  }
+
   renderMap = params => {
     if (typeof window === 'undefined' || (window && typeof window.google === 'undefined')) {
       return null;
@@ -245,16 +254,7 @@ class ReactiveGoogleMap extends Component {
         <MapComponent
           containerElement={<div style={style} />}
           mapElement={<div style={{ height: '100%' }} />}
-          onMapMounted={ref => {
-            this.setState({
-              mapRef: ref,
-            });
-            if (params.innerRef && ref) {
-              const map = Object.values(ref.context)[0];
-              const mapRef = { ...ref, map };
-              params.innerRef(mapRef);
-            }
-          }}
+          onMapMounted={this.onMapMounted}
           zoom={params.zoom}
           center={params.center}
           {...params.mapProps}
@@ -263,19 +263,19 @@ class ReactiveGoogleMap extends Component {
           onDragEnd={params.handleOnDragEnd}
           options={{
             styles: this.state.currentMapStyle.value,
-            ...getInnerKey(this.props.mapProps, 'options'),
+            ...getInnerKey(params.mapProps, 'options'),
           }}>
-          {this.props.showMarkers && this.props.showMarkerClusters ? (
+          {params.showMarkers && params.showMarkerClusters ? (
             <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
               {markers}
             </MarkerClusterer>
           ) : (
             markers
           )}
-          {this.props.showMarkers && this.props.markers}
+          {params.showMarkers && params.markers}
           {params.renderSearchAsMove()}
         </MapComponent>
-        {this.props.showMapStyles ? (
+        {params.showMapStyles ? (
           <div
             style={{
               position: 'absolute',
@@ -285,7 +285,7 @@ class ReactiveGoogleMap extends Component {
               zIndex: window.google.maps.Marker.MAX_ZINDEX + 1,
             }}>
             <Dropdown
-              innerClass={this.props.innerClass}
+              innerClass={params.innerClass}
               items={this.mapStyles}
               onChange={this.setMapStyle}
               selectedItem={this.state.currentMapStyle}

@@ -21,7 +21,7 @@ const CategoryMenu = ({ onSelect }) => {
           componentId="Types"
           dataField="types"
           multiSelect={false}
-          showFilter={false}
+          // showFilter={false}
           data={dataCategories}
           onValueChange={onSelect}
         />

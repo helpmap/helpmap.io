@@ -734,6 +734,7 @@ class ReactiveMap extends Component {
       renderData,
       selectedPin,
       showMarkers,
+      showMarkerClusters,
     } = this.props;
 
     const mapParams = {
@@ -742,6 +743,7 @@ class ReactiveMap extends Component {
       getPosition: this.getPosition,
       zoom: this.state.zoom,
       showMarkers,
+      showMarkerClusters,
       renderData,
       defaultPin,
       selectedPin,

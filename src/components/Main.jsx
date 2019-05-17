@@ -212,19 +212,16 @@ const Main = () => {
                   style={{ height: '100%', padding: 0 }}
                   defaultZoom={zoom}
                   defaultCenter={location}
-                  // defaultMapStyle="Flat Map"
-                  // pagination
-                  // onPageChange={() => {
-                  //   window.scrollTo(0, 0);
-                  // }}
+                  innerClass={{ label: 'label' }}
                   // onPopoverClick={onPopoverClick}
-                  showMarkerClusters={false}
+                  // showMarkerClusters={false}
                   // autoClosePopover
                   showSearchAsMove
                   searchAsMove
                   // showMapStyles
                   mapProps={{ options: { styles: GreenEssence } }}
                   defaultQuery={defaultQuery}
+                  size={100}
                   // mapProps={{ onClick: () => console.log('onClick') }}
                   unit="km"
                   onAllData={renderLeftCol}

@@ -2,7 +2,7 @@ $height-top-xl: 232px;
 $height-top-xs: 228px;
 
 @media all and (max-width: 768px) {
-  .ui.grid > .row > [class*="four wide"].column {
+  .ui.grid > .row > [class*='four wide'].column {
     width: 100% !important;
   }
 }
@@ -75,4 +75,15 @@ $height-top-xs: 228px;
 
 .ant-modal-header {
   padding: 26px 24px;
+}
+
+.label {
+  margin: 0 !important;
+}
+
+.label::after {
+  border-color: black !important;
+}
+.label:hover {
+  color: inherit !important;
 }

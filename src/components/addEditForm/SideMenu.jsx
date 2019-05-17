@@ -16,7 +16,7 @@ const SideMenu = ({ setMode, setShow, data, mode, backToResults, addPlace }) => 
 
     default:
       setShow(false);
-      return '';
+      return null;
   }
 };
 
