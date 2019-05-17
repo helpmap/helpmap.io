@@ -14,13 +14,13 @@ class IntlProviderWrapper extends React.Component {
   switchToUkrainian = () => this.setState({ locale: 'uk', messages: ukTranslation });
   state = {
     locale: 'uk',
-    messages: enTranslation,
+    messages: ukTranslation,
     switchToEnglish: this.switchToEnglish,
     switchToUkrainian: this.switchToUkrainian,
   };
 
   componentDidMount() {
-    if (navigator.language.startsWith('en')) this.setState({ locale: 'en', messages: ukTranslation });
+    if (navigator.language.startsWith('en')) this.setState({ locale: 'en', messages: enTranslation });
   }
 
   render() {
