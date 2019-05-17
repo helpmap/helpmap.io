@@ -26,7 +26,7 @@ const TopInfo = ({ intl }) => {
         <FormattedHTMLMessage id="Info" />
       </Modal>
       <Header as="h2" icon size="medium" style={{ margin: '0 auto' }}>
-        <Logo height="4rem" />
+        <Logo style={{ height: '4rem' }} />
         <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
       </Header>
       <div className="language-switch">
