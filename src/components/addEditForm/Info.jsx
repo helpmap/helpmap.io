@@ -16,7 +16,7 @@ const showCategories = (types, intl) =>
     </span>
   ));
 
-const Info = ({ addPlace, setMode, backToResults, id, intl }) => {
+const Info = ({ setMode, backToResults, id, intl }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
