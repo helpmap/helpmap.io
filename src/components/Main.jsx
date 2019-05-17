@@ -86,7 +86,7 @@ const Main = () => {
     ],
   });
 
-  const renderLeftCol = (hits, streamHits, loadMore, renderMap) => renderMap();
+  const renderLeftCol = (_, __, ___, renderMap) => renderMap();
 
   const renderFloatingButton = () => (
     <Fab onClick={addPlace} className="fab" aria-label="Add Location" disableRipple color="primary">

@@ -228,14 +228,14 @@ class ReactiveGoogleMap extends Component {
     });
   };
 
-  onMapMounted = (ref) => {
+  onMapMounted = ref => {
     this.setState({ mapRef: ref });
     if (this.props.innerRef && ref) {
       const map = Object.values(ref.context)[0];
       const mapRef = { ...ref, map };
       this.props.innerRef(mapRef);
     }
-  }
+  };
 
   renderMap = params => {
     if (typeof window === 'undefined' || (window && typeof window.google === 'undefined')) {
@@ -263,7 +263,7 @@ class ReactiveGoogleMap extends Component {
           onDragEnd={params.handleOnDragEnd}
           options={{
             styles: this.state.currentMapStyle.value,
-            ...getInnerKey(params.mapProps, 'options'),
+            ...getInnerKey(this.props.mapProps, 'options'),
           }}>
           {params.showMarkers && params.showMarkerClusters ? (
             <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
