@@ -286,10 +286,10 @@ class ReactiveMap extends Component {
       return true;
     }
 
-    if (isEqual(this.props.hits, nextProps.hits) && isEqual(this.props.streamHits, nextProps.streamHits)) {
-      return false;
+    if (!isEqual(this.props.hits, nextProps.hits) || !isEqual(this.props.streamHits, nextProps.streamHits)) {
+      return true;
     }
-    return true;
+    return false;
   }
 
   componentWillUnmount() {
@@ -548,11 +548,9 @@ class ReactiveMap extends Component {
       (this.props.stream && this.props.streamHits.length && !this.props.streamAutoCenter)
     ) {
       const currentCenter = this.props.mapRef.getCenter();
-      setTimeout(() => {
-        this.setState({
-          preserveCenter: false,
-        });
-      }, 100);
+      // setTimeout(() => {
+      //   this.setState({ preserveCenter: false });
+      // }, 100);
       return this.parseLocation({
         lat: currentCenter.lat(),
         lng: currentCenter.lng(),
