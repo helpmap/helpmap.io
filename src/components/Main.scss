@@ -38,6 +38,12 @@ $height-top-xs: 228px;
   }
 }
 
+.container {
+  flex: 1;
+  // display: inline-flex;
+  height: 100%;
+}
+
 .map-container {
   padding: 0 !important;
 

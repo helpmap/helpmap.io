@@ -9,6 +9,7 @@
     "@material-ui/icons": "^3.0.2",
     "antd": "^3.16.1",
     "appbase-js": "^4.0.2-beta.5",
+    "google-map-react": "^1.1.4",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
