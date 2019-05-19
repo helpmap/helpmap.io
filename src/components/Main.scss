@@ -24,17 +24,17 @@ $height-top-xs: 228px;
       font-size: 1.3rem;
     }
 
-    > div:nth-child(2) {
-      height: calc(100vh - #{$height-top-xl}) !important;
+    // > div:nth-child(2) {
+    //   height: calc(100vh - #{$height-top-xl}) !important;
 
-      @media all and (max-width: 768px) {
-        height: calc(100vh - #{$height-top-xs}) !important;
-      }
-    }
+    //   @media all and (max-width: 768px) {
+    //     height: calc(100vh - #{$height-top-xs}) !important;
+    //   }
+    // }
 
-    > div:nth-child(3) {
-      margin: 1em 0 0;
-    }
+    // > div:nth-child(3) {
+    //   margin: 1em 0 0;
+    // }
   }
 }
 

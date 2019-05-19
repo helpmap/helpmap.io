@@ -23,9 +23,11 @@
 }
 
 .ui.centered.grid {
-  .top-row {
+  > .top-row {
+    height: 20vh;
     padding-bottom: 0 !important;
   }
+
   .top-row-cat {
     .ui.segment {
       border: 0;
@@ -42,6 +44,7 @@
 }
 
 .main-row {
+  height: 80vh;
   @media screen and (min-width: 768px) {
     padding: 0 !important;
   }
@@ -64,4 +67,8 @@
     margin-left: 0;
     margin-right: 0;
   }
+}
+
+.container > .grid {
+  height: 67vh;
 }
