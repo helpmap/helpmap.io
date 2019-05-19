@@ -1,3 +1,4 @@
+/*global google*/
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
@@ -200,8 +201,17 @@ class ReactiveGoogleMap extends Component {
             );
           }
         } else if (params.defaultPin) {
-          markerProps.icon = params.defaultPin;
-          if (this.state.markerOnTop === item._id) markerProps.icon = params.selectedPin;
+          // markerProps.icon = params.defaultPin;
+          markerProps.icon = {
+            url: params.defaultPin,
+            scaledSize: new google.maps.Size(31, 43),
+          };
+          if (this.state.markerOnTop === item._id) {
+            markerProps.icon = {
+              url: params.defaultPin,
+              scaledSize: new google.maps.Size(55, 60),
+            };
+          }
         }
 
         return (

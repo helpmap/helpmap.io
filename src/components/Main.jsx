@@ -236,7 +236,6 @@ const Main = () => {
                   //   },
                   // }}
                   // onData={_ => ({ selectedIcon: '/pinHighlighted.svg', icon: '/pin.svg' })}
-                  selectedPin="/pinHighlighted.svg"
                   defaultPin="/pin.svg"
                   // onData={data => ({
                   //   label: data.types.map((type, i) => (

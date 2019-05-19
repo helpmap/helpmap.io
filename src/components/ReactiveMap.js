@@ -730,7 +730,6 @@ class ReactiveMap extends Component {
       markerProps,
       onPopoverClick,
       renderData,
-      selectedPin,
       showMarkers,
       showMarkerClusters,
     } = this.props;
@@ -744,7 +743,6 @@ class ReactiveMap extends Component {
       showMarkerClusters,
       renderData,
       defaultPin,
-      selectedPin,
       onPopoverClick,
       autoClosePopover,
       renderSearchAsMove: this.renderSearchAsMove,
@@ -815,7 +813,6 @@ ReactiveMap.propTypes = {
   pagination: types.bool,
   react: types.react,
   searchAsMove: types.bool,
-  selectedPin: types.string,
   showMapStyles: types.bool,
   showMarkerClusters: types.bool,
   showMarkers: types.bool,
