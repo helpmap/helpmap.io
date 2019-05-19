@@ -58,12 +58,14 @@
         messagingSenderId: '743421796244',
         appId: '1:743421796244:web:6ed47ff365d15bc6',
       };
-      // prettier-ignore
-      (function(sa,fbc){function load(f,c){var a=document.createElement('script');
-      a.async=1;a.src=f;a.onload=c;var s=document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(a,s);}load(sa);window.onload = function()
-      {firebase.initializeApp(fbc).performance();};
-      })('https://fireperffw.firebaseapp.com/v003/firebase-performance-standalone.js', firebaseConfig);
+      if (location.hostname == 'helpmap.io') {
+        // prettier-ignore
+        (function(sa,fbc){function load(f,c){var a=document.createElement('script');
+        a.async=1;a.src=f;a.onload=c;var s=document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(a,s);}load(sa);window.onload = function()
+        {firebase.initializeApp(fbc).performance();};
+        })('https://fireperffw.firebaseapp.com/v003/firebase-performance-standalone.js', firebaseConfig);
+      }
     </script>
   </head>
   <body>
