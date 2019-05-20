@@ -68,9 +68,13 @@ class ReactiveGoogleMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.highlighted !== nextProps.highlighted && this.state.markerOnTop !== nextProps.highlighted)
+    if (
+      this.props.highlighted !== nextProps.highlighted &&
+      this.state.markerOnTop !== nextProps.highlighted &&
+      nextProps.highlighted
+    ) {
       this.increaseMarkerZIndex(nextProps.highlighted);
-    else this.removeMarkerZIndex();
+    } else this.removeMarkerZIndex();
   }
 
   handleStyleChange = newStyle => {
@@ -368,7 +372,8 @@ ReactiveGoogleMap.propTypes = {
   autoClosePopover: types.bool,
   renderMap: types.func,
   updaterKey: types.number,
-  mapRef: types.any, // eslint-disable-line
+  mapRef: types.any,
+  highlighted: types.any,
 };
 
 export default ReactiveGoogleMap;

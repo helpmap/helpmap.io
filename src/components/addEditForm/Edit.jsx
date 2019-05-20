@@ -8,12 +8,13 @@ import { appbaseRef } from '../Main';
 
 import './SideMenu.scss';
 
-const Edit = ({ setMode, setShow, id, intl }) => {
+const Edit = ({ mode, setMode, setShow, id, intl }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
   const [visible, setVisible] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [isSaving, setSaving] = useState(false);
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
   let types;
@@ -35,8 +36,9 @@ const Edit = ({ setMode, setShow, id, intl }) => {
     }
   }, [id]);
 
-  const updatePlace = e => {
+  function updatePlace(e) {
     e.preventDefault();
+    setSaving(true);
     types =
       types ||
       Array.from(choosenTypes)
@@ -60,13 +62,15 @@ const Edit = ({ setMode, setShow, id, intl }) => {
       .then(() => {
         // console.log(response);
         setSuccess(true);
+        setSaving(false);
       })
       .catch(function(error) {
         console.log(error);
-        setShow(false);
+        // setShow(false);
+        setSaving(false);
         setMode('browsing');
       });
-  };
+  }
 
   function onSelect(e, data) {
     if (data.checked) {
@@ -96,10 +100,16 @@ const Edit = ({ setMode, setShow, id, intl }) => {
     return (
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
-        <Button positive className="add-more-btn" onClick={() => reset()}>
-          {intl.formatMessage({ id: 'Add more' })}
-        </Button>
-        {/* translate */}
+        {mode === 'adding' ? (
+          <Button positive className="add-more-btn" onClick={() => reset()}>
+            {intl.formatMessage({ id: 'Add more' })}
+          </Button>
+        ) : (
+          <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
+            {/* translate */}
+            {intl.formatMessage({ id: 'Back' })}
+          </Button>
+        )}
       </div>
     );
 
@@ -135,7 +145,7 @@ const Edit = ({ setMode, setShow, id, intl }) => {
         onChange={e => handleDescription(e.target.value)}
       />
       {
-        <Form.Button color="red" disabled={!canSubmit()} onClick={updatePlace}>
+        <Form.Button loading={isSaving} color="red" disabled={!canSubmit()} onClick={updatePlace}>
           {intl.formatMessage({ id: 'Save' })}
         </Form.Button>
       }

@@ -190,7 +190,6 @@ const Main = () => {
                   <SideMenu
                     mode={mode}
                     data={result}
-                    addPlace={addPlace}
                     setShow={setShow}
                     backToResults={backToResults}
                     setMode={setMode}

@@ -5,14 +5,14 @@ import Info from './Info';
 
 import './SideMenu.scss';
 
-const SideMenu = ({ setMode, setShow, data, mode, backToResults, addPlace }) => {
+const SideMenu = ({ setMode, setShow, data, mode, backToResults }) => {
   switch (mode) {
     case 'adding':
-      return <Edit id={null} setMode={setMode} setShow={setShow} />;
+      return <Edit id={null} mode={mode} setMode={setMode} setShow={setShow} />;
     case 'singleResult':
-      return <Info id={data._id} setMode={setMode} addPlace={addPlace} backToResults={backToResults} />;
+      return <Info id={data._id} setMode={setMode} backToResults={backToResults} />;
     case 'editing':
-      return <Edit setMode={setMode} setShow={setShow} id={data._id} />;
+      return <Edit id={data._id} mode={mode} setMode={setMode} setShow={setShow} />;
 
     default:
       setShow(false);
