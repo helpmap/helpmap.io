@@ -4,7 +4,8 @@
 }
 
 .edit-btn,
-.back-btn {
+.back-btn,
+.share-btn {
   cursor: pointer;
   position: absolute;
   background: none !important;
@@ -18,12 +19,17 @@
   top: 0.25em;
   width: 1em !important;
   height: 1em !important;
-  // padding: 0.38571429em !important;
+}
+.share-btn {
+  width: 0.8em !important;
+  height: 0.8em !important;
+  right: 24px;
+  top: 0.4em;
 }
 .edit-btn {
   width: 0.8em !important;
   height: 0.8em !important;
-  right: 24px;
+  right: 48px;
   top: 0.4em;
 }
 
@@ -61,4 +67,14 @@
 
 .ui.checkbox {
   min-width: 102px;
+}
+
+.form-inline {
+  display: inline-flex;
+  width: 100%;
+
+  .form-group {
+    width: 100%;
+    margin-right: 1em;
+  }
 }
