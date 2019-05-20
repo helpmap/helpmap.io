@@ -217,7 +217,7 @@ const Main = () => {
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
                   defaultZoom={defaultZoomIn}
-                  // defaultCenter={location}
+                  defaultCenter={location}
                   innerClass={{ label: 'label' }}
                   // onPopoverClick={onPopoverClick}
                   // showMarkerClusters={false}
