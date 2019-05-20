@@ -2,6 +2,7 @@ import React from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import uk from 'react-intl/locale-data/uk';
+
 import enTranslation from './lang/en';
 import ukTranslation from './lang/uk';
 
@@ -10,8 +11,15 @@ addLocaleData([...en, ...uk]);
 const { Provider, Consumer } = React.createContext();
 
 class IntlProviderWrapper extends React.Component {
-  switchToEnglish = () => this.setState({ locale: 'en', messages: enTranslation });
-  switchToUkrainian = () => this.setState({ locale: 'uk', messages: ukTranslation });
+  switchToEnglish = () => {
+    this.setState({ locale: 'en', messages: enTranslation });
+    document.documentElement.lang = 'en';
+  };
+  switchToUkrainian = () => {
+    this.setState({ locale: 'uk', messages: ukTranslation });
+    document.documentElement.lang = 'uk';
+  };
+
   state = {
     locale: 'uk',
     messages: ukTranslation,
