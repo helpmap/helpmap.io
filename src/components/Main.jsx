@@ -39,9 +39,14 @@ const Main = () => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      position => {
+      async position => {
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
         showMap(true);
+        if (location.pathname.startsWith('/id/')) {
+          const id = location.pathname.split('/id/')[1];
+          const { _source: data } = await appbaseRef.get({ type: 'doc', id });
+          showSingleFromList(data);
+        }
       },
       () => {
         setLocation({ lat: 49.8397, lng: 24.0297 });
