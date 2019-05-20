@@ -42,7 +42,7 @@ const Main = () => {
       async position => {
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
         showMap(true);
-        if (location.pathname.startsWith('/id/')) {
+        if (location.pathname && location.pathname.startsWith('/id/')) {
           const id = location.pathname.split('/id/')[1];
           const { _source: data } = await appbaseRef.get({ type: 'doc', id });
           showSingleFromList(data);
