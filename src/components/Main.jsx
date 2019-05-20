@@ -28,7 +28,7 @@ const Main = () => {
   const [shouldShowMap, showMap] = useState(false);
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
-  const [highlighted, setHighlight] = useState();
+  // const [highlighted, setHighlight] = useState();
   const [zoom, setZoom] = useState(13);
 
   const options = {
@@ -98,11 +98,11 @@ const Main = () => {
     if (mode !== 'adding') {
       setShow(true);
       setMode('adding');
-      setHighlight(null);
+      // setHighlight(null);
       return;
     }
     setMode('browsing');
-    setHighlight(null);
+    // setHighlight(null);
     setShow(false);
   };
 
@@ -110,13 +110,14 @@ const Main = () => {
     setShow(true);
     setMode('multiResults');
     setZoom(13);
-    setHighlight(null);
+    // setHighlight(null);
   };
 
   const onSelectCategory = categories => {
-    setHighlight(null);
+    // setHighlight(null);
     setZoom(13);
-    if (categories.length > 0) {
+    console.log(categories);
+    if (categories.length === 1) {
       setMode('multiResults');
       setShow(true);
       return;
@@ -126,7 +127,7 @@ const Main = () => {
   };
 
   const showSingleFromList = data => {
-    setHighlight(data._id);
+    // setHighlight(data._id);
     setMode('singleResult');
     setResult(data);
     setShow(true);
@@ -136,7 +137,7 @@ const Main = () => {
   const onMarkerClick = async selectedMarkerData => {
     if (result && result._id === selectedMarkerData._id) {
       setMode('browsing');
-      setHighlight(null);
+      // setHighlight(null);
       setResult({});
       setShow(false);
       setZoom(13);
@@ -155,7 +156,7 @@ const Main = () => {
         theme={{
           colors: { primaryColor: '#fff' },
         }}>
-        {highlighted && (
+        {/* {highlighted && (
           <ReactiveComponent
             componentId="Filter"
             customQuery={() => ({
@@ -163,7 +164,7 @@ const Main = () => {
               query: { ids: { values: [highlighted] } },
             })}
           />
-        )}
+        )} */}
         <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
             <Segment>
@@ -228,7 +229,7 @@ const Main = () => {
                   // eslint-disable-next-line no-unused-vars
                   // onData={_ => ({ custom: null })}
                   onMarkerClick={onMarkerClick}
-                  highlighted={highlighted}
+                  // highlighted={highlighted}
                   // markerProps={{
                   //   onClick: e => {
                   //     debugger;
