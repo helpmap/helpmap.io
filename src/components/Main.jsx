@@ -211,7 +211,7 @@ const Main = () => {
                   dataField="location"
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
-                  defaultZoom={zoom}
+                  // defaultZoom={zoom}
                   defaultCenter={location}
                   innerClass={{ label: 'label' }}
                   // onPopoverClick={onPopoverClick}
@@ -221,7 +221,7 @@ const Main = () => {
                   searchAsMove
                   // showMapStyles
                   mapProps={{ options: { styles: GreenEssence } }}
-                  defaultQuery={defaultQuery}
+                  // defaultQuery={defaultQuery}
                   size={100}
                   // mapProps={{ onClick: () => console.log('onClick') }}
                   unit="km"
@@ -245,7 +245,7 @@ const Main = () => {
                   //     </span>
                   //   )),
                   // })}
-                  react={{ and: ['Types', mode === 'singleResult' ? 'Filter' : ''] }}
+                  // react={{ and: ['Types', mode === 'singleResult' ? 'Filter' : ''] }}
                 />
               )}
             </Grid.Column>
