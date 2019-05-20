@@ -264,10 +264,6 @@ class ReactiveMap extends Component {
     // if (this.props.defaultMapStyle !== nextProps.defaultMapStyle) {
     //   this.setMapStyle(this.mapStyles.find(style => style.label === nextProps.defaultMapStyle) || this.mapStyles[0]);
     // }
-
-    // if (this.props.highlighted !== nextProps.highlighted && this.state.markerOnTop !== nextProps.highlighted)
-    //   this.increaseMarkerZIndex(nextProps.highlighted);
-    // else this.removeMarkerZIndex();
   }
 
   shouldComponentUpdate(nextProps, nextState) {

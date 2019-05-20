@@ -67,6 +67,12 @@ class ReactiveGoogleMap extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.highlighted !== nextProps.highlighted && this.state.markerOnTop !== nextProps.highlighted)
+      this.increaseMarkerZIndex(nextProps.highlighted);
+    else this.removeMarkerZIndex();
+  }
+
   handleStyleChange = newStyle => {
     this.setState({
       currentMapStyle: this.mapStyles.find(style => style.label === newStyle) || this.mapStyles[0],
@@ -133,13 +139,13 @@ class ReactiveGoogleMap extends Component {
   increaseMarkerZIndex = (id, handlePreserveCenter) => {
     this.setState({ markerOnTop: id });
 
-    handlePreserveCenter(true);
+    handlePreserveCenter && handlePreserveCenter(true);
   };
 
   removeMarkerZIndex = handlePreserveCenter => {
     this.setState({ markerOnTop: null });
 
-    handlePreserveCenter(true);
+    handlePreserveCenter && handlePreserveCenter(true);
   };
 
   getMarkers = params => {

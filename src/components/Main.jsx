@@ -19,7 +19,7 @@ export const appbaseRef = Appbase({
 });
 const GreenEssence = require('./GreenEssence');
 
-const defaultZoomIn = 14;
+const defaultZoomIn = 13;
 
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
@@ -28,7 +28,7 @@ const Main = () => {
   const [shouldShowMap, showMap] = useState(false);
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
-  // const [highlighted, setHighlight] = useState();
+  const [highlighted, setHighlight] = useState();
   const [zoom, setZoom] = useState(13);
 
   const options = {
@@ -98,11 +98,11 @@ const Main = () => {
     if (mode !== 'adding') {
       setShow(true);
       setMode('adding');
-      // setHighlight(null);
+      setHighlight(null);
       return;
     }
     setMode('browsing');
-    // setHighlight(null);
+    setHighlight(null);
     setShow(false);
   };
 
@@ -110,11 +110,11 @@ const Main = () => {
     setShow(true);
     setMode('multiResults');
     setZoom(13);
-    // setHighlight(null);
+    setHighlight(null);
   };
 
   const onSelectCategory = categories => {
-    // setHighlight(null);
+    setHighlight(null);
     setZoom(13);
     console.log(categories);
     if (categories.length === 1) {
@@ -127,7 +127,7 @@ const Main = () => {
   };
 
   const showSingleFromList = data => {
-    // setHighlight(data._id);
+    setHighlight(data._id);
     setMode('singleResult');
     setResult(data);
     setShow(true);
@@ -137,7 +137,7 @@ const Main = () => {
   const onMarkerClick = async selectedMarkerData => {
     if (result && result._id === selectedMarkerData._id) {
       setMode('browsing');
-      // setHighlight(null);
+      setHighlight(null);
       setResult({});
       setShow(false);
       setZoom(13);
@@ -156,7 +156,7 @@ const Main = () => {
         theme={{
           colors: { primaryColor: '#fff' },
         }}>
-        {/* {highlighted && (
+        {highlighted && (
           <ReactiveComponent
             componentId="Filter"
             customQuery={() => ({
@@ -164,7 +164,7 @@ const Main = () => {
               query: { ids: { values: [highlighted] } },
             })}
           />
-        )} */}
+        )}
         <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
             <Segment>
@@ -211,8 +211,8 @@ const Main = () => {
                   dataField="location"
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
-                  // defaultZoom={zoom}
-                  defaultCenter={location}
+                  defaultZoom={defaultZoomIn}
+                  // defaultCenter={location}
                   innerClass={{ label: 'label' }}
                   // onPopoverClick={onPopoverClick}
                   // showMarkerClusters={false}
@@ -229,7 +229,7 @@ const Main = () => {
                   // eslint-disable-next-line no-unused-vars
                   // onData={_ => ({ custom: null })}
                   onMarkerClick={onMarkerClick}
-                  // highlighted={highlighted}
+                  highlighted={highlighted}
                   // markerProps={{
                   //   onClick: e => {
                   //     debugger;
@@ -245,7 +245,7 @@ const Main = () => {
                   //     </span>
                   //   )),
                   // })}
-                  // react={{ and: ['Types', mode === 'singleResult' ? 'Filter' : ''] }}
+                  react={{ and: ['Types', mode === 'singleResult' ? 'Filter' : ''] }}
                 />
               )}
             </Grid.Column>
