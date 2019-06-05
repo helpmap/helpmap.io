@@ -5,8 +5,8 @@
   "dependencies": {
     "@appbaseio/reactivemaps": "3.0.0-alpha.7",
     "@appbaseio/reactivesearch": "^3.0.0-rc.9",
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.0.1",
+    "@material-ui/icons": "^4.0.1",
     "antd": "^3.16.1",
     "appbase-js": "^4.0.2-beta.5",
     "node-sass": "^4.12.0",
@@ -37,6 +37,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "danger": "^7.1.4",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
