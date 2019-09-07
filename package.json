@@ -17,7 +17,7 @@
     "react-google-places-suggest": "^3.7.1",
     "react-intl": "^2.8.0",
     "react-places-autocomplete": "^7.2.1",
-    "react-scripts": "2.1.8",
+    "react-scripts": "3.0.1",
     "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
@@ -30,12 +30,18 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
