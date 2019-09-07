@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { Header } from 'semantic-ui-react';
 import { injectIntl, FormattedHTMLMessage } from 'react-intl';
