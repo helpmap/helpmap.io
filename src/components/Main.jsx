@@ -29,15 +29,14 @@ const Main = () => {
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
   const [highlighted, setHighlight] = useState();
-  const [zoom, setZoom] = useState(13);
-
-  const options = {
-    enableHighAccuracy: false,
-    timeout: 20 * 1000,
-    maximumAge: 10 * 60 * 1000, // 10 mins
-  };
+  // const [zoom, setZoom] = useState(13);
 
   useEffect(() => {
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 20 * 1000,
+      maximumAge: 10 * 60 * 1000, // 10 mins
+    };
     navigator.geolocation.getCurrentPosition(
       async position => {
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
@@ -49,7 +48,8 @@ const Main = () => {
           showSingleFromList({ ...data, _id: id });
         }
       },
-      () => {
+      e => {
+        console.error(e);
         setLocation({ lat: 49.8397, lng: 24.0297 });
         showMap(true);
       },
@@ -115,13 +115,13 @@ const Main = () => {
   const backToResults = () => {
     setShow(true);
     setMode('multiResults');
-    setZoom(13);
+    // setZoom(13);
     setHighlight(null);
   };
 
   const onSelectCategory = categories => {
     setHighlight(null);
-    setZoom(13);
+    // setZoom(13);
     console.log(categories);
     if (categories.length === 1) {
       setMode('multiResults');
@@ -137,7 +137,7 @@ const Main = () => {
     setMode('singleResult');
     setResult(data);
     setShow(true);
-    setZoom(defaultZoomIn);
+    // setZoom(defaultZoomIn);
   };
 
   const onMarkerClick = async selectedMarkerData => {
@@ -146,7 +146,7 @@ const Main = () => {
       setHighlight(null);
       setResult({});
       setShow(false);
-      setZoom(13);
+      // setZoom(13);
       return;
     }
     showSingleFromList(selectedMarkerData);
