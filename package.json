@@ -12,6 +12,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-google-maps": "9.4.5",
     "react-google-maps-loader": "^4.2.5",
     "react-google-places-suggest": "^3.7.1",
     "react-intl": "^2.8.0",
