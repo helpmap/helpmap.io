@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@appbaseio/reactivesearch": "^3.0.0-rc.21",
+    "@appbaseio/reactivesearch": "^3.0.1",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "antd": "^3.16.1",

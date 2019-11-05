@@ -25,7 +25,7 @@
     redux "^4.0.0"
     redux-thunk "^2.3.0"
 
-"@appbaseio/reactivesearch@^3.0.0-rc.21":
+"@appbaseio/reactivesearch@^3.0.1":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.0.3.tgz#a70605ccfb5f22da3c35c9b08e3e44af09dafd76"
   integrity sha512-KH7Qm0/W8nBX+tD61DbgLh/qXGd8gYNOZM2KiXdw0AtG+/3Kj9s+cJWIZnjbqVurDJMJAG/QcT/+h/6qOfze8g==
