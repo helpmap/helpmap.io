@@ -4,11 +4,14 @@ import { InfoWindow, Marker } from 'react-google-maps';
 
 import types from '@appbaseio/reactivecore/lib/utils/types';
 import { setMarkerOnTop, setOpenMarkers } from '@appbaseio/reactivecore/lib/actions';
-import { connect } from '@appbaseio/reactivesearch/lib/utils';
+import { connect, ReactReduxContext } from '@appbaseio/reactivesearch/lib/utils';
 
 import { MapPin, MapPinArrow, mapPinWrapper } from './MapPin';
+import { triggerClickAnalytics } from './utils';
 
 class GoogleMapMarker extends React.Component {
+  static contextType = ReactReduxContext;
+
   shouldComponentUpdate(nextProps) {
     if (
       nextProps.markerOnTop === this.props.marker._id ||
@@ -24,6 +27,19 @@ class GoogleMapMarker extends React.Component {
     return false;
   }
 
+  triggerAnalytics = () => {
+    // click analytics would only work client side and after javascript loads
+    const { config, analytics, headers, index } = this.props;
+
+    triggerClickAnalytics({
+      config,
+      headers,
+      analytics,
+      searchPosition: index + 1,
+      context: this.context,
+    });
+  };
+
   openMarker = () => {
     const {
       setOpenMarkers: handleOpenMarkers,
@@ -37,6 +53,7 @@ class GoogleMapMarker extends React.Component {
 
     handleOpenMarkers(newOpenMarkers);
     handlePreserveCenter(true);
+    this.triggerAnalytics();
   };
 
   closeMarker = () => {
@@ -184,6 +201,9 @@ class GoogleMapMarker extends React.Component {
 const mapStateToProps = state => ({
   markerOnTop: state.markerOnTop,
   openMarkers: state.openMarkers,
+  config: state.config,
+  headers: state.appbaseRef.headers,
+  analytics: state.analytics,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -206,6 +226,10 @@ GoogleMapMarker.propTypes = {
   setMarkerOnTop: types.func,
   markerOnTop: types.string,
   setOpenMarkers: types.func,
+  index: types.number,
+  config: types.props,
+  analytics: types.props,
+  headers: types.headers,
 };
 
 export default connect(
