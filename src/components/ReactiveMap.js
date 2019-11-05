@@ -81,7 +81,6 @@ class ReactiveMap extends Component {
     this.state = {
       currentMapStyle,
       from: props.currentPage * props.size || 0,
-      isLoading: false,
       totalPages: 0,
       currentPage: props.currentPage,
       mapBoxBounds: null,
@@ -216,28 +215,14 @@ class ReactiveMap extends Component {
     }
 
     // called when page is changed
-    if (this.props.pagination && this.state.isLoading) {
+    if (this.props.pagination && this.props.isLoading) {
       if (nextProps.onPageChange) nextProps.onPageChange();
-
-      this.setState({ isLoading: false });
-    }
-
-    if (
-      !nextProps.pagination &&
-      this.props.hits &&
-      nextProps.hits &&
-      (this.props.hits.length < nextProps.hits.length || nextProps.hits.length === nextProps.total)
-    ) {
-      this.setState({ isLoading: false });
     }
 
     if (!nextProps.pagination && nextProps.hits && this.props.hits && nextProps.hits.length < this.props.hits.length) {
       if (nextProps.onPageChange) nextProps.onPageChange();
 
-      this.setState({
-        from: 0,
-        isLoading: false,
-      });
+      this.setState({ from: 0 });
     }
 
     if (nextProps.pagination && nextProps.total !== this.props.total) {
@@ -272,6 +257,7 @@ class ReactiveMap extends Component {
       this.state.searchAsMove !== nextState.searchAsMove ||
       this.props.showMapStyles !== nextProps.showMapStyles ||
       this.props.autoCenter !== nextProps.autoCenter ||
+      this.props.isLoading !== nextProps.isLoading ||
       this.props.error !== nextProps.error ||
       this.props.streamAutoCenter !== nextProps.streamAutoCenter ||
       this.props.defaultZoom !== nextProps.defaultZoom ||
@@ -475,10 +461,7 @@ class ReactiveMap extends Component {
       const value = this.state.from + this.props.size;
       const options = getQueryOptions(this.props);
 
-      this.setState({
-        from: value,
-        isLoading: true,
-      });
+      this.setState({ from: value });
       this.props.loadMore(
         this.props.componentId,
         {
@@ -487,8 +470,6 @@ class ReactiveMap extends Component {
         },
         true
       );
-    } else if (this.state.isLoading) {
-      this.setState({ isLoading: false });
     }
   };
 
@@ -498,7 +479,6 @@ class ReactiveMap extends Component {
     options.from = this.state.from;
     this.setState({
       from: value,
-      isLoading: true,
       currentPage: page,
     });
     this.props.loadMore(
@@ -588,8 +568,7 @@ class ReactiveMap extends Component {
   };
 
   renderError = () => {
-    const { error, renderError } = this.props;
-    const { isLoading } = this.state;
+    const { error, renderError, isLoading } = this.props;
     if (renderError && error && !isLoading) {
       return isFunction(renderError) ? renderError(error) : renderError;
     }
@@ -711,6 +690,10 @@ class ReactiveMap extends Component {
     if (this.props.mapProps.onZoomChanged) this.props.mapProps.onZoomChanged();
   };
 
+  get shouldRenderLoader() {
+    return this.props.loader && this.props.isLoading;
+  }
+
   render() {
     const style = {
       width: '100%',
@@ -755,14 +738,15 @@ class ReactiveMap extends Component {
     return (
       <div style={{ ...style, ...this.props.style }} className={this.props.className}>
         {this.renderError()}
-        {this.props.renderAllData
+        {this.shouldRenderLoader ? this.props.loader : null}
+        {this.shouldRenderLoader && this.props.renderAllData
           ? this.props.renderAllData(
-              parseHits(this.props.hits),
-              parseHits(this.props.streamHits),
-              this.loadMore,
-              () => this.props.renderMap(mapParams),
-              this.renderPagination
-            )
+            parseHits(this.props.hits),
+            parseHits(this.props.streamHits),
+            this.loadMore,
+            () => this.props.renderMap(mapParams),
+            this.renderPagination
+          )
           : this.props.renderMap(mapParams)}
       </div>
     );
@@ -773,6 +757,8 @@ ReactiveMap.propTypes = {
   addComponent: types.funcRequired,
   setMapData: types.funcRequired,
   loadMore: types.funcRequired,
+  isLoading: types.bool,
+  loader: types.react,
   removeComponent: types.funcRequired,
   setQueryListener: types.funcRequired,
   onQueryChange: types.func,
@@ -860,6 +846,7 @@ const mapStateToProps = (state, props) => ({
     0,
   time: (state.hits[props.componentId] && state.hits[props.componentId].time) || 0,
   error: state.error[props.componentId],
+  isLoading: state.isLoading[props.componentId] || false,
   total: state.hits[props.componentId] && state.hits[props.componentId].total,
 });
 
