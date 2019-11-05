@@ -217,7 +217,6 @@ const Main = () => {
                   className="right-col"
                   style={{ height: '100%', padding: 0 }}
                   defaultZoom={defaultZoomIn}
-                  center={location}
                   defaultCenter={location}
                   innerClass={{ label: 'label' }}
                   // onPopoverClick={onPopoverClick}
