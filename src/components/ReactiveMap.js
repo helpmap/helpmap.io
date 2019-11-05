@@ -1,5 +1,5 @@
-// taken from
-// https://github.com/appbaseio/reactivesearch/blob/38e034abc1d58c5b06f43bfafa112561e2a84ae9/packages/maps/src/components/result/ReactiveMap.js
+// last update taken from - Oct 21 2019
+// https://github.com/appbaseio/reactivesearch/commit/63777a83d67aab6848b0611c6ec38c4e546ee5e4
 
 import React, { Component } from 'react';
 import {
@@ -119,7 +119,7 @@ class ReactiveMap extends Component {
       mapBoxBounds: null,
       searchAsMove: props.searchAsMove,
       zoom: props.defaultZoom,
-      preserveCenter: false,
+      preserveCenter: true, // Manual fix for helpmap.io
     };
 
     this.internalComponent = `${props.componentId}__internal`;
