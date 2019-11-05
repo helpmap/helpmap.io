@@ -122,7 +122,7 @@ const Main = () => {
   const onSelectCategory = categories => {
     setHighlight(null);
     // setZoom(13);
-    console.log(categories);
+    // console.log(categories);
     if (categories.length === 1) {
       setMode('multiResults');
       setShow(true);

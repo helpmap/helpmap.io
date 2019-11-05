@@ -1,5 +1,13 @@
 {
-  "eslint.enable": true,
-  "eslint.packageManager": "yarn",
-  "prettier.eslintIntegration": true
+  // Enable/disable JavaScript validation. (For Flow)
+  "javascript.validate.enable": false,
+  "deepscan.enable": true,
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   { "language": "typescript", "autoFix": true },
+  //   { "language": "typescriptreact", "autoFix": true }
+  // ]
 }

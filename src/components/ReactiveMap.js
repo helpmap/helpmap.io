@@ -800,13 +800,13 @@ class ReactiveMap extends Component {
         {this.shouldRenderLoader ? this.props.loader : null}
         {this.shouldRenderLoader && this.props.renderAllData
           ? this.props.renderAllData(
-            this.withClickIds(parseHits(this.props.hits)),
-            this.withClickIds(parseHits(this.props.streamHits)),
-            this.loadMore,
-            () => this.props.renderMap(mapParams),
-            this.renderPagination,
-            this.triggerAnalytics
-          )
+              this.withClickIds(parseHits(this.props.hits)),
+              this.withClickIds(parseHits(this.props.streamHits)),
+              this.loadMore,
+              () => this.props.renderMap(mapParams),
+              this.renderPagination,
+              this.triggerAnalytics
+            )
           : this.props.renderMap(mapParams)}
       </div>
     );

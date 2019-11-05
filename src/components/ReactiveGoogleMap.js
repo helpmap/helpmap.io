@@ -112,17 +112,17 @@ class ReactiveGoogleMap extends Component {
         <MapComponent
           containerElement={<div style={style} />}
           mapElement={<div style={{ height: '100%' }} />}
-          // onMapMounted={this.onMapMounted}
-          onMapMounted={(ref) => {
-            this.setState({
-              mapRef: ref,
-            });
-            if (params.innerRef && ref) {
-              const map = Object.values(ref.context)[0];
-              const mapRef = { ...ref, map };
-              params.innerRef(mapRef);
-            }
-          }}
+          onMapMounted={this.onMapMounted}
+          // onMapMounted={(ref) => {
+          //   this.setState({
+          //     mapRef: ref,
+          //   });
+          //   if (params.innerRef && ref) {
+          //     const map = Object.values(ref.context)[0];
+          //     const mapRef = { ...ref, map };
+          //     params.innerRef(mapRef);
+          //   }
+          // }}
           zoom={params.zoom}
           center={params.center}
           {...params.mapProps}
@@ -139,8 +139,8 @@ class ReactiveGoogleMap extends Component {
               <GoogleMapMarkers {...markerProps} />
             </MarkerClusterer>
           ) : (
-              <React.Fragment>{this.props.showMarkers && <GoogleMapMarkers {...markerProps} />}</React.Fragment>
-            )}
+            <React.Fragment>{this.props.showMarkers && <GoogleMapMarkers {...markerProps} />}</React.Fragment>
+          )}
           {params.showMarkers && params.markers}
           {params.renderSearchAsMove()}
         </MapComponent>

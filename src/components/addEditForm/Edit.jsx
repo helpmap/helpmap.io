@@ -106,7 +106,6 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
           </Button>
         ) : (
           <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
-            {/* translate */}
             {intl.formatMessage({ id: 'Back' })}
           </Button>
         )}
