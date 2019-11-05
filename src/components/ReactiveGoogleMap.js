@@ -1,4 +1,3 @@
-/*global google*/
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
@@ -133,6 +132,7 @@ class ReactiveGoogleMap extends Component {
           options={{
             styles: this.state.currentMapStyle.value,
             ...getInnerKey(this.props.mapProps, 'options'),
+            ...this.props.mapOptions,
           }}>
           {params.showMarkers && params.showMarkerClusters ? (
             <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
@@ -195,6 +195,7 @@ ReactiveGoogleMap.propTypes = {
   innerRef: types.func,
   loader: types.title,
   mapProps: types.props,
+  mapOptions: types.props,
   markerProps: types.props,
   markers: types.children,
   renderAllData: types.func,
