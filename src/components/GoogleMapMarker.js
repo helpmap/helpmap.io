@@ -1,3 +1,4 @@
+/*global google*/
 import React from 'react';
 import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel';
 import { InfoWindow, Marker } from 'react-google-maps';
@@ -45,11 +46,18 @@ class GoogleMapMarker extends React.Component {
       setOpenMarkers: handleOpenMarkers,
       openMarkers,
       marker,
+      markerOnTop,
       autoClosePopover,
       handlePreserveCenter,
+      onMarkerClick,
     } = this.props;
     const id = marker._id;
     const newOpenMarkers = autoClosePopover ? { [id]: true } : { ...openMarkers, [id]: true };
+
+    onMarkerClick && onMarkerClick(marker);
+
+    if (markerOnTop !== id) this.increaseMarkerZIndex();
+    else this.removeMarkerZIndex();
 
     handleOpenMarkers(newOpenMarkers);
     handlePreserveCenter(true);
@@ -180,17 +188,27 @@ class GoogleMapMarker extends React.Component {
         );
       }
     } else if (defaultPin) {
-      markerProps.icon = defaultPin;
+      // markerProps.icon = defaultPin;
+      markerProps.icon = {
+        url: defaultPin,
+        scaledSize: new google.maps.Size(31, 43),
+      };
+      if (markerOnTop === marker._id) {
+        markerProps.icon = {
+          url: defaultPin,
+          scaledSize: new google.maps.Size(40, 45),
+        };
+      }
     }
 
     return (
       <Marker
         key={marker._id}
         onClick={() => this.openMarker(marker._id, autoClosePopover || false, handlePreserveCenter)}
-        onMouseOver={this.increaseMarkerZIndex}
-        onFocus={this.increaseMarkerZIndex}
-        onMouseOut={this.removeMarkerZIndex}
-        onBlur={this.removeMarkerZIndex}
+        // onMouseOver={this.increaseMarkerZIndex}
+        // onFocus={this.increaseMarkerZIndex}
+        // onMouseOut={this.removeMarkerZIndex}
+        // onBlur={this.removeMarkerZIndex}
         {...markerProps}>
         {onPopoverClick ? this.renderPopover(marker) : null}
       </Marker>
@@ -218,6 +236,7 @@ GoogleMapMarker.propTypes = {
   autoClosePopover: types.bool,
   handlePreserveCenter: types.func,
   onPopoverClick: types.func,
+  onMarkerClick: types.func,
   markerProps: types.props,
   marker: types.props,
   openMarkers: types.props,
