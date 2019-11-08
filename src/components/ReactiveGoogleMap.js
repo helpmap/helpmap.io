@@ -105,6 +105,7 @@ class ReactiveGoogleMap extends Component {
       handlePreserveCenter: params.handlePreserveCenter,
       onPopoverClick: params.onPopoverClick,
       markerProps: this.props.markerProps,
+      onMarkerClick: this.props.onMarkerClick,
     };
 
     return (
