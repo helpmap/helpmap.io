@@ -83,6 +83,11 @@ let Info = ({ setMode, backToResults, id, intl }) => {
           </a>
           <div className="category-menu">{data.types && showCategories(data.types[0], intl)}</div>
           <p className="description">{data.description}</p>
+          <blockquote>
+            <p>
+              <strong>Порада:</strong> Перед тим як відносити речі, будь ласка зв&#39;яжіться з організацією
+            </p>
+          </blockquote>
         </Card>
       </Container>
       <Dialog
