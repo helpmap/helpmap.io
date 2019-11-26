@@ -14,29 +14,33 @@ const TopInfo = ({ intl }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div className="info-div" onClick={() => setVisible(true)}>
-        <InfoIcon />
+    <>
+      <div className="top-info-button">
+        <div className="info-div" role="button" tabIndex="0" onClick={() => setVisible(true)}>
+          <InfoIcon />
+        </div>
+        <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
+          Support on Patreon
+        </a>
       </div>
-      <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
-        Support on Patreon
-      </a>
-      <Modal
-        className="info-modal"
-        title={intl.formatMessage({ id: 'Info.Title' })}
-        visible={visible}
-        onCancel={() => setVisible(false)}
-        footer={null}>
-        <FormattedHTMLMessage id="Info" />
-      </Modal>
-      <Header as="h2" icon size="medium" style={{ margin: '0 auto' }}>
-        <Logo style={{ height: '4rem' }} />
-        <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
-      </Header>
-      <div className="language-switch">
-        <LanguageSwitch />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Modal
+          className="info-modal"
+          title={intl.formatMessage({ id: 'Info.Title' })}
+          visible={visible}
+          onCancel={() => setVisible(false)}
+          footer={null}>
+          <FormattedHTMLMessage id="Info" />
+        </Modal>
+        <Header as="h2" icon size="medium" style={{ margin: '0 auto' }}>
+          <Logo style={{ height: '4rem' }} />
+          <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
+        </Header>
+        <div className="language-switch">
+          <LanguageSwitch />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

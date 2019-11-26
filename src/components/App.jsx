@@ -11,7 +11,7 @@ function App() {
     <Grid centered>
       <Grid.Row className="top-row">
         <Grid.Column>
-          <Segment basic style={{ paddingBottom: 0 }}>
+          <Segment className="top-segment" basic style={{ paddingBottom: 0 }}>
             <TopInfo />
           </Segment>
         </Grid.Column>

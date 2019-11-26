@@ -18,19 +18,34 @@ h2.ui.header .sub.header.tagline {
   }
 }
 
+.top-info-button {
+  display: inline-flex;
+  margin-top: 7px;
+  position: absolute;
+
+  @media screen and (max-width: 768px) {
+    position: relative;
+  }
+}
+
 .info-div {
   cursor: pointer;
-  left: 21px;
-  top: 21px;
-  position: absolute;
+  padding-left: 1em;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 0.5em;
+  }
 }
 
 .patreon,
 .patreon:hover {
   color: black;
-  left: 21 + 31px;
-  top: 21px;
-  position: absolute;
+  padding-left: 1em;
+  text-decoration: underline;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 0.5em;
+  }
 }
 
 .info-modal {
