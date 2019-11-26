@@ -25,6 +25,14 @@ h2.ui.header .sub.header.tagline {
   position: absolute;
 }
 
+.patreon,
+.patreon:hover {
+  color: black;
+  left: 21 + 31px;
+  top: 21px;
+  position: absolute;
+}
+
 .info-modal {
   .ant-modal-title {
     text-align: center;

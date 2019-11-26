@@ -16,8 +16,11 @@ const TopInfo = ({ intl }) => {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div className="info-div" onClick={() => setVisible(true)}>
-        <InfoIcon />{' '}
+        <InfoIcon />
       </div>
+      <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
+        Support on Patreon
+      </a>
       <Modal
         className="info-modal"
         title={intl.formatMessage({ id: 'Info.Title' })}
