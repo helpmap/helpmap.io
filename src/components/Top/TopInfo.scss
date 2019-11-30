@@ -30,6 +30,8 @@ h2.ui.header .sub.header.tagline {
 
 .info-div {
   cursor: pointer;
+  display: flex;
+  align-self: center;
   padding-left: 1em;
 
   @media screen and (max-width: 768px) {
@@ -40,8 +42,10 @@ h2.ui.header .sub.header.tagline {
 .patreon,
 .patreon:hover {
   color: black;
-  padding-left: 1em;
-  text-decoration: underline;
+  border: #9E9E9E solid 1px;
+  border-radius: 2px;
+  padding: 3px 8px;
+  margin-left: 2em;
 
   @media screen and (max-width: 768px) {
     padding-left: 0.5em;
