@@ -28,7 +28,9 @@ class IntlProviderWrapper extends React.Component {
   };
 
   componentDidMount() {
-    if (navigator.language.startsWith('en')) this.setState({ locale: 'en', messages: enTranslation });
+    const locale =
+      (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || 'en-US';
+    if (locale.startsWith('en')) this.setState({ locale: 'en', messages: enTranslation });
   }
 
   render() {
