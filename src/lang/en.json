@@ -8,9 +8,9 @@
   "Menu.Books": "Books",
   "Menu.Other": "Other",
   "Tagline": "Donate things to nonprofits",
+  "Info.Note": "<strong>Note:</strong> Please contact the organization before bringing items",
   "Info.Title": "Thank You for helping others!",
   "Info": "You can donate new things and used things. Not sure if you should donate an item? Just contact the organization and ask them if they need it. General rule - would you feel comfortable giving it to a friend or a family member?<br/><br/>The most needed items are toilet paper, soap, toothbrush, toothpaste, laundry detergent, dish-soap, any cleaning supplies or toiletries are great. For more specific needs, please contact the organization directly.<br/><br/>The best thing you can donate is your time, a lot of organizations need help with something.<br/><br/>If you would like to help improve the project - <a href=\"mailto:info@helpmap.io\">info@helpmap.io</a><br/><br/>Have a great day, you are awesome!",
-  "Add.Add_Organization": "Add organisation",
   "Add.Name_Organization": "Name of organisation",
   "Add.Description": "Description",
   "Add.Description.Placeholder": "What does this non-profit do, when is it open, how to contact them",
@@ -19,5 +19,5 @@
   "Add.Address.Placeholder": "Search Address ...",
   "Add.Add_button": "Add on the map",
   "Save": "Save",
-  "Add more": "Add more"
+  "Add_more": "Add more"
 }

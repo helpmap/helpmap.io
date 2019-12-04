@@ -8,7 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { Card } from 'antd';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedHTMLMessage } from 'react-intl';
 
 import './SideMenu.scss';
 import categories from '../Top/messages/menuMessages';
@@ -85,7 +85,7 @@ let Info = ({ setMode, backToResults, id, intl }) => {
           <p className="description">{data.description}</p>
           <blockquote>
             <p>
-              <strong>Порада:</strong> Перед тим як відносити речі, будь ласка зв&#39;яжіться з організацією
+              <FormattedHTMLMessage id="Info.Note" />
             </p>
           </blockquote>
         </Card>

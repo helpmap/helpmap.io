@@ -102,7 +102,7 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
         <Icon color="green" name="check circle" size="huge" />
         {mode === 'adding' ? (
           <Button positive className="add-more-btn" onClick={() => reset()}>
-            {intl.formatMessage({ id: 'Add more' })}
+            {intl.formatMessage({ id: 'Add_more' })}
           </Button>
         ) : (
           <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
