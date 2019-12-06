@@ -20,7 +20,14 @@ const TopInfo = ({ intl }) => {
           <InfoIcon />
         </div>
         <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
-          Support on Patreon
+          Patreon
+        </a>
+        <a
+          className="teespring"
+          href="https://teespring.com/small-logo?pid=387"
+          target="_blank"
+          rel="noopener noreferrer">
+          Get your t-shirt
         </a>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -32,7 +39,7 @@ const TopInfo = ({ intl }) => {
           footer={null}>
           <FormattedHTMLMessage id="Info" />
         </Modal>
-        <Header as="h2" icon size="medium" style={{ margin: '0 auto' }}>
+        <Header as="h2" icon size="medium">
           <Logo style={{ height: '4rem' }} />
           <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
         </Header>
