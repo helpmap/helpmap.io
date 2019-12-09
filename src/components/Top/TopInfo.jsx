@@ -19,15 +19,15 @@ const TopInfo = ({ intl }) => {
         <div className="info-div" role="button" tabIndex="0" onClick={() => setVisible(true)}>
           <InfoIcon />
         </div>
-        <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
+        {/* <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
           Patreon
-        </a>
+        </a> */}
         <a
           className="teespring"
           href="https://teespring.com/small-logo?pid=387"
           target="_blank"
           rel="noopener noreferrer">
-          Get your t-shirt
+          Support
         </a>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
