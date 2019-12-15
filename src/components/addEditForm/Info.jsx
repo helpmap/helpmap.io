@@ -9,6 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { Card } from 'antd';
 import { injectIntl, FormattedHTMLMessage } from 'react-intl';
+import Linkify from 'react-linkify';
 
 import './SideMenu.scss';
 import categories from '../Top/messages/menuMessages';
@@ -70,7 +71,7 @@ let Info = ({ setMode, backToResults, id, intl }) => {
           {/* <Button icon="edit" className="edit-btn" onClick={() => setMode('editing')} /> */}
           {/* <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} /> */}
           <>
-            <EditIcon className="edit-btn" onClick={() => setMode('editing')} />
+            {/* <EditIcon className="edit-btn" onClick={() => setMode('editing')} /> */}
             <ShareIcon className="share-btn" onClick={() => share()} />
             <BackIcon className="back-btn" onClick={backToResults} />
           </>
