@@ -82,7 +82,9 @@ let Info = ({ setMode, backToResults, id, intl }) => {
             {data.address}
           </a>
           <div className="category-menu">{data.types && showCategories(data.types[0], intl)}</div>
-          <p className="description">{data.description}</p>
+          <Linkify properties={{ target: '_blank', rel: 'noopener noreferrer' }}>
+            <p className="description">{data.description}</p>
+          </Linkify>
           <blockquote>
             <p>
               <FormattedHTMLMessage id="Info.Note" />

@@ -18,6 +18,7 @@
     "react-google-maps-loader": "^4.2.5",
     "react-google-places-suggest": "^3.7.1",
     "react-intl": "^2.8.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-places-autocomplete": "^7.2.1",
     "react-scripts": "3.3.0",
     "semantic-ui-react": "^0.86.0"
