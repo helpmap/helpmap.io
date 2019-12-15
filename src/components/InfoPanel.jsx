@@ -15,7 +15,7 @@ const InfoPanel = ({ data }) => {
       </Header>
       {showCategories(data.types)}
       <Segment basic padded="very">
-        {data.description}
+        <URLise>{data.description}</URLise>
       </Segment>
     </Container>
   );
