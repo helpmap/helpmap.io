@@ -2,6 +2,7 @@
   "name": "helpmap",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@appbaseio/reactivesearch": "^3.0.1",
     "@material-ui/core": "^3.9.3",
