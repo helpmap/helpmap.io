@@ -12,15 +12,15 @@
     "ngeohash": "^0.6.3",
     "node-sass": "^4.13.1",
     "prop-types": "^15.6.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-google-maps": "9.4.5",
     "react-google-maps-loader": "^4.2.5",
     "react-google-places-suggest": "^3.7.1",
     "react-intl": "^2.8.0",
     "react-linkify": "^1.0.0-alpha",
     "react-places-autocomplete": "^7.2.1",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.1",
     "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
