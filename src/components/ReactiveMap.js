@@ -1,5 +1,5 @@
 // last update taken from - Oct 21 2019
-// https://github.com/appbaseio/reactivesearch/commit/63777a83d67aab6848b0611c6ec38c4e546ee5e4
+// https://github.com/appbaseio/reactivesearch/blob/63777a83d67aab6848b0611c6ec38c4e546ee5e4/packages/maps/src/components/result/ReactiveMap.js
 
 import React, { Component } from 'react';
 import {
@@ -907,7 +907,4 @@ const mapDispatchtoProps = dispatch => ({
     dispatch(setMapData(component, geoQuery, persistMapQuery, forceExecute)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchtoProps
-)(ReactiveMap);
+export default connect(mapStateToProps, mapDispatchtoProps)(ReactiveMap);

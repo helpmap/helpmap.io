@@ -189,6 +189,7 @@ class GoogleMapMarker extends React.Component {
       }
     } else if (defaultPin) {
       // markerProps.icon = defaultPin;
+      // START - helpmap - custom code
       markerProps.icon = {
         url: defaultPin,
         scaledSize: new google.maps.Size(31, 43),
@@ -199,16 +200,19 @@ class GoogleMapMarker extends React.Component {
           scaledSize: new google.maps.Size(40, 45),
         };
       }
+      // END - helpmap - custom code
     }
 
     return (
       <Marker
         key={marker._id}
         onClick={() => this.openMarker(marker._id, autoClosePopover || false, handlePreserveCenter)}
+        // START - helpmap - custom code
         // onMouseOver={this.increaseMarkerZIndex}
         // onFocus={this.increaseMarkerZIndex}
         // onMouseOut={this.removeMarkerZIndex}
         // onBlur={this.removeMarkerZIndex}
+        // END - helpmap - custom code
         {...markerProps}>
         {onPopoverClick ? this.renderPopover(marker) : null}
       </Marker>
@@ -251,7 +255,4 @@ GoogleMapMarker.propTypes = {
   headers: types.headers,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GoogleMapMarker);
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleMapMarker);
