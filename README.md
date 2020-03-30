@@ -1,6 +1,6 @@
 # Helpmap
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/519535b5-4eac-490c-bfd6-b08b707a1a6f/deploy-status)](https://app.netlify.com/sites/helpmap/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/519535b5-4eac-490c-bfd6-b08b707a1a6f/deploy-status)](https://app.netlify.com/sites/helpmap/deploys) [![DeepScan grade](https://deepscan.io/api/teams/7069/projects/9218/branches/116945/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7069&pid=9218&bid=116945)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
