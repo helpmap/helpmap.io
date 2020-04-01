@@ -22,12 +22,8 @@ const TopInfo = ({ intl }) => {
         {/* <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
           Patreon
         </a> */}
-        <a
-          className="teespring"
-          href="https://teespring.com/small-logo?pid=387"
-          target="_blank"
-          rel="noopener noreferrer">
-          Support
+        <a className="onova" href="https://onova.co/helpmap" target="_blank" rel="noopener noreferrer">
+          Підтримати
         </a>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
