@@ -22,9 +22,9 @@ const TopInfo = ({ intl }) => {
         {/* <a className="patreon" href="https://www.patreon.com/helpmap_io" target="_blank" rel="noopener noreferrer">
           Patreon
         </a> */}
-        <a className="onova" href="https://onova.co/helpmap" target="_blank" rel="noopener noreferrer">
+        {/* <a className="onova" href="https://onova.co/helpmap" target="_blank" rel="noopener noreferrer">
           Підтримати
-        </a>
+        </a> */}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Modal
