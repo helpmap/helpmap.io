@@ -1,6 +1,7 @@
 # Helpmap
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/519535b5-4eac-490c-bfd6-b08b707a1a6f/deploy-status)](https://app.netlify.com/sites/helpmap/deploys) [![DeepScan grade](https://deepscan.io/api/teams/7069/projects/9218/branches/116945/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7069&pid=9218&bid=116945)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/519535b5-4eac-490c-bfd6-b08b707a1a6f/deploy-status)](https://app.netlify.com/sites/helpmap/deploys) [![DeepScan grade](https://deepscan.io/api/teams/7069/projects/9218/branches/116945/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7069&pid=9218&bid=116945) [![Total alerts](https://img.shields.io/lgtm/alerts/g/helpmap/helpmap.io.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/helpmap/helpmap.io/alerts/)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
