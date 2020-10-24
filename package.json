@@ -4,26 +4,26 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@appbaseio/reactivesearch": "^3.12.4",
-    "@material-ui/core": "^3.9.4",
-    "@material-ui/icons": "^3.0.2",
-    "antd": "^3.26.18",
-    "appbase-js": "^4.1.1",
+    "@appbaseio/reactivesearch": "3.12.4",
+    "@material-ui/core": "3.9.4",
+    "@material-ui/icons": "3.0.2",
+    "antd": "3.26.18",
+    "appbase-js": "4.1.1",
     "emotion": "9.0.0",
-    "ngeohash": "^0.6.3",
-    "node-sass": "^4.14.1",
-    "prop-types": "^15.6.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "ngeohash": "0.6.3",
+    "node-sass": "4.14.1",
+    "prop-types": "15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-emotion": "9.0.0",
     "react-google-maps": "9.4.5",
-    "react-google-maps-loader": "^4.3.0",
-    "react-google-places-suggest": "^3.9.2",
-    "react-intl": "^2.9.0",
-    "react-linkify": "^1.0.0-alpha",
-    "react-places-autocomplete": "^7.3.0",
-    "react-scripts": "^3.4.3",
-    "semantic-ui-react": "^0.86.0"
+    "react-google-maps-loader": "4.3.0",
+    "react-google-places-suggest": "3.9.2",
+    "react-intl": "2.9.0",
+    "react-linkify": "1.0.0-alpha",
+    "react-places-autocomplete": "7.3.0",
+    "react-scripts": "3.4.3",
+    "semantic-ui-react": "0.86.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,11 +48,11 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.1",
-    "prettier": "^1.19.1",
-    "react-snap": "^1.23.0"
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-react": "7.21.2",
+    "prettier": "1.19.1",
+    "react-snap": "1.23.0"
   },
   "reactSnap": {
     "skipThirdPartyRequests": true
