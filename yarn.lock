@@ -30,10 +30,10 @@
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.1.1.tgz#7b9c08dffd4f5d41db667d9dbe5e0107d0bd9a4a"
   integrity sha512-jCH+k2Vjlno4YWl6g535nHR09PwCEmTBKAG6VqF+rhkrSPRLfgpU2maagwbZPLjaHuU5Jd1DFQ2KJpQuI6uG8w==
 
-"@appbaseio/reactivecore@9.6.19":
-  version "9.6.19"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.6.19.tgz#901d75cdee8f07d53f2be4ed4658f56e1ebbcaec"
-  integrity sha512-12lNCL3E+CK2bRPdlqJZKsl1HzZzD9GuxjtZq5wSGa0HHoWbT7C6btb57gL5kbUbhP8qB+fDYzGlRw6VuEDrsQ==
+"@appbaseio/reactivecore@9.6.21":
+  version "9.6.21"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.6.21.tgz#327791d5c21c75cf2e53f5394bacca8a7bb61c01"
+  integrity sha512-yYtFE+tp5x8TOT35PzrRu+GSqdYfpBDEW3Ey2ZbPOKGBa3HzuWDs60x+XDeOcKxRPOE+CT4is6dNEqG7WsYLHA==
   dependencies:
     cross-fetch "^3.0.4"
     prop-types "^15.6.0"
@@ -41,12 +41,12 @@
     redux-thunk "^2.3.0"
     xdate "^0.8.2"
 
-"@appbaseio/reactivesearch@3.12.4":
-  version "3.12.4"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.12.4.tgz#6842c9f004c456d9850e822aab2b4ee1e320dae6"
-  integrity sha512-jvo5QNVf/vmrdvHRTrXuC2tvsy9d4X2FudkKKyScL3+7sLUz1PAPGnQfFYJ4z5qfVFsBvIG47t7p3oSQdwgZLA==
+"@appbaseio/reactivesearch@3.12.7":
+  version "3.12.7"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.12.7.tgz#787f3e457d9b40ce3c2bc939c4b1e562614f1382"
+  integrity sha512-/hV6CCCnaVZ9MPLga5E6wFE4Lovu1oTqtJEGgV30w4OTT0tJq/koTek6nBOUx0wi4lO3OVEBkHryaMGkALI1eg==
   dependencies:
-    "@appbaseio/reactivecore" "9.6.19"
+    "@appbaseio/reactivecore" "9.6.21"
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
     appbase-js "^4.1.0"
