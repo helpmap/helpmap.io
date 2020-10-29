@@ -52,6 +52,7 @@
 
 .toggle {
   display: inline-flex;
+  background-color: var(--color-background);
 
   > a > div {
     display: flex;
@@ -61,35 +62,35 @@
 
   > a {
     background-color: transparent;
-    color: #424242;
+    color: var(--color-foreground);
 
     > .item {
       //FIXME:
       // padding: 0 1.14285714em !important;
       > span {
-        color: #616161;
+        color: var(--color-item);
         padding-top: 5px;
       }
-      fill: #616161;
+      fill: var(--color-item);
     }
 
     &.active {
       > .item {
         > span {
           font-weight: 600;
-          color: black;
+          color: var(--color-highlight-item);
         }
-        fill: black;
+        fill: var(--color-highlight-item);
       }
 
       &:hover {
-        color: black;
+        color: var(--color-highlight-item);
       }
     }
 
     &:hover {
       background-color: transparent;
-      color: #424242;
+      color: var(--color-foreground);
     }
   }
 }

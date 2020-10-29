@@ -7,8 +7,12 @@ h2.ui.icon.header {
     }
   }
 
+  svg path {
+    fill: var(--color-foreground);
+  }
+
   .sub.header.tagline {
-    color: black;
+    color: var(--color-foreground);
     font-size: 25px;
     font-weight: 300;
     margin-top: 15px;
@@ -18,6 +22,7 @@ h2.ui.icon.header {
 
 
 .language-switch {
+  color: var(--color-foreground);
   position: absolute;
   right: 11px;
   top: 21px;
@@ -41,6 +46,7 @@ h2.ui.icon.header {
 }
 
 .info-div {
+  color: var(--color-foreground);
   cursor: pointer;
   display: flex;
   align-self: center;
