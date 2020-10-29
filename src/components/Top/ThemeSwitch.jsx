@@ -11,8 +11,27 @@ class ThemeSwitch extends React.Component {
   }
 
   toggleDarkMode() {
-    //Toggle dark mode on and off
-    this.state.darkMode == true ? this.setState({ darkMode: false }) : this.setState({ darkMode: true });
+    let root = document.documentElement;
+
+    if (this.state.darkMode == true) {
+      root.style.setProperty('--color-background', '#333');
+      root.style.setProperty('--color-foreground', '#fff');
+      root.style.setProperty('--color-item', '#CCC');
+      root.style.setProperty('--color-highlight-item', '#fff');
+      root.style.setProperty('--color-btn-fill', '#999');
+      root.style.setProperty('--color-link', '#61dafb');
+
+      this.setState({ darkMode: false });
+    } else {
+      root.style.setProperty('--color-background', '#fff');
+      root.style.setProperty('--color-foreground', '#424242');
+      root.style.setProperty('--color-item', '#616161');
+      root.style.setProperty('--color-highlight-item', '#000');
+      root.style.setProperty('--color-btn-fill', '#999');
+      root.style.setProperty('--color-link', '#61dafb');
+
+      this.setState({ darkMode: true });
+    }
 
     console.log(this.state.darkMode);
   }
