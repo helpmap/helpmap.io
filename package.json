@@ -7,7 +7,7 @@
     "@appbaseio/reactivesearch": "3.12.4",
     "@material-ui/core": "3.9.4",
     "@material-ui/icons": "3.0.2",
-    "antd": "3.26.18",
+    "antd": "3.26.20",
     "appbase-js": "4.1.1",
     "emotion": "9.2.12",
     "ngeohash": "0.6.3",
