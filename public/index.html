@@ -65,9 +65,9 @@
         // prettier-ignore
         (function(sa,fbc){function load(f,c){var a=document.createElement('script');
         a.async=1;a.src=f;var s=document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(a,s);}load(sa);window.onload = function()
-        {firebase.initializeApp(fbc).performance();};
-        })('https://www.gstatic.com/firebasejs/6.1.1/firebase-performance-standalone.js', firebaseConfig);
+        s.parentNode.insertBefore(a,s);}load(sa);
+        window.addEventListener('load',function(){firebase.initializeApp(fbc).performance()});
+        })('https://www.gstatic.com/firebasejs/8.0.0/firebase-performance-standalone.js', firebaseConfig);
       }
     </script>
   </head>
