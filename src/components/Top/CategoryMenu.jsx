@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '@material-ui/core';
 import { Menu } from 'semantic-ui-react';
 import { ToggleButton } from '@appbaseio/reactivesearch';
 
@@ -13,9 +14,11 @@ const dataCategories = Object.keys(categories).map((name, index) => ({
 }));
 
 const CategoryMenu = ({ onSelect }) => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode == 'dark';
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <Menu borderless className="category-menu">
+      <Menu borderless className="category-menu" inverted={isDarkMode}>
         <ToggleButton
           className="toggle"
           componentId="Types"

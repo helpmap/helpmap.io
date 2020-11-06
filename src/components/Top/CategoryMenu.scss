@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .top-row-cat {
   .category-menu {
     @media screen and (max-width: 768px) {
@@ -65,32 +67,71 @@
     color: var(--color-foreground);
 
     > .item {
-      //FIXME:
-      // padding: 0 1.14285714em !important;
       > span {
-        color: var(--color-item);
         padding-top: 5px;
       }
-      fill: var(--color-item);
     }
 
     &.active {
       > .item {
         > span {
           font-weight: 600;
-          color: var(--color-highlight-item);
+          color: var(--color-highlight-item-light);
         }
-        fill: var(--color-highlight-item);
+        fill: var(--color-highlight-item-light);
       }
 
       &:hover {
-        color: var(--color-highlight-item);
+        color: var(--color-highlight-item-light);
       }
     }
 
     &:hover {
-      background-color: transparent;
-      color: var(--color-foreground);
+      background-color: rgba(0, 0, 0, 0.04);
+      color: var(--color-foreground-light);
+
+      &.item {
+        > span {
+          color: var(--color-foreground-dark);
+        }
+      }
+    }
+  }
+}
+
+.category-menu.inverted {
+  .toggle {
+    > a {
+      &.active {
+        > .item {
+          > span {
+            color: var(--color-highlight-item-dark);
+          }
+          fill: var(--color-highlight-item-dark);
+        }
+
+        &:hover {
+          color: var(--color-highlight-item-dark);
+        }
+      }
+
+      > .item {
+        > span {
+          padding-top: 5px;
+        }
+        fill: var(--color-highlight-item-dark);
+      }
+
+      &:hover {
+        background-color: $color-background-light;
+
+        > .item {
+          > span {
+            color: var(--light);
+          }
+          fill: var(--color-highlight-item-dark);
+        }
+      }
     }
   }
 }

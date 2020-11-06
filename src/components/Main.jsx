@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Segment, Loader } from 'semantic-ui-react';
 import { ReactiveBase, ReactiveList, ReactiveComponent } from '@appbaseio/reactivesearch';
+import { useTheme } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { Card } from 'antd';
@@ -30,6 +31,9 @@ const Main = () => {
   const [result, setResult] = useState({});
   const [highlighted, setHighlight] = useState();
   // const [zoom, setZoom] = useState(13);
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode == 'dark';
 
   useEffect(() => {
     const options = {
@@ -173,7 +177,7 @@ const Main = () => {
         )}
         <Grid.Row className="top-row top-row-cat">
           <Grid.Column>
-            <Segment>
+            <Segment inverted={isDarkMode}>
               <CategoryMenu onSelect={onSelectCategory} />
             </Segment>
           </Grid.Column>

@@ -1,49 +1,31 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
+import { useTheme } from '@material-ui/core/styles';
+
 import './ThemeSwitch.scss';
+import { useChangeTheme } from '../App';
 
-class ThemeSwitch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggleDarkMode = this.toggleDarkMode.bind(this);
-    this.state = {
-      darkMode: false,
-    };
+export const ThemeSwitch = ({ intl }) => {
+  const theme = useTheme();
+  const changeTheme = useChangeTheme();
+
+  function toggleDarkMode(): void {
+    const paletteMode = theme.palette.mode === 'light' ? 'dark' : 'light';
+
+    changeTheme({ paletteMode });
   }
 
-  toggleDarkMode() {
-    let root = document.documentElement;
+  return (
+    <Tooltip title={intl.formatMessage({ id: 'ToggleTheme' })} enterDelay={300}>
+      <IconButton color="inherit" onClick={toggleDarkMode}>
+        {theme.palette.mode == 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
+      </IconButton>
+    </Tooltip>
+  );
+};
 
-    if (this.state.darkMode == true) {
-      root.style.setProperty('--color-background', '#333');
-      root.style.setProperty('--color-foreground', '#fff');
-      root.style.setProperty('--color-item', '#CCC');
-      root.style.setProperty('--color-highlight-item', '#fff');
-      root.style.setProperty('--color-btn-fill', '#999');
-      root.style.setProperty('--color-link', '#61dafb');
-
-      this.setState({ darkMode: false });
-    } else {
-      root.style.setProperty('--color-background', '#fff');
-      root.style.setProperty('--color-foreground', '#424242');
-      root.style.setProperty('--color-item', '#616161');
-      root.style.setProperty('--color-highlight-item', '#000');
-      root.style.setProperty('--color-btn-fill', '#999');
-      root.style.setProperty('--color-link', '#61dafb');
-
-      this.setState({ darkMode: true });
-    }
-
-    console.log(this.state.darkMode);
-  }
-
-  render() {
-    return (
-      <label className="theme-switch">
-        <input type="checkbox" onClick={this.toggleDarkMode} />
-        <span className="slider round" />
-      </label>
-    );
-  }
-}
-
-export default ThemeSwitch;
+export default injectIntl(ThemeSwitch);

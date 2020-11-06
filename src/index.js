@@ -3,7 +3,7 @@ import { hydrate, render } from 'react-dom';
 
 import 'antd/dist/antd.css';
 
-import './index.css';
+import './index.scss';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 

@@ -19,5 +19,6 @@
   "Add.Address.Placeholder": "Search Address ...",
   "Add.Add_button": "Add on the map",
   "Save": "Save",
-  "Add_more": "Add more"
+  "Add_more": "Add more",
+  "ToggleTheme": "Toggle Dark/Light mode"
 }
