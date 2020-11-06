@@ -15,7 +15,7 @@ const dataCategories = Object.keys(categories).map((name, index) => ({
 
 const CategoryMenu = ({ onSelect }) => {
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode == 'dark';
+  const isDarkMode = theme.palette.mode === 'dark';
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Menu borderless className="category-menu" inverted={isDarkMode}>

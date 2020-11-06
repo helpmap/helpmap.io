@@ -22,7 +22,7 @@ export const ThemeSwitch = ({ intl }) => {
   return (
     <Tooltip title={intl.formatMessage({ id: 'ToggleTheme' })} enterDelay={300}>
       <IconButton color="inherit" onClick={toggleDarkMode}>
-        {theme.palette.mode == 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
+        {theme.palette.mode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
       </IconButton>
     </Tooltip>
   );

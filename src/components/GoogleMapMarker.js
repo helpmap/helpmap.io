@@ -21,7 +21,10 @@ class GoogleMapMarker extends React.Component {
       return true;
     }
 
-    if (this.props.openMarkers[this.props.marker._id] !== nextProps.openMarkers[this.props.marker._id]) {
+    if (
+      this.props.openMarkers &&
+      this.props.openMarkers[this.props.marker._id] !== nextProps.openMarkers[this.props.marker._id]
+    ) {
       return true;
     }
 

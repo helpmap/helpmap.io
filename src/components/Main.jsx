@@ -33,7 +33,7 @@ const Main = () => {
   // const [zoom, setZoom] = useState(13);
 
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode == 'dark';
+  const isDarkMode = theme.palette.mode === 'dark';
 
   useEffect(() => {
     const options = {
@@ -223,6 +223,7 @@ const Main = () => {
                   defaultZoom={defaultZoomIn}
                   defaultCenter={location}
                   innerClass={{ label: 'label' }}
+                  defaultMapStyle={isDarkMode ? 'Multi Brand Network' : 'Blue Essence'}
                   // onPopoverClick={onPopoverClick}
                   // showMarkerClusters={false}
                   // autoClosePopover

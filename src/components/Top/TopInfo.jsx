@@ -15,7 +15,7 @@ import './TopInfo.scss';
 const TopInfo = ({ intl }) => {
   const [visible, setVisible] = useState(false);
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode == 'dark';
+  const isDarkMode = theme.palette.mode === 'dark';
 
   return (
     <>

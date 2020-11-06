@@ -24,7 +24,7 @@ function App() {
 }
 function TopGrid() {
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode == 'dark';
+  const isDarkMode = theme.palette.mode === 'dark';
 
   return (
     <Grid.Row className="top-row">
