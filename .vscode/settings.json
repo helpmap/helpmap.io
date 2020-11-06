@@ -1,16 +1,9 @@
 {
-  // Enable/disable JavaScript validation. (For Flow)
-  "javascript.validate.enable": false,
+  "javascript.validate.enable": true,
   "deepscan.enable": true,
-  "editor.formatOnSave": false,
-  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
-  // "eslint.validate": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   { "language": "typescript", "autoFix": true },
-  //   { "language": "typescriptreact", "autoFix": true }
-  // ]
+    "source.fixAll": true
+  },
+  "eslint.packageManager": "yarn"
 }

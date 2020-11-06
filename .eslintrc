@@ -1,10 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["plugin:react/recommended", "prettier", "prettier/react"],
+  "extends": ["plugin:react/recommended", "prettier/react"],
   "plugins": ["react", "prettier"],
   "globals": {},
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
@@ -29,24 +29,11 @@
         "skipUndeclared": true
       }
     ],
-    "react/self-closing-comp": 2,
-    "prettier/prettier": [
-      "error",
-      {
-        "bracketSpacing": true,
-        "jsxBracketSameLine": true,
-        "printWidth": 120,
-        "semi": true,
-        "singleQuote": true,
-        "tabWidth": 2,
-        "trailingComma": "es5",
-        "useTabs": false
-      }
-    ]
+    "react/self-closing-comp": 2
   },
   "settings": {
     "react": {
-      "version": "16.8"
+      "version": "16.13"
     }
   }
 }
