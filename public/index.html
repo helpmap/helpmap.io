@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700" type="text/css" />
     <meta property="og:image" content="https://helpmap.io/helpmap-logo-white_bg.png" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" /> -->
     <script
       type="text/javascript"
       src="https://maps.google.com/maps/api/js?key=AIzaSyBYR_dkF7JNTsnmWi-3RoBjcNnmE-KfF5Y&v=quarterly&libraries=places"
@@ -51,6 +51,11 @@
       "https://www.instagram.com/giveboxapp"
     ], -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <script>
+      // first-input-delay
+      !function(n,e){var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";function p(n,c){t||(t=c,o=n,i=new Date,w(e),s())}function s(){o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])}function l(t){if(t.cancelable){var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;"pointerdown"==t.type?function(t,o){function i(){p(t,o),r()}function c(){r()}function r(){e(a,i,f),e(u,c,f)}n(a,i,f),n(u,c,f)}(o,t):p(o,t)}}function w(n){["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})}w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}}(addEventListener,removeEventListener);
+    </script>
     <script>
       var firebaseConfig = {
         apiKey: 'AIzaSyB6ILvlbmjx4t9lV9NNdE7c5Ou8vlnL2pE',
@@ -65,9 +70,9 @@
         // prettier-ignore
         (function(sa,fbc){function load(f,c){var a=document.createElement('script');
         a.async=1;a.src=f;var s=document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(a,s);}load(sa);window.onload = function()
-        {firebase.initializeApp(fbc).performance();};
-        })('https://www.gstatic.com/firebasejs/6.1.1/firebase-performance-standalone.js', firebaseConfig);
+        s.parentNode.insertBefore(a,s);}load(sa);
+        window.addEventListener('load',function(){firebase.initializeApp(fbc).performance()});
+        })('https://www.gstatic.com/firebasejs/8.0.0/firebase-performance-standalone.js', firebaseConfig);
       }
     </script>
   </head>
