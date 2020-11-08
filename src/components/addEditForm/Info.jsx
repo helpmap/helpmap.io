@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Button, Form } from 'semantic-ui-react';
 import BackIcon from '@material-ui/icons/ArrowBack';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 import ShareIcon from '@material-ui/icons/Share';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';

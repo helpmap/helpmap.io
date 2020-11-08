@@ -18,7 +18,6 @@ export const appbaseRef = Appbase({
   app: 'helpmap',
   credentials: 'IOa16MiOe:224b8ae4-f21a-4c25-9c01-e9212f90a0b5',
 });
-const GreenEssence = require('./GreenEssence');
 
 const defaultZoomIn = 13;
 
@@ -223,14 +222,14 @@ const Main = () => {
                   defaultZoom={defaultZoomIn}
                   defaultCenter={location}
                   innerClass={{ label: 'label' }}
-                  defaultMapStyle={isDarkMode ? 'Multi Brand Network' : 'Blue Essence'}
+                  defaultMapStyle={isDarkMode ? 'Multi Brand Network' : 'Green Essence'}
                   // onPopoverClick={onPopoverClick}
                   // showMarkerClusters={false}
                   // autoClosePopover
                   showSearchAsMove
                   searchAsMove
                   // showMapStyles
-                  mapProps={{ options: { styles: GreenEssence } }}
+                  // mapProps={{ options: { styles: isDarkMode ? MultiBrandNetwork : GreenEssence } }}
                   // defaultQuery={defaultQuery}
                   size={100}
                   // mapProps={{ onClick: () => console.log('onClick') }}

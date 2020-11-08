@@ -9,10 +9,12 @@ import Dropdown from '@appbaseio/reactivesearch/lib/components/shared/Dropdown';
 import ReactiveMap from './ReactiveMap';
 import GoogleMapMarkers from './GoogleMapMarkers';
 
-// const Standard = require('./addons/styles/Standard');
-import BlueEssence from './BlueEssence';
+import GreenEssence from './GreenEssence';
 // dark style
 import MultiBrandNetwork from './MultiBrandNetwork';
+
+// const Standard = require('./addons/styles/Standard');
+// import BlueEssence from './BlueEssence';
 // const BlueWater = require('./addons/styles/BlueWater');
 // const FlatMap = require('./addons/styles/FlatMap');
 // const LightMonochrome = require('./addons/styles/LightMonochrome');
@@ -35,8 +37,9 @@ class ReactiveGoogleMap extends Component {
 
     this.mapStyles = [
       // { label: 'Standard', value: Standard },
-      { label: 'Blue Essence', value: BlueEssence },
+      { label: 'Green Essence', value: GreenEssence },
       { label: 'Multi Brand Network', value: MultiBrandNetwork },
+      // { label: 'Blue Essence', value: BlueEssence },
       // { label: 'Blue Water', value: BlueWater },
       // { label: 'Flat Map', value: FlatMap },
       // { label: 'Light Monochrome', value: LightMonochrome },
@@ -56,7 +59,6 @@ class ReactiveGoogleMap extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.defaultMapStyle !== prevProps.defaultMapStyle) {
       this.handleStyleChange(this.props.defaultMapStyle);
-      console.log('handleStyleChange', this.props.defaultMapStyle);
     }
   }
 

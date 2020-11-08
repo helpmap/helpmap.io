@@ -30,7 +30,7 @@
     .ui.segment {
       border: 0;
       border-radius: 0;
-      box-shadow: 0px 6px 6px -5px #adadad;
+      box-shadow: 0px 6px 6px -5px var(--color-background);
       z-index: 111;
 
       @media screen and (max-width: 768px) {
@@ -41,9 +41,9 @@
   }
 
   .top-segment {
-    padding-left:0;
-    padding-bottom:0;
-    padding-right:0;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
   }
 }
 
