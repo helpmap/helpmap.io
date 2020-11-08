@@ -13,7 +13,7 @@ export const ThemeSwitch = ({ intl }) => {
   const theme = useTheme();
   const changeTheme = useChangeTheme();
 
-  function toggleDarkMode(): void {
+  function toggleDarkMode() {
     const paletteMode = theme.palette.mode === 'light' ? 'dark' : 'light';
 
     changeTheme({ paletteMode });

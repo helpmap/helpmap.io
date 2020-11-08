@@ -22,13 +22,20 @@ export function ThemeProvider(props) {
   const { children } = props;
 
   const [themeOptions, dispatch] = React.useReducer((state, action) => {
+    const { payload } = action;
     switch (action.type) {
       case 'CHANGE':
+        if (payload.paletteMode === 'light') {
+          document.documentElement.style.setProperty('--color-background', 'var(--white)');
+        } else {
+          document.documentElement.style.setProperty('--color-background', 'var(--dark)');
+        }
+
         return {
           ...state,
-          paletteMode: action.payload.paletteMode || state.paletteMode,
-          direction: action.payload.direction || state.direction,
-          paletteColors: action.payload.paletteColors || state.paletteColors,
+          paletteMode: payload.paletteMode || state.paletteMode,
+          // direction: payload.direction || state.direction,
+          paletteColors: payload.paletteColors || state.paletteColors,
         };
       default:
         throw new Error(`Unrecognized type ${action.type}`);
