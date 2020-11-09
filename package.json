@@ -23,7 +23,7 @@
     "react-linkify": "1.0.0-alpha",
     "react-places-autocomplete": "7.3.0",
     "react-scripts": "3.4.4",
-    "semantic-ui-react": "0.86.0"
+    "semantic-ui-react": "0.88.2"
   },
   "scripts": {
     "start": "react-scripts start",
