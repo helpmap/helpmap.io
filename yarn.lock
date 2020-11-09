@@ -30,10 +30,10 @@
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.1.1.tgz#7b9c08dffd4f5d41db667d9dbe5e0107d0bd9a4a"
   integrity sha512-jCH+k2Vjlno4YWl6g535nHR09PwCEmTBKAG6VqF+rhkrSPRLfgpU2maagwbZPLjaHuU5Jd1DFQ2KJpQuI6uG8w==
 
-"@appbaseio/reactivecore@9.6.21":
-  version "9.6.21"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.6.21.tgz#327791d5c21c75cf2e53f5394bacca8a7bb61c01"
-  integrity sha512-yYtFE+tp5x8TOT35PzrRu+GSqdYfpBDEW3Ey2ZbPOKGBa3HzuWDs60x+XDeOcKxRPOE+CT4is6dNEqG7WsYLHA==
+"@appbaseio/reactivecore@9.6.22":
+  version "9.6.22"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.6.22.tgz#3f02bac286d31a7a92d894f831002a580f0f4c3c"
+  integrity sha512-j9MEOEiJlaC7SRTouTsqyggyCUK0Hhv99tSC3rGWsdJadgWZaWXM32bVMPm6Ygbcvq7C9fWGWlDzS4YoV2KNGg==
   dependencies:
     cross-fetch "^3.0.4"
     prop-types "^15.6.0"
@@ -41,12 +41,12 @@
     redux-thunk "^2.3.0"
     xdate "^0.8.2"
 
-"@appbaseio/reactivesearch@3.12.7":
-  version "3.12.7"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.12.7.tgz#787f3e457d9b40ce3c2bc939c4b1e562614f1382"
-  integrity sha512-/hV6CCCnaVZ9MPLga5E6wFE4Lovu1oTqtJEGgV30w4OTT0tJq/koTek6nBOUx0wi4lO3OVEBkHryaMGkALI1eg==
+"@appbaseio/reactivesearch@3.12.8":
+  version "3.12.8"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.12.8.tgz#05fd589c17c442549e256a57e9345821370da0c3"
+  integrity sha512-+eatQ6pABEZ2vf5q9JY+u9gwZgd09c347RS4i19Y0B8doj/ozwtySUoeyEeffMm51TGG/svO6naO56ZRwCtGPQ==
   dependencies:
-    "@appbaseio/reactivecore" "9.6.21"
+    "@appbaseio/reactivecore" "9.6.22"
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
     appbase-js "^4.1.0"
@@ -2513,7 +2513,7 @@ babel-plugin-emotion@^10.0.27:
     find-root "^1.1.0"
     source-map "^0.5.7"
 
-babel-plugin-emotion@^9.0.0, babel-plugin-emotion@^9.2.11:
+babel-plugin-emotion@^9.2.11:
   version "9.2.11"
   resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-9.2.11.tgz#319c005a9ee1d15bb447f59fe504c35fd5807728"
   integrity sha512-dgCImifnOPPSeXod2znAmgc64NhaaOjGEHROR/M+lmStb3841yK1sgaDYAYMnlvWNz8GnpwIPN0VmNpbWYZ+VQ==
@@ -3626,7 +3626,7 @@ create-ecdh@^4.0.0:
     bn.js "^4.1.0"
     elliptic "^6.0.0"
 
-create-emotion-styled@^9.0.0:
+create-emotion-styled@^9.2.8:
   version "9.2.8"
   resolved "https://registry.yarnpkg.com/create-emotion-styled/-/create-emotion-styled-9.2.8.tgz#c0050e768ba439609bec108600467adf2de67cc3"
   integrity sha512-2LrNM5MREWzI5hZK+LyiBHglwE18WE3AEbBQgpHQ1+zmyLSm/dJsUZBeFAwuIMb+TjNZP0KsMZlV776ufOtFdg==
@@ -10530,13 +10530,13 @@ react-dom@16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-emotion@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/react-emotion/-/react-emotion-9.0.0.tgz#10df4a2e4122db0187390f876d52fc7ad05438ab"
-  integrity sha512-GE1gQQ1OCbkzplo45cRemBr33XepIHLtKVvL8brf1jGp3iVrDDmfGRYdNlP/ami81Bz8Rsv6iA+Gd+cJwJxwvQ==
+react-emotion@9.2.12:
+  version "9.2.12"
+  resolved "https://registry.yarnpkg.com/react-emotion/-/react-emotion-9.2.12.tgz#74d1494f89e22d0b9442e92a33ca052461955c83"
+  integrity sha512-qt7XbxnEKX5sZ73rERJ92JMbEOoyOwG3BuCRFRkXrsJhEe+rFBRTljRw7yOLHZUCQC4GBObZhjXIduQ8S0ZpYw==
   dependencies:
-    babel-plugin-emotion "^9.0.0"
-    create-emotion-styled "^9.0.0"
+    babel-plugin-emotion "^9.2.11"
+    create-emotion-styled "^9.2.8"
 
 react-error-overlay@^6.0.7:
   version "6.0.7"
