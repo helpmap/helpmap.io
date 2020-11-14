@@ -6,14 +6,17 @@ $height-top-xs: 228px;
     width: 100% !important;
   }
 }
-
 .ant-card {
-  background-color: black;
-  color: var(--color-foreground);
-  fill: var(--color-item);
+  background-color: transparent;
+}
 
-  h2 {
-    color: var(--color-foreground);
+.dark-mode {
+  .ant-card {
+    fill: var(--color-highlight-item-dark);
+    &,
+    h2 {
+      color: var(--color-highlight-item-dark);
+    }
   }
 }
 

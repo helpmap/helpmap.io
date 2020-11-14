@@ -13,11 +13,7 @@ function App() {
     <ThemeProvider>
       <Grid centered>
         <TopGrid />
-        <Grid.Row className="main-row">
-          <Grid.Column>
-            <Main />
-          </Grid.Column>
-        </Grid.Row>
+        <BottomGrid />
       </Grid>
     </ThemeProvider>
   );
@@ -32,6 +28,17 @@ function TopGrid() {
         <Segment className="top-segment" inverted={isDarkMode} basic>
           <TopInfo />
         </Segment>
+      </Grid.Column>
+    </Grid.Row>
+  );
+}
+function BottomGrid() {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  return (
+    <Grid.Row className={`main-row${isDarkMode ? ' dark-mode' : ''}`}>
+      <Grid.Column>
+        <Main />
       </Grid.Column>
     </Grid.Row>
   );
