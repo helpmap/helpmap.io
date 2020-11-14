@@ -8,6 +8,8 @@ import { appbaseRef } from '../Main';
 
 import './SideMenu.scss';
 
+let types;
+
 const Edit = ({ mode, setMode, setShow, id, intl }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
@@ -17,7 +19,6 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
   const [isSaving, setSaving] = useState(false);
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
-  let types;
 
   useEffect(() => {
     if (id) {
@@ -101,10 +102,12 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
         {mode === 'adding' ? (
+          // eslint-disable-next-line react/jsx-no-bind
           <Button positive className="add-more-btn" onClick={() => reset()}>
             {intl.formatMessage({ id: 'Add_more' })}
           </Button>
         ) : (
+          // eslint-disable-next-line react/jsx-no-bind
           <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
             {intl.formatMessage({ id: 'Back' })}
           </Button>
