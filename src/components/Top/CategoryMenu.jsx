@@ -17,7 +17,7 @@ const CategoryMenu = ({ onSelect }) => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className="category-menu-container">
       <Menu borderless className="category-menu" inverted={isDarkMode}>
         <ToggleButton
           className="toggle"

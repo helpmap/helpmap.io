@@ -13,6 +13,12 @@
   }
 }
 
+.category-menu-container > .category-menu {
+  overflow-x: scroll;
+  display: flex;
+  justify-content: center;
+}
+
 .category-menu {
   border: 0 !important;
   box-shadow: none !important;
@@ -20,8 +26,6 @@
 
   display: flex;
   justify-content: space-evenly;
-
-  overflow-x: scroll;
 
   @media screen and (max-width: 768px) {
     a {
