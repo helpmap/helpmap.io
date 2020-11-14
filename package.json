@@ -4,17 +4,17 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@appbaseio/reactivesearch": "3.12.8",
+    "@appbaseio/reactivesearch": "3.13.0",
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
-    "antd": "3.26.20",
+    "antd": "4.8.2",
     "appbase-js": "4.1.2",
-    "emotion": "9.2.12",
+    "emotion": "10.0.27",
     "ngeohash": "0.6.3",
     "node-sass": "4.14.1",
     "prop-types": "15.7.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-emotion": "9.2.12",
     "react-google-maps": "9.4.5",
     "react-google-maps-loader": "4.3.0",
@@ -22,8 +22,8 @@
     "react-intl": "2.9.0",
     "react-linkify": "1.0.0-alpha",
     "react-places-autocomplete": "7.3.0",
-    "react-scripts": "3.4.3",
-    "semantic-ui-react": "0.86.0"
+    "react-scripts": "3.4.4",
+    "semantic-ui-react": "0.88.2"
   },
   "scripts": {
     "start": "react-scripts start",
