@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
+import { useTheme } from '@material-ui/core';
 
 import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
@@ -19,6 +20,9 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
   const [isSaving, setSaving] = useState(false);
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
 
   useEffect(() => {
     if (id) {
@@ -116,7 +120,7 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
     );
 
   return (
-    <Form className="add-menu">
+    <Form className="add-menu" inverted={isDarkMode}>
       <Form.Input
         placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
         value={name}
