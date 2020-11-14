@@ -7,20 +7,27 @@ h2.ui.icon.header {
     }
   }
 
-  svg path {
-    fill: var(--color-foreground);
-  }
-
   .sub.header.tagline {
-    color: var(--color-foreground);
+    color: #000;
     font-size: 25px;
     font-weight: 300;
     margin-top: 15px;
   }
 }
 
+.inverted {
+  h2.ui.icon.header {
+    svg path {
+      fill: var(--color-foreground-light);
+    }
+
+    .sub.header.tagline {
+      color: #fff;
+    }
+  }
+}
+
 .language-switch {
-  color: var(--color-foreground);
   position: absolute;
   right: 11px;
   top: 21px;
@@ -44,7 +51,6 @@ h2.ui.icon.header {
 }
 
 .info-div {
-  color: var(--color-foreground);
   cursor: pointer;
   display: flex;
   align-self: center;

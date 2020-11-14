@@ -1,14 +1,15 @@
 :root {
   --dark: #1b1c1d;
-  --light: #fff;
   --light: rgb(232, 230, 227);
   --color-highlight-item-light: var(--dark);
   --color-highlight-item-dark: var(--light);
+  --color-icon-light: #616161;
+  --color-icon-dark: var(--light);
   --color-foreground-dark: var(--dark);
   --color-foreground-light: var(--light);
-  --color-background: var(--white);
+  --color-background: var(--light);
 }
-$dark: rgb(24, 26, 27);
+$dark: #1b1c1d;
 $light: rgb(232, 230, 227);
 $color-background-dark: darken($light, 20%);
 $color-background-light: lighten($dark, 20%);

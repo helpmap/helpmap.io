@@ -69,12 +69,13 @@
 
   > a {
     background-color: transparent;
-    color: var(--color-foreground);
 
     > .item {
       > span {
         padding-top: 5px;
+        color: var(--color-icon-light);
       }
+      fill: var(--color-icon-light);
     }
 
     &.active {
@@ -123,6 +124,7 @@
       > .item {
         > span {
           padding-top: 5px;
+          color: var(--color-highlight-item-dark);
         }
         fill: var(--color-highlight-item-dark);
       }

@@ -30,7 +30,6 @@
     .ui.segment {
       border: 0;
       border-radius: 0;
-      box-shadow: 0px 6px 6px -5px var(--color-background);
       z-index: 111;
 
       @media screen and (max-width: 768px) {
@@ -44,6 +43,16 @@
     padding-left: 0;
     padding-bottom: 0;
     padding-right: 0;
+  }
+}
+
+.top-row-cat .ui.segment {
+  box-shadow: 0px 6px 6px -5px #adadad;
+}
+
+.dark-mode {
+  .top-row-cat .ui.segment {
+    box-shadow: 0px 6px 6px -5px #0a0a0a;
   }
 }
 

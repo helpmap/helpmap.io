@@ -43,7 +43,7 @@ const TopInfo = ({ intl }) => {
           <FormattedHTMLMessage id="Info" />
         </Modal>
         <Header as="h2" icon size="medium" inverted={isDarkMode}>
-          <Logo style={{ height: '4rem', fill: isDarkMode ? '#fff' : 'inherit' }} />
+          <Logo style={{ height: '4rem' }} />
           <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
         </Header>
         <div className="language-switch">
