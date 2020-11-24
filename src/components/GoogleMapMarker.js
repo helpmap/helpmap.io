@@ -220,7 +220,7 @@ class GoogleMapMarker extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   markerOnTop: state.markerOnTop,
   openMarkers: state.openMarkers,
   config: state.config,
@@ -228,9 +228,9 @@ const mapStateToProps = state => ({
   analytics: state.analytics,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setMarkerOnTop: markerId => dispatch(setMarkerOnTop(markerId)),
-  setOpenMarkers: openMarkers => dispatch(setOpenMarkers(openMarkers)),
+const mapDispatchToProps = (dispatch) => ({
+  setMarkerOnTop: (markerId) => dispatch(setMarkerOnTop(markerId)),
+  setOpenMarkers: (openMarkers) => dispatch(setOpenMarkers(openMarkers)),
 });
 
 GoogleMapMarker.propTypes = {

@@ -22,7 +22,7 @@
     "react-intl": "2.9.0",
     "react-linkify": "1.0.0-alpha",
     "react-places-autocomplete": "7.3.0",
-    "react-scripts": "3.4.4",
+    "react-scripts": "4.0.1",
     "semantic-ui-react": "2.0.1"
   },
   "scripts": {
@@ -30,10 +30,8 @@
     "build": "CI= react-scripts build",
     "postbuild": "react-snap || true",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject",
+    "eslint": "eslint src/"
   },
   "browserslist": {
     "production": [
@@ -52,7 +50,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "prettier": "2.2.0",
-    "react-snap": "1.23.0"
+    "react-snap": "https://github.com/natahouse/react-snap"
   },
   "reactSnap": {
     "skipThirdPartyRequests": true

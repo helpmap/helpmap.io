@@ -1,22 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": ["plugin:react/recommended", "prettier", "prettier/react"],
-  "plugins": ["react", "prettier"],
-  "globals": {},
-  "parserOptions": {
-    "ecmaVersion": 2017,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "experimentalDecorators": true
-    }
-  },
-  "env": {
-    "es6": true
-  },
+  "extends": ["react-app", "react-app/jest", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
   "rules": {
     "no-duplicate-imports": 0,
-    "no-unused-vars": 2,
+    "no-unused-vars": 1,
     "react/display-name": 0,
     "react/jsx-no-bind": 1,
     "react/jsx-boolean-value": 2,
@@ -31,7 +19,7 @@
     ],
     "react/self-closing-comp": 2,
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "bracketSpacing": true,
         "jsxBracketSameLine": true,
@@ -43,10 +31,5 @@
         "useTabs": false
       }
     ]
-  },
-  "settings": {
-    "react": {
-      "version": "16.8"
-    }
   }
 }
