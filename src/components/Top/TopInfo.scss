@@ -1,10 +1,6 @@
 h2.ui.icon.header {
   &:first-child {
     margin: 0 auto;
-
-    @media screen and (max-width: 768px) {
-      margin-top: 2em;
-    }
   }
 
   .sub.header.tagline {
@@ -12,10 +8,12 @@ h2.ui.icon.header {
     font-size: 25px;
     font-weight: 300;
     margin-top: 15px;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 }
-
-
 
 .language-switch {
   position: absolute;
@@ -40,6 +38,24 @@ h2.ui.icon.header {
   }
 }
 
+.top-info-body {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    margin-top: -1.9rem;
+  }
+
+  .logo {
+    margin: 0.9rem 0 0.8rem;
+    height: 2.4rem;
+
+    @media screen and (max-width: 768px) {
+      height: 2rem;
+    }
+  }
+}
+
 .info-div {
   cursor: pointer;
   display: flex;
@@ -56,7 +72,7 @@ h2.ui.icon.header {
 .teespring,
 .teespring:hover {
   color: black;
-  border: #9E9E9E solid 1px;
+  border: #9e9e9e solid 1px;
   border-radius: 2px;
   padding: 3px 8px;
   margin-left: 2em;

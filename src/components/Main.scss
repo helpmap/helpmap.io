@@ -1,5 +1,5 @@
 $height-top-xl: 232px;
-$height-top-xs: 228px;
+$height-top-xs: 109px;
 
 @media all and (max-width: 768px) {
   .ui.grid > .row > [class*='four wide'].column {
@@ -57,6 +57,9 @@ $height-top-xs: 228px;
   background-color: red !important;
   position: absolute !important;
   right: 100px;
+  @media all and (max-width: 768px) {
+    right: 60px;
+  }
 }
 
 .right-col {
