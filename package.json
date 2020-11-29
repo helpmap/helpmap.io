@@ -31,7 +31,7 @@
     "postbuild": "react-snap || true",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "eslint": "eslint src/"
+    "lint": "eslint src/"
   },
   "browserslist": {
     "production": [
@@ -48,7 +48,6 @@
   "devDependencies": {
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.5",
     "prettier": "2.2.1",
     "react-snap": "https://github.com/natahouse/react-snap"
   },

@@ -100,6 +100,7 @@ class GoogleMapMarker extends React.Component {
         <InfoWindow
           zIndex={500}
           key={`${item._id}-InfoWindow`}
+          // eslint-disable-next-line react/jsx-no-bind
           onCloseClick={() => this.closeMarker()}
           {...additionalProps}>
           <div>{onPopoverClick(item)}</div>
@@ -206,6 +207,7 @@ class GoogleMapMarker extends React.Component {
     return (
       <Marker
         key={marker._id}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={() => this.openMarker(marker._id, autoClosePopover || false, handlePreserveCenter)}
         // START - helpmap - custom code
         // onMouseOver={this.increaseMarkerZIndex}
@@ -220,7 +222,7 @@ class GoogleMapMarker extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   markerOnTop: state.markerOnTop,
   openMarkers: state.openMarkers,
   config: state.config,
@@ -228,9 +230,9 @@ const mapStateToProps = (state) => ({
   analytics: state.analytics,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setMarkerOnTop: (markerId) => dispatch(setMarkerOnTop(markerId)),
-  setOpenMarkers: (openMarkers) => dispatch(setOpenMarkers(openMarkers)),
+const mapDispatchToProps = dispatch => ({
+  setMarkerOnTop: markerId => dispatch(setMarkerOnTop(markerId)),
+  setOpenMarkers: openMarkers => dispatch(setOpenMarkers(openMarkers)),
 });
 
 GoogleMapMarker.propTypes = {
