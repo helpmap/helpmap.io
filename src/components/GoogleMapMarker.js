@@ -161,7 +161,7 @@ class GoogleMapMarker extends React.Component {
             onBlur={this.removeMarkerZIndex}
             {...markerProps}
             {...customMarkerProps}>
-            <div className={mapPinWrapper}>
+            <div css={mapPinWrapper}>
               <MapPin>{data.label}</MapPin>
               <MapPinArrow />
               {onPopoverClick ? this.renderPopover(marker, true) : null}
@@ -183,7 +183,7 @@ class GoogleMapMarker extends React.Component {
             onBlur={this.removeMarkerZIndex}
             {...markerProps}
             {...customMarkerProps}>
-            <div className={mapPinWrapper}>
+            <div css={mapPinWrapper}>
               {data.custom}
               {onPopoverClick ? this.renderPopover(marker, true) : null}
             </div>
