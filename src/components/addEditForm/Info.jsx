@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Button, Form } from 'semantic-ui-react';
 import BackIcon from '@material-ui/icons/ArrowBack';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 import ShareIcon from '@material-ui/icons/Share';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -15,9 +15,9 @@ import './SideMenu.scss';
 import categories from '../Top/messages/menuMessages';
 import { appbaseRef } from '../Main';
 
-function Transition(props) {
+const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" {...props} />;
-}
+});
 
 const showCategories = (types, intl) =>
   types.split(' ').map((name, i) => (
@@ -93,13 +93,7 @@ let Info = ({ setMode, backToResults, id, intl }) => {
           </blockquote>
         </Card>
       </Container>
-      <Dialog
-        TransitionComponent={Transition}
-        onClose={handleClose}
-        keepMounted
-        open={showModal}
-        fullWidth
-        aria-labelledby="share">
+      <Dialog TransitionComponent={Transition} onClose={handleClose} open={showModal} fullWidth aria-labelledby="share">
         <DialogContent>
           <Form className="form-inline">
             <div className="form-group">

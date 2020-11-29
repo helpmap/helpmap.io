@@ -32,15 +32,12 @@ const TopInfo = ({ intl }) => {
           title={intl.formatMessage({ id: 'Info.Title' })}
           visible={visible}
           onCancel={() => setVisible(false)}
-          footer={null}
-        >
+          footer={null}>
           <FormattedHTMLMessage id="Info" />
         </Modal>
         <Header as="h2" icon size="medium">
           <Logo className="logo" />
-          <Header.Subheader className="tagline">
-            {intl.formatMessage({ id: 'Tagline' })}
-          </Header.Subheader>
+          <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
         </Header>
         <div className="language-switch">
           <LanguageSwitch />
