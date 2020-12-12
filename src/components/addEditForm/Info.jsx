@@ -93,7 +93,13 @@ let Info = ({ setMode, backToResults, id, intl }) => {
           </blockquote>
         </Card>
       </Container>
-      <Dialog TransitionComponent={Transition} onClose={handleClose} open={showModal} fullWidth aria-labelledby="share">
+      <Dialog
+        keepMounted
+        TransitionComponent={Transition}
+        onClose={handleClose}
+        open={showModal}
+        fullWidth
+        aria-labelledby="share">
         <DialogContent>
           <Form className="form-inline">
             <div className="form-group">

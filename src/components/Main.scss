@@ -7,12 +7,11 @@ $height-top-xs: 109px;
   }
 }
 .left-col {
-  height: calc(100vh - #{$height-top-xl}) !important;
   padding: 0 !important;
   overflow-y: scroll;
 
-  @media all and (max-width: 768px) {
-    height: calc(100vh - #{$height-top-xs}) !important;
+  @media only screen and (min-width: 933px) {
+    order: 0;
   }
 
   .results-list {
@@ -40,9 +39,17 @@ $height-top-xs: 109px;
 
 .map-container {
   padding: 0 !important;
+}
 
+.map {
+  @media all and (max-width: 768px) {
+    height: calc(60vh - #{$height-top-xs}) !important;
+  }
+}
+
+.right-col {
   @media only screen and (min-width: 933px) {
-    display: none;
+    order: 1;
   }
 }
 
@@ -59,14 +66,6 @@ $height-top-xs: 109px;
   right: 100px;
   @media all and (max-width: 768px) {
     right: 60px;
-  }
-}
-
-.right-col {
-  height: calc(100vh - #{$height-top-xl}) !important;
-
-  @media all and (max-width: 768px) {
-    height: calc(100vh - #{$height-top-xs}) !important;
   }
 }
 
