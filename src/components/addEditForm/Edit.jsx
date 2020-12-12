@@ -29,6 +29,7 @@ const Edit = ({ mode, setMode, id, intl }) => {
         handleDescription(data.description);
         setLocation(data.location);
         chooseType(data.types[0].split(' '));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         types = data.types;
         setVisible(true);
       };

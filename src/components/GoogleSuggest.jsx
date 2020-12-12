@@ -11,6 +11,7 @@ const GoogleSuggest = ({ result, handleAddress, setLocation, intl }) => {
       .catch(error => console.error('Error', error));
   };
   return (
+    // eslint-disable-next-line react/jsx-no-bind
     <PlacesAutocomplete value={result} onChange={handleAddress} onSelect={handleSelect}>
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
