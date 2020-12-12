@@ -62,10 +62,12 @@ $height-top-xs: 109px;
 .fab {
   bottom: 40px;
   background-color: red !important;
-  position: absolute !important;
+  position: fixed !important;
   right: 100px;
+  z-index: 100;
+
   @media all and (max-width: 768px) {
-    right: 60px;
+    right: 20px;
   }
 }
 

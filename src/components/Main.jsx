@@ -241,7 +241,7 @@ const Main = () => {
           </Grid.Row>
         </Grid>
       </ReactiveBase>
-      {shouldShowMap && renderFloatingButton()}
+      {shouldShowMap && mode !== 'editing' && mode !== 'adding' && renderFloatingButton()}
     </div>
   );
 };
