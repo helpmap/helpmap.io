@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 
@@ -85,14 +85,14 @@ const Edit = ({ mode, setMode, id, intl }) => {
     return name && address && description.trim() && location && location.lat && choosenTypes.length > 0;
   }
 
-  function reset() {
+  const reset = useCallback(() => {
     setSuccess(false);
     handleName('');
     handleAddress('');
     handleDescription('');
     setLocation('');
     chooseType([]);
-  }
+  }, [setSuccess, handleName, handleAddress, handleDescription, setLocation, chooseType]);
 
   if (id && !visible) return null;
 
@@ -101,7 +101,7 @@ const Edit = ({ mode, setMode, id, intl }) => {
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
         {mode === 'adding' ? (
-          <Button positive className="add-more-btn" onClick={() => reset()}>
+          <Button positive className="add-more-btn" onClick={reset}>
             {intl.formatMessage({ id: 'Add_more' })}
           </Button>
         ) : (
