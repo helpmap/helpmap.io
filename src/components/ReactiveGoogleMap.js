@@ -17,7 +17,7 @@ const BlueEssence = require('./BlueEssence');
 // const MidnightCommander = require('./addons/styles/MidnightCommander');
 // const UnsaturatedBrowns = require('./addons/styles/UnsaturatedBrowns');
 
-const MapComponent = withGoogleMap((props) => {
+const MapComponent = withGoogleMap(props => {
   const { children, onMapMounted, ...allProps } = props;
 
   return (
@@ -41,7 +41,7 @@ class ReactiveGoogleMap extends Component {
       // { label: 'Unsaturated Browns', value: UnsaturatedBrowns },
     ];
 
-    const currentMapStyle = this.mapStyles.find((style) => style.label === props.defaultMapStyle) || this.mapStyles[0];
+    const currentMapStyle = this.mapStyles.find(style => style.label === props.defaultMapStyle) || this.mapStyles[0];
 
     this.state = {
       currentMapStyle,
@@ -56,27 +56,27 @@ class ReactiveGoogleMap extends Component {
     }
   }
 
-  handleStyleChange = (newStyle) => {
-    this.setState((prevState) => ({
-      currentMapStyle: this.mapStyles.find((style) => style.label === newStyle) || this.mapStyles[0],
+  handleStyleChange = newStyle => {
+    this.setState(prevState => ({
+      currentMapStyle: this.mapStyles.find(style => style.label === newStyle) || this.mapStyles[0],
       updaterKey: prevState.updaterKey + 1,
     }));
   };
 
   handleUpdaterKey = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       updaterKey: prevState.updaterKey + 1,
     }));
   };
 
-  setMapStyle = (currentMapStyle) => {
-    this.setState((prevState) => ({
+  setMapStyle = currentMapStyle => {
+    this.setState(prevState => ({
       currentMapStyle,
       updaterKey: prevState.updaterKey + 1,
     }));
   };
 
-  onMapMounted = (ref) => {
+  onMapMounted = ref => {
     this.setState({ mapRef: ref });
     if (this.props.innerRef && ref) {
       const map = Object.values(ref.context)[0];
@@ -85,7 +85,7 @@ class ReactiveGoogleMap extends Component {
     }
   };
 
-  renderMap = (params) => {
+  renderMap = params => {
     if (typeof window === 'undefined' || (window && typeof window.google === 'undefined')) {
       return null;
     }

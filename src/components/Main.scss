@@ -1,5 +1,5 @@
 $height-top-xl: 232px;
-$height-top-xs: 228px;
+$height-top-xs: 109px;
 
 @media all and (max-width: 768px) {
   .ui.grid > .row > [class*='four wide'].column {
@@ -7,12 +7,11 @@ $height-top-xs: 228px;
   }
 }
 .left-col {
-  height: calc(100vh - #{$height-top-xl}) !important;
   padding: 0 !important;
   overflow-y: scroll;
 
-  @media all and (max-width: 768px) {
-    height: calc(100vh - #{$height-top-xs}) !important;
+  @media only screen and (min-width: 933px) {
+    order: 0;
   }
 
   .results-list {
@@ -40,9 +39,17 @@ $height-top-xs: 228px;
 
 .map-container {
   padding: 0 !important;
+}
 
+.map {
+  @media all and (max-width: 768px) {
+    height: calc(60vh - #{$height-top-xs}) !important;
+  }
+}
+
+.right-col {
   @media only screen and (min-width: 933px) {
-    display: none;
+    order: 1;
   }
 }
 
@@ -55,15 +62,12 @@ $height-top-xs: 228px;
 .fab {
   bottom: 40px;
   background-color: red !important;
-  position: absolute !important;
+  position: fixed !important;
   right: 100px;
-}
-
-.right-col {
-  height: calc(100vh - #{$height-top-xl}) !important;
+  z-index: 100;
 
   @media all and (max-width: 768px) {
-    height: calc(100vh - #{$height-top-xs}) !important;
+    right: 20px;
   }
 }
 

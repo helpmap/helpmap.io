@@ -8,7 +8,7 @@ import { appbaseRef } from '../Main';
 
 import './SideMenu.scss';
 
-const Edit = ({ mode, setMode, setShow, id, intl }) => {
+const Edit = ({ mode, setMode, id, intl }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
@@ -29,6 +29,7 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
         handleDescription(data.description);
         setLocation(data.location);
         chooseType(data.types[0].split(' '));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         types = data.types;
         setVisible(true);
       };
@@ -64,9 +65,8 @@ const Edit = ({ mode, setMode, setShow, id, intl }) => {
         setSuccess(true);
         setSaving(false);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
-        // setShow(false);
         setSaving(false);
         setMode('browsing');
       });

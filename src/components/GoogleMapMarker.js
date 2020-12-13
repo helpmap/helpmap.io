@@ -4,7 +4,6 @@ import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerW
 import { InfoWindow, Marker } from 'react-google-maps';
 
 import types from '@appbaseio/reactivecore/lib/utils/types';
-import { setMarkerOnTop, setOpenMarkers } from '@appbaseio/reactivecore/lib/actions';
 import { connect, ReactReduxContext } from '@appbaseio/reactivesearch/lib/utils';
 
 import { MapPin, MapPinArrow, mapPinWrapper } from './MapPin';
@@ -49,15 +48,19 @@ class GoogleMapMarker extends React.Component {
       markerOnTop,
       autoClosePopover,
       handlePreserveCenter,
+      // START - helpmap - custom code
       onMarkerClick,
+      // END - helpmap - custom code
     } = this.props;
     const id = marker._id;
     const newOpenMarkers = autoClosePopover ? { [id]: true } : { ...openMarkers, [id]: true };
 
+    // START - helpmap - custom code
     onMarkerClick && onMarkerClick(marker);
 
     if (markerOnTop !== id) this.increaseMarkerZIndex();
     else this.removeMarkerZIndex();
+    // END - helpmap - custom code
 
     handleOpenMarkers(newOpenMarkers);
     handlePreserveCenter(true);
@@ -74,7 +77,6 @@ class GoogleMapMarker extends React.Component {
     } = this.props;
     const id = marker._id;
 
-    // eslint-disable-next-line no-unused-vars
     const { [id]: del, ...activeMarkers } = openMarkers;
     const newOpenMarkers = autoClosePopover ? {} : activeMarkers;
 
@@ -100,6 +102,7 @@ class GoogleMapMarker extends React.Component {
         <InfoWindow
           zIndex={500}
           key={`${item._id}-InfoWindow`}
+          // eslint-disable-next-line react/jsx-no-bind
           onCloseClick={() => this.closeMarker()}
           {...additionalProps}>
           <div>{onPopoverClick(item)}</div>
@@ -158,7 +161,7 @@ class GoogleMapMarker extends React.Component {
             onBlur={this.removeMarkerZIndex}
             {...markerProps}
             {...customMarkerProps}>
-            <div className={mapPinWrapper}>
+            <div css={mapPinWrapper}>
               <MapPin>{data.label}</MapPin>
               <MapPinArrow />
               {onPopoverClick ? this.renderPopover(marker, true) : null}
@@ -180,7 +183,7 @@ class GoogleMapMarker extends React.Component {
             onBlur={this.removeMarkerZIndex}
             {...markerProps}
             {...customMarkerProps}>
-            <div className={mapPinWrapper}>
+            <div css={mapPinWrapper}>
               {data.custom}
               {onPopoverClick ? this.renderPopover(marker, true) : null}
             </div>
@@ -206,6 +209,7 @@ class GoogleMapMarker extends React.Component {
     return (
       <Marker
         key={marker._id}
+        // eslint-disable-next-line react/jsx-no-bind
         onClick={() => this.openMarker(marker._id, autoClosePopover || false, handlePreserveCenter)}
         // START - helpmap - custom code
         // onMouseOver={this.increaseMarkerZIndex}
@@ -220,17 +224,10 @@ class GoogleMapMarker extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  markerOnTop: state.markerOnTop,
-  openMarkers: state.openMarkers,
+const mapStateToProps = state => ({
   config: state.config,
   headers: state.appbaseRef.headers,
   analytics: state.analytics,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setMarkerOnTop: (markerId) => dispatch(setMarkerOnTop(markerId)),
-  setOpenMarkers: (openMarkers) => dispatch(setOpenMarkers(openMarkers)),
 });
 
 GoogleMapMarker.propTypes = {
@@ -240,7 +237,9 @@ GoogleMapMarker.propTypes = {
   autoClosePopover: types.bool,
   handlePreserveCenter: types.func,
   onPopoverClick: types.func,
+  // START - helpmap - custom code
   onMarkerClick: types.func,
+  // END - helpmap - custom code
   markerProps: types.props,
   marker: types.props,
   openMarkers: types.props,
@@ -255,4 +254,4 @@ GoogleMapMarker.propTypes = {
   headers: types.headers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GoogleMapMarker);
+export default connect(mapStateToProps, null)(GoogleMapMarker);

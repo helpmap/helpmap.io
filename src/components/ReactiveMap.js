@@ -109,7 +109,7 @@ class ReactiveMap extends Component {
       // { label: 'Unsaturated Browns', value: UnsaturatedBrowns },
     ];
 
-    const currentMapStyle = this.mapStyles.find((style) => style.label === props.defaultMapStyle) || this.mapStyles[0];
+    const currentMapStyle = this.mapStyles.find(style => style.label === props.defaultMapStyle) || this.mapStyles[0];
 
     this.state = {
       currentMapStyle,
@@ -276,7 +276,7 @@ class ReactiveMap extends Component {
 
     if (this.props.defaultMapStyle !== prevProps.defaultMapStyle) {
       updatedState.currentMapStyle =
-        this.mapStyles.find((style) => style.label === this.props.defaultMapStyle) || this.mapStyles[0];
+        this.mapStyles.find(style => style.label === this.props.defaultMapStyle) || this.mapStyles[0];
     }
 
     this.updateState(updatedState);
@@ -310,11 +310,11 @@ class ReactiveMap extends Component {
     this.props.removeComponent(this.internalComponent);
   }
 
-  updateState = (newState) => {
+  updateState = newState => {
     this.setState({ ...newState });
   };
 
-  setReact = (props) => {
+  setReact = props => {
     const { react } = props;
     if (react) {
       const newReact = pushToAndClause(react, this.internalComponent);
@@ -324,8 +324,8 @@ class ReactiveMap extends Component {
     }
   };
 
-  getHitsCenter = (hits) => {
-    const data = hits.map((hit) => hit[this.props.dataField]);
+  getHitsCenter = hits => {
+    const data = hits.map(hit => hit[this.props.dataField]);
 
     if (!data.length) return false;
 
@@ -335,7 +335,7 @@ class ReactiveMap extends Component {
     let Y = 0.0;
     let Z = 0.0;
 
-    data.forEach((location) => {
+    data.forEach(location => {
       if (location) {
         let lat, lng;
 
@@ -372,7 +372,7 @@ class ReactiveMap extends Component {
   };
 
   // getArrPosition = location => [location.lat, location.lon || location.lng];
-  getArrPosition = (location) => ({ lat: location.lat, lon: location.lon || location.lng });
+  getArrPosition = location => ({ lat: location.lat, lon: location.lon || location.lng });
 
   getGeoDistanceQuery = () => {
     const center = this.props.center || this.props.defaultCenter;
@@ -504,7 +504,7 @@ class ReactiveMap extends Component {
     }
   };
 
-  setPage = (page) => {
+  setPage = page => {
     const value = this.props.size * page;
     const options = getQueryOptions(this.props);
     options.from = this.state.from;
@@ -526,7 +526,7 @@ class ReactiveMap extends Component {
     }
   };
 
-  getPosition = (result) => {
+  getPosition = result => {
     if (!result) return null;
 
     return this.parseLocation(result[this.props.dataField]);
@@ -545,7 +545,7 @@ class ReactiveMap extends Component {
     };
   }
 
-  getCenter = (hits) => {
+  getCenter = hits => {
     if (this.props.center) {
       return this.parseLocation(this.props.center);
     }
@@ -578,7 +578,7 @@ class ReactiveMap extends Component {
     return this.parseLocation(MAP_CENTER);
   };
 
-  handlePreserveCenter = (preserveCenter) => this.setState({ preserveCenter });
+  handlePreserveCenter = preserveCenter => this.setState({ preserveCenter });
 
   handleOnIdle = () => {
     // only make the geo_bounding query if we have hits data
@@ -637,11 +637,11 @@ class ReactiveMap extends Component {
     );
   };
 
-  addNoise = (hits) => {
+  addNoise = hits => {
     const hitMap = {};
     let updatedHits = [];
 
-    hits.forEach((item) => {
+    hits.forEach(item => {
       const updatedItem = { ...item };
       const location = this.parseLocation(item[this.props.dataField]);
       const key = JSON.stringify(location);
@@ -665,14 +665,14 @@ class ReactiveMap extends Component {
   getResultsToRender = () => {
     const results = parseHits(this.props.hits) || [];
     const streamResults = parseHits(this.props.streamHits) || [];
-    let filteredResults = results.filter((item) => !!item[this.props.dataField]);
+    let filteredResults = results.filter(item => !!item[this.props.dataField]);
 
     if (streamResults.length) {
-      const ids = streamResults.map((item) => item._id);
-      filteredResults = filteredResults.filter((item) => !ids.includes(item._id));
+      const ids = streamResults.map(item => item._id);
+      filteredResults = filteredResults.filter(item => !ids.includes(item._id));
     }
 
-    filteredResults = [...streamResults, ...filteredResults].map((item) => ({
+    filteredResults = [...streamResults, ...filteredResults].map(item => ({
       ...item,
       [this.props.dataField]: getLocationObject(item[this.props.dataField]),
     }));
@@ -692,7 +692,7 @@ class ReactiveMap extends Component {
     />
   );
 
-  handleOpenStreetOnDragEnd = (bounds) => {
+  handleOpenStreetOnDragEnd = bounds => {
     if (this.state.searchAsMove) {
       this.setState(
         {
@@ -730,7 +730,7 @@ class ReactiveMap extends Component {
     return this.props.loader && this.props.isLoading;
   }
 
-  triggerAnalytics = (searchPosition) => {
+  triggerAnalytics = searchPosition => {
     // click analytics would only work client side and after javascript loads
     const { config, analytics, headers } = this.props;
 
@@ -743,7 +743,7 @@ class ReactiveMap extends Component {
     });
   };
 
-  withClickIds = (hits) => {
+  withClickIds = hits => {
     const { currentPage, size } = this.props;
     const base = currentPage * size;
 
@@ -893,15 +893,15 @@ const mapStateToProps = (state, props) => ({
   analytics: state.analytics,
 });
 
-const mapDispatchtoProps = (dispatch) => ({
-  addComponent: (component) => dispatch(addComponent(component)),
-  removeComponent: (component) => dispatch(removeComponent(component)),
+const mapDispatchtoProps = dispatch => ({
+  addComponent: component => dispatch(addComponent(component)),
+  removeComponent: component => dispatch(removeComponent(component)),
   setStreaming: (component, stream) => dispatch(setStreaming(component, stream)),
   watchComponent: (component, react) => dispatch(watchComponent(component, react)),
   setQueryOptions: (component, props, execute) => dispatch(setQueryOptions(component, props, execute)),
   setQueryListener: (component, onQueryChange, beforeQueryChange) =>
     dispatch(setQueryListener(component, onQueryChange, beforeQueryChange)),
-  updateQuery: (updateQueryObject) => dispatch(updateQuery(updateQueryObject)),
+  updateQuery: updateQueryObject => dispatch(updateQuery(updateQueryObject)),
   loadMore: (component, options, append) => dispatch(loadMore(component, options, append)),
   setMapData: (component, geoQuery, persistMapQuery, forceExecute = false) =>
     dispatch(setMapData(component, geoQuery, persistMapQuery, forceExecute)),

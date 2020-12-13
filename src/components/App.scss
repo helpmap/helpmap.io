@@ -34,15 +34,14 @@
       z-index: 111;
 
       @media screen and (max-width: 768px) {
-        padding-left: 0;
-        padding-right: 0;
+        padding: 0;
       }
     }
   }
 
   .top-segment {
-    padding-left:0;
-    padding-right:0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -70,5 +69,11 @@
   .ui.grid {
     margin-left: 0;
     margin-right: 0;
+
+    > .row {
+      @media screen and (max-width: 768px) {
+        padding-top: 0;
+      }
+    }
   }
 }

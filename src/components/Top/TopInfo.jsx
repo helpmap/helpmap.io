@@ -26,7 +26,7 @@ const TopInfo = ({ intl }) => {
           Підтримати
         </a> */}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className="top-info-body">
         <Modal
           className="info-modal"
           title={intl.formatMessage({ id: 'Info.Title' })}
@@ -36,7 +36,7 @@ const TopInfo = ({ intl }) => {
           <FormattedHTMLMessage id="Info" />
         </Modal>
         <Header as="h2" icon size="medium">
-          <Logo style={{ height: '4rem' }} />
+          <Logo className="logo" />
           <Header.Subheader className="tagline">{intl.formatMessage({ id: 'Tagline' })}</Header.Subheader>
         </Header>
         <div className="language-switch">

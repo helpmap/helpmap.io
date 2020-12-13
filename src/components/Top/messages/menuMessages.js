@@ -11,7 +11,7 @@ import Volunteer from '../../../assets/volunteer';
 
 const width = 30;
 
-export default {
+const menuMessages = {
   volunteer: {
     id: 'Menu.Volunteer',
     defaultMessage: 'Volunteer',
@@ -61,3 +61,5 @@ export default {
     color: '#41b4e1',
   },
 };
+
+export default menuMessages;

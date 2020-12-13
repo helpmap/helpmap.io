@@ -24,7 +24,6 @@ const defaultZoomIn = 13;
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
   const [mode, setMode] = useState('browsing');
-  const [show, setShow] = useState(false);
   const [shouldShowMap, showMap] = useState(false);
   const [location, setLocation] = useState({});
   const [result, setResult] = useState({});
@@ -102,18 +101,15 @@ const Main = () => {
 
   const addPlace = () => {
     if (mode !== 'adding') {
-      setShow(true);
       setMode('adding');
       setHighlight(null);
       return;
     }
     setMode('browsing');
     setHighlight(null);
-    setShow(false);
   };
 
   const backToResults = () => {
-    setShow(true);
     setMode('multiResults');
     // setZoom(13);
     setHighlight(null);
@@ -125,18 +121,15 @@ const Main = () => {
     // console.log(categories);
     if (categories.length === 1) {
       setMode('multiResults');
-      setShow(true);
       return;
     }
     setMode('browsing');
-    setShow(false);
   };
 
   const showSingleFromList = data => {
     setHighlight(data._id);
     setMode('singleResult');
     setResult(data);
-    setShow(true);
     // setZoom(defaultZoomIn);
   };
 
@@ -145,7 +138,6 @@ const Main = () => {
       setMode('browsing');
       setHighlight(null);
       setResult({});
-      setShow(false);
       // setZoom(13);
       return;
     }
@@ -180,33 +172,11 @@ const Main = () => {
         </Grid.Row>
         <Grid padded="horizontally">
           <Grid.Row style={{ padding: 0 }}>
-            {show && (
-              <Grid.Column className="left-col" width={4}>
-                {mode === 'multiResults' ? (
-                  <ReactiveList
-                    className="results-list"
-                    componentId="SearchResult"
-                    dataField=""
-                    react={{ and: ['Types', 'Filter'] }}
-                    showResultStats={false}
-                    renderItem={renderItem}
-                    defaultQuery={defaultQuery}
-                  />
-                ) : (
-                  <SideMenu
-                    mode={mode}
-                    data={result}
-                    setShow={setShow}
-                    backToResults={backToResults}
-                    setMode={setMode}
-                  />
-                )}
-              </Grid.Column>
-            )}
             <Grid.Column
               only={mode === 'browsing' ? null : 'large screen'}
-              className={!shouldShowMap ? 'vertical-align' : 'map-container'}
-              width={show ? 12 : 16}>
+              className={`right-col ${!shouldShowMap ? 'vertical-align' : 'map-container'}`}
+              mobile={16}
+              computer={mode === 'browsing' ? 16 : 12}>
               {!shouldShowMap ? (
                 <Loader active inline="centered" size="large" />
               ) : (
@@ -214,8 +184,7 @@ const Main = () => {
                   // autoCenter
                   componentId="map"
                   dataField="location"
-                  className="right-col"
-                  style={{ height: '100%', padding: 0 }}
+                  className="map"
                   defaultZoom={defaultZoomIn}
                   defaultCenter={location}
                   innerClass={{ label: 'label' }}
@@ -254,10 +223,25 @@ const Main = () => {
                 />
               )}
             </Grid.Column>
+            <Grid.Column className="left-col" mobile={16} computer={mode === 'browsing' ? 0 : 4}>
+              {mode === 'multiResults' ? (
+                <ReactiveList
+                  className="results-list"
+                  componentId="SearchResult"
+                  dataField=""
+                  react={{ and: ['Types', 'Filter'] }}
+                  showResultStats={false}
+                  renderItem={renderItem}
+                  defaultQuery={defaultQuery}
+                />
+              ) : (
+                <SideMenu mode={mode} data={result} backToResults={backToResults} setMode={setMode} />
+              )}
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </ReactiveBase>
-      {shouldShowMap && renderFloatingButton()}
+      {shouldShowMap && mode !== 'editing' && mode !== 'adding' && renderFloatingButton()}
     </div>
   );
 };
