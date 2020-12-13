@@ -11,6 +11,29 @@ addLocaleData([...en, ...uk]);
 const { Provider, Consumer } = React.createContext();
 
 class IntlProviderWrapper extends React.Component {
+  constructor() {
+    super();
+
+    const defaultLocale = 'uk';
+
+    this.state = {
+      locale: defaultLocale,
+      messages: ukTranslation,
+      switchToEnglish: this.switchToEnglish,
+      switchToUkrainian: this.switchToUkrainian,
+    };
+
+    document.documentElement.lang = defaultLocale;
+  }
+
+  componentDidMount() {
+    const locale =
+      (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || 'en-US';
+    if (locale.startsWith('en')) {
+      this.switchToEnglish();
+    }
+  }
+
   switchToEnglish = () => {
     this.setState({ locale: 'en', messages: enTranslation });
     document.documentElement.lang = 'en';
@@ -19,19 +42,6 @@ class IntlProviderWrapper extends React.Component {
     this.setState({ locale: 'uk', messages: ukTranslation });
     document.documentElement.lang = 'uk';
   };
-
-  state = {
-    locale: 'uk',
-    messages: ukTranslation,
-    switchToEnglish: this.switchToEnglish,
-    switchToUkrainian: this.switchToUkrainian,
-  };
-
-  componentDidMount() {
-    const locale =
-      (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || 'en-US';
-    if (locale.startsWith('en')) this.setState({ locale: 'en', messages: enTranslation });
-  }
 
   render() {
     const { locale } = this.state;
