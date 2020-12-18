@@ -8,7 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { Card } from 'antd';
-import { injectIntl, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Linkify from 'react-linkify';
 
 import './SideMenu.scss';
@@ -17,22 +17,23 @@ import { appbaseRef } from '../Main';
 
 const Transition = props => <Slide direction="up" {...props} />;
 
-const showCategories = (types, intl) =>
+const Categories = types =>
   types.split(' ').map((name, i) => (
-    <span key={i} className="category-icon" title={intl.formatMessage({ id: categories[name].id })}>
+    <span key={i} className="category-icon" title={<FormattedMessage id={categories[name].id} />}>
       {categories[name].icon}
     </span>
   ));
 
-let Info = ({ setMode, backToResults, id, intl }) => {
+let Info = ({ setMode, backToResults, id }) => {
   const [data, setData] = useState();
   const [showModal, setShowModal] = useState(false);
+  const intl = useIntl();
 
   useEffect(() => {
     const fetchData = async () => {
-      const { _source: data } = await appbaseRef.get({ type: 'doc', id });
+      const { _source } = await appbaseRef.get({ type: 'doc', id });
 
-      setData(data);
+      setData(_source);
     };
     if (id) fetchData();
   }, [id]);
@@ -80,14 +81,12 @@ let Info = ({ setMode, backToResults, id, intl }) => {
             href={`https://www.google.com/maps/dir/?api=1&destination=${data.location.lat},${data.location.lon}`}>
             {data.address}
           </a>
-          <div className="category-menu">{data.types && showCategories(data.types[0], intl)}</div>
+          <div className="category-menu">{data.types && Categories(data.types[0])}</div>
           <Linkify properties={{ target: '_blank', rel: 'noopener noreferrer' }}>
             <p className="description">{data.description}</p>
           </Linkify>
           <blockquote>
-            <p>
-              <FormattedHTMLMessage id="Info.Note" />
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: 'Info.Note' }) }} />
           </blockquote>
         </Card>
       </Container>
@@ -117,7 +116,6 @@ Info.propTypes = {
   setMode: PropTypes.func,
   backToResults: PropTypes.func,
   id: PropTypes.string,
-  intl: PropTypes.any,
 };
 
-export default injectIntl(Info);
+export default Info;
