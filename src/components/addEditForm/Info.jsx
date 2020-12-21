@@ -71,7 +71,7 @@ let Info = ({ setMode, backToResults, id }) => {
           {/* <Button icon="arrow left" className="back-btn" onClick={() => setMode('multiResults')} /> */}
           <>
             {/* <EditIcon className="edit-btn" onClick={() => setMode('editing')} /> */}
-            <ShareIcon className="share-btn" onClick={() => share()} />
+            <ShareIcon className="share-btn" onClick={share} />
             <BackIcon className="back-btn" onClick={backToResults} />
           </>
           <h2>{data.name}</h2>

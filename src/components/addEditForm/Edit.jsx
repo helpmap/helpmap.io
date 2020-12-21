@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
@@ -36,6 +36,28 @@ const Edit = ({ mode, setMode, id }) => {
       fetchData();
     }
   }, [id]);
+
+  const reset = useCallback(() => {
+    setSuccess(false);
+    handleName('');
+    handleAddress('');
+    handleDescription('');
+    setLocation('');
+    chooseType([]);
+  }, [setSuccess, handleName, handleAddress, handleDescription, setLocation, chooseType]);
+
+  const goBack = useCallback(() => {
+    setSuccess(false);
+  }, [setSuccess]);
+
+  const setDescription = useCallback(
+    e => {
+      handleDescription(e.target.value);
+    },
+    [handleDescription]
+  );
+
+  if (id && !visible) return null;
 
   function updatePlace(e) {
     e.preventDefault();
@@ -85,32 +107,16 @@ const Edit = ({ mode, setMode, id }) => {
     return name && address && description.trim() && location && location.lat && choosenTypes.length > 0;
   }
 
-  const reset = useCallback(() => {
-    setSuccess(false);
-    handleName('');
-    handleAddress('');
-    handleDescription('');
-    setLocation('');
-    chooseType([]);
-  }, [setSuccess, handleName, handleAddress, handleDescription, setLocation, chooseType]);
-
-  if (id && !visible) return null;
-
   if (success)
     return (
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
         {mode === 'adding' ? (
-<<<<<<< HEAD
           <Button positive className="add-more-btn" onClick={reset}>
-            {intl.formatMessage({ id: 'Add_more' })}
-=======
-          <Button positive className="add-more-btn" onClick={() => reset()}>
             <FormattedMessage id="Add_more" />
->>>>>>> origin/master
           </Button>
         ) : (
-          <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
+          <Button positive className="add-more-btn" onClick={goBack}>
             <FormattedMessage id="Back" />
           </Button>
         )}
@@ -146,7 +152,7 @@ const Edit = ({ mode, setMode, id }) => {
         rows={9}
         placeholder={<FormattedMessage id="Add.Description.Placeholder" />}
         value={description}
-        onChange={e => handleDescription(e.target.value)}
+        onChange={setDescription}
       />
       {
         <Form.Button loading={isSaving} color="red" disabled={!canSubmit()} onClick={updatePlace}>
