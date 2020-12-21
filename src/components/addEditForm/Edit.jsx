@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
@@ -8,7 +8,7 @@ import { appbaseRef } from '../Main';
 
 import './SideMenu.scss';
 
-const Edit = ({ mode, setMode, id, intl }) => {
+const Edit = ({ mode, setMode, id }) => {
   const [name, handleName] = useState('');
   const [address, handleAddress] = useState('');
   const [description, handleDescription] = useState('');
@@ -101,12 +101,17 @@ const Edit = ({ mode, setMode, id, intl }) => {
       <div className="success-container vertical-align">
         <Icon color="green" name="check circle" size="huge" />
         {mode === 'adding' ? (
+<<<<<<< HEAD
           <Button positive className="add-more-btn" onClick={reset}>
             {intl.formatMessage({ id: 'Add_more' })}
+=======
+          <Button positive className="add-more-btn" onClick={() => reset()}>
+            <FormattedMessage id="Add_more" />
+>>>>>>> origin/master
           </Button>
         ) : (
           <Button positive className="add-more-btn" onClick={() => setSuccess(false)}>
-            {intl.formatMessage({ id: 'Back' })}
+            <FormattedMessage id="Back" />
           </Button>
         )}
       </div>
@@ -115,7 +120,7 @@ const Edit = ({ mode, setMode, id, intl }) => {
   return (
     <Form className="add-menu">
       <Form.Input
-        placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
+        placeholder={<FormattedMessage id="Add.Name_Organization" />}
         value={name}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={e => handleName(e.target.value)}
@@ -129,7 +134,7 @@ const Edit = ({ mode, setMode, id, intl }) => {
             value={el}
             style={{ padding: '0.5em' }}
             key={index}
-            label={intl.formatMessage({ id: categories[el].id })}
+            label={<FormattedMessage id={categories[el].id} />}
             control="input"
             type="checkbox"
             checked={choosenTypes.includes(el)}
@@ -139,17 +144,17 @@ const Edit = ({ mode, setMode, id, intl }) => {
       </Form.Group>
       <Form.TextArea
         rows={9}
-        placeholder={intl.formatMessage({ id: 'Add.Description.Placeholder' })}
+        placeholder={<FormattedMessage id="Add.Description.Placeholder" />}
         value={description}
         onChange={e => handleDescription(e.target.value)}
       />
       {
         <Form.Button loading={isSaving} color="red" disabled={!canSubmit()} onClick={updatePlace}>
-          {intl.formatMessage({ id: 'Save' })}
+          <FormattedMessage id="Save" />
         </Form.Button>
       }
     </Form>
   );
 };
 
-export default injectIntl(Edit);
+export default Edit;

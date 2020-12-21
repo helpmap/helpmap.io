@@ -223,7 +223,7 @@ const Main = () => {
                 />
               )}
             </Grid.Column>
-            <Grid.Column className="left-col" mobile={16} computer={mode === 'browsing' ? 0 : 4}>
+            <Grid.Column className="left-col" mobile={16} computer={4}>
               {mode === 'multiResults' ? (
                 <ReactiveList
                   className="results-list"

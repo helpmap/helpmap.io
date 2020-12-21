@@ -1,13 +1,20 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
-import { injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
-const MenuItem = ({ name, message, icon, intl }) => {
-  return (
-    <Menu.Item name={name}>
-      {icon}
-      <span>{intl.formatMessage(message)}</span>
-    </Menu.Item>
-  );
-};
-export default injectIntl(MenuItem);
+/** @typedef {import("./CategoryMenu").CategoryMenuItem} CategoryMenuItem */
+
+/**
+ *
+ * @param {Object} props
+ * @param {CategoryMenuItem} props.category
+ */
+const MenuItem = ({ name, category }) => (
+  <Menu.Item name={name}>
+    {category.icon}
+    <span>
+      <FormattedMessage id={category.id} />
+    </span>
+  </Menu.Item>
+);
+export default MenuItem;
