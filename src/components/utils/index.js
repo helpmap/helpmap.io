@@ -1,6 +1,5 @@
 import { getSearchState } from '@appbaseio/reactivecore/lib/utils/helper';
 
-// eslint-disable-next-line
 export const triggerClickAnalytics = ({ config, analytics, headers, searchPosition, context }) => {
   // click analytics would only work client side and after javascript loads
   const { searchId } = analytics;

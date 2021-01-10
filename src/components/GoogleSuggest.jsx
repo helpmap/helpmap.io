@@ -1,24 +1,24 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 const GoogleSuggest = ({ result, handleAddress, setLocation }) => {
-  const handleSelect = address => {
+  const intl = useIntl();
+  function handleSelect(address) {
     handleAddress(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => setLocation({ lat: latLng.lat, lon: latLng.lng }))
       .catch(error => console.error('Error', error));
-  };
+  }
 
   return (
-    // eslint-disable-next-line react/jsx-no-bind
     <PlacesAutocomplete value={result} onChange={handleAddress} onSelect={handleSelect}>
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <input
             {...getInputProps({
-              placeholder: <FormattedMessage id="Add.Address.Placeholder" />,
+              placeholder: intl.formatMessage({ id: 'Add.Address.Placeholder' }),
               className: 'location-search-input',
             })}
           />

@@ -8,7 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import { Card } from 'antd';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import Linkify from 'react-linkify';
 
 import './SideMenu.scss';
@@ -17,12 +17,14 @@ import { appbaseRef } from '../Main';
 
 const Transition = props => <Slide direction="up" {...props} />;
 
-const Categories = types =>
-  types.split(' ').map((name, i) => (
-    <span key={i} className="category-icon" title={<FormattedMessage id={categories[name].id} />}>
+const Categories = types => {
+  const intl = useIntl();
+  return types.split(' ').map((name, i) => (
+    <span key={i} className="category-icon" title={intl.formatMessage({ id: categories[name].id })}>
       {categories[name].icon}
     </span>
   ));
+};
 
 let Info = ({ setMode, backToResults, id }) => {
   const [data, setData] = useState();
@@ -52,7 +54,6 @@ let Info = ({ setMode, backToResults, id }) => {
       if (document.getElementById('url-text')) document.getElementById('url-text').select();
       document.execCommand('copy');
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(err);
     }
   }

@@ -200,7 +200,6 @@ const Main = () => {
                   // mapProps={{ onClick: () => console.log('onClick') }}
                   unit="km"
                   onAllData={renderLeftCol}
-                  // eslint-disable-next-line no-unused-vars
                   // onData={_ => ({ custom: null })}
                   onMarkerClick={onMarkerClick}
                   highlighted={highlighted}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Form, Checkbox, Icon, Button } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import categories from '../Top/messages/menuMessages';
 import GoogleSuggest from '../GoogleSuggest';
@@ -18,6 +18,7 @@ const Edit = ({ mode, setMode, id }) => {
   const [location, setLocation] = useState({});
   const [choosenTypes, chooseType] = useState([]);
   let types;
+  const intl = useIntl();
 
   useEffect(() => {
     if (id) {
@@ -126,7 +127,7 @@ const Edit = ({ mode, setMode, id }) => {
   return (
     <Form className="add-menu">
       <Form.Input
-        placeholder={<FormattedMessage id="Add.Name_Organization" />}
+        placeholder={intl.formatMessage({ id: 'Add.Name_Organization' })}
         value={name}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={e => handleName(e.target.value)}
@@ -140,7 +141,7 @@ const Edit = ({ mode, setMode, id }) => {
             value={el}
             style={{ padding: '0.5em' }}
             key={index}
-            label={<FormattedMessage id={categories[el].id} />}
+            label={intl.formatMessage({ id: categories[el].id })}
             control="input"
             type="checkbox"
             checked={choosenTypes.includes(el)}
@@ -150,7 +151,7 @@ const Edit = ({ mode, setMode, id }) => {
       </Form.Group>
       <Form.TextArea
         rows={9}
-        placeholder={<FormattedMessage id="Add.Description.Placeholder" />}
+        placeholder={intl.formatMessage({ id: 'Add.Description.Placeholder' })}
         value={description}
         onChange={setDescription}
       />
