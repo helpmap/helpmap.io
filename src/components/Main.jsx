@@ -21,6 +21,12 @@ const GreenEssence = require('./GreenEssence');
 
 const defaultZoomIn = 13;
 
+const geoOptions = {
+  enableHighAccuracy: false,
+  timeout: 20 * 1000,
+  maximumAge: 10 * 60 * 1000, // 10 mins
+};
+
 const Main = () => {
   // adding | editing | singleResult | multiResults | browsing
   const [mode, setMode] = useState('browsing');
@@ -31,13 +37,12 @@ const Main = () => {
   // const [zoom, setZoom] = useState(13);
 
   useEffect(() => {
-    const options = {
-      enableHighAccuracy: false,
-      timeout: 20 * 1000,
-      maximumAge: 10 * 60 * 1000, // 10 mins
-    };
+    let isCancelled = false;
     navigator.geolocation.getCurrentPosition(
       async position => {
+        if (isCancelled) {
+          return;
+        }
         setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
         showMap(true);
         if (document.location.pathname.startsWith('/id/')) {
@@ -52,8 +57,13 @@ const Main = () => {
         setLocation({ lat: 49.8397, lng: 24.0297 });
         showMap(true);
       },
-      options
+      geoOptions
     );
+
+    // cleanup
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   useEffect(() => {

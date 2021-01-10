@@ -26,7 +26,7 @@ const Categories = types => {
   ));
 };
 
-let Info = ({ setMode, backToResults, id }) => {
+const Info = ({ setMode, backToResults, id }) => {
   const [data, setData] = useState();
   const [showModal, setShowModal] = useState(false);
   const intl = useIntl();
