@@ -24,7 +24,7 @@
     "react-places-autocomplete": "7.3.0",
     "react-scripts": "4.0.1",
     "semantic-ui-css": "2.4.1",
-    "semantic-ui-react": "2.0.1"
+    "semantic-ui-react": "2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
