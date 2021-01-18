@@ -52,10 +52,17 @@ const Main = () => {
           showSingleFromList({ ...data, _id: id });
         }
       },
-      e => {
+      async e => {
         console.error(e);
-        setLocation({ lat: 49.8397, lng: 24.0297 });
-        showMap(true);
+        fetch('https://ipapi.co/json')
+          .then(res => res.json())
+          .then(res => setLocation({ lat: res.latitude, lng: res.longitude }))
+          .catch(() => {
+            setLocation({ lat: 49.8397, lng: 24.0297 });
+          })
+          .then(() => {
+            showMap(true);
+          });
       },
       geoOptions
     );
