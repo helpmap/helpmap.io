@@ -12,7 +12,7 @@
     "antd": "4.12.2",
     "appbase-js": "4.1.2",
     "ngeohash": "0.6.3",
-    "node-sass": "4.14.1",
+    "node-sass": "5.0.0",
     "prop-types": "15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
