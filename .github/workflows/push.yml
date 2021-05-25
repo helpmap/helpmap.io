@@ -1,5 +1,7 @@
-on: push
 name: packtracker.io
+
+on: [pull_request]
+
 jobs:
   report:
     name: report webpack stats
