@@ -4,10 +4,11 @@
 name: Scan the webapplication
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_run:
+#     workflows: ["Run Tests"]
+    branches: [master]
+    types: 
+      - completed
 
 jobs:
   zap_scan:
