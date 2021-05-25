@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["react-app", "react-app/jest", "prettier", "prettier/react"],
+  "extends": ["react-app", "react-app/jest", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "no-duplicate-imports": 0,
