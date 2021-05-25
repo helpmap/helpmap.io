@@ -3,6 +3,9 @@
 
 name: Scan the webapplication
 
+concurrency: 
+  group: ${{ github.repository }}
+
 on:
   workflow_run:
     workflows: ["packtracker.io"]
