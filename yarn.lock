@@ -12125,10 +12125,10 @@ react-google-maps@9.4.5:
     scriptjs "^2.5.8"
     warning "^3.0.0"
 
-react-google-places-suggest@3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/react-google-places-suggest/-/react-google-places-suggest-3.11.0.tgz#64c37f198e86f2806bec2e1812d1f6d99e31fb6e"
-  integrity sha512-VK/JsJde+SIzm+gz76Slftg04M2xxKr1XqGpletM4QvMCxILJAJeDlcc7axPEr7I/7e0zujuOhpuMgw6JRLYXA==
+react-google-places-suggest@3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/react-google-places-suggest/-/react-google-places-suggest-3.12.1.tgz#3546168fd18b1e00413fcdc10e8fbbe19c8345be"
+  integrity sha512-sC9Pt+B99z3C+YWEs7nb+Bx0cPEMjvQ0XLqyOB6M2u8hfmYehV6ZTj7EK3/EoTU2w5i1SBeBDU22Lg1E8Psa3Q==
   dependencies:
     styled-components "^5.2.1"
 
