@@ -36,10 +36,10 @@
     lodash "^4.17.15"
     resize-observer-polyfill "^1.5.0"
 
-"@appbaseio/reactivecore@9.10.0":
-  version "9.10.0"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.10.0.tgz#082b97d11f8e80b5398225e547878a0521e8b965"
-  integrity sha512-SHtx7hIwJ/gBaVMXViszbeHqezE6T6hsj5EYY2AiWJKJLYPGxG2FZMtHqffRygoTByf7TqIj+33WL9QZsCr1+A==
+"@appbaseio/reactivecore@9.11.1":
+  version "9.11.1"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.11.1.tgz#b3dd9908def2d7474af17f98a1625c038822feef"
+  integrity sha512-HQkM3iTLs1zPuUnbX7LkZBdHtF86XpqmWlKDmxIuiL6xuRKeOIq8GZ5HcABTLmHBxAqtL9XSMw8Akv+AjTlc6A==
   dependencies:
     cross-fetch "^3.0.4"
     prop-types "^15.6.0"
@@ -47,12 +47,12 @@
     redux-thunk "^2.3.0"
     xdate "^0.8.2"
 
-"@appbaseio/reactivesearch@3.16.1":
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.16.1.tgz#9ca37643d489a4b298e79fbeee4f92c91c556e30"
-  integrity sha512-Xh9KmwBROGTsb3Se+ps4QP0qZcDb1zjLmBz+ZLbE+SfdvalZHfnY6yIc38hXvNDs96X+BuoPIzVKGKvvk0aGKA==
+"@appbaseio/reactivesearch@3.18.1":
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.18.1.tgz#d34bb584753626fe59218c292cc6a5f2088710d1"
+  integrity sha512-UpQWbIwQHx2mmGkuEJZVRc7+pwRJMqCPU7Ifzs3SmP8hg5kYLxghksUfgRq2MWdHiBODwjltFZOs9UgS140OMA==
   dependencies:
-    "@appbaseio/reactivecore" "9.10.0"
+    "@appbaseio/reactivecore" "9.11.1"
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
     appbase-js "^4.1.0"
