@@ -3699,10 +3699,10 @@ ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-antd@4.16.0:
-  version "4.16.0"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.0.tgz#35b03f42a0710edd2153f3fd33f8f93298b12bc7"
-  integrity sha512-wJU0CQdbpBTD8SGI8ksBifIdjORkNk5pHYVyuiQ20KquDdpzsfBOvsd3ZeluBxgt5XPobVxv+YYUAuDchfiHnQ==
+antd@4.16.3:
+  version "4.16.3"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.16.3.tgz#9836613eaeabb55a0bcd4423551df699d65f67a8"
+  integrity sha512-goFcDw8MB9PKgb+fHjUEOwoseL5iuMNelzcdFJOJaG1LXPm9d/ZQhQWdYbzQf5l7v6bmvvvi91WNB1rDsuXh3w==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.6.2"
@@ -3723,9 +3723,9 @@ antd@4.16.0:
     rc-image "~5.2.4"
     rc-input-number "~7.1.0"
     rc-mentions "~1.6.1"
-    rc-menu "~9.0.0"
+    rc-menu "~9.0.9"
     rc-motion "^2.4.0"
-    rc-notification "~4.5.2"
+    rc-notification "~4.5.7"
     rc-pagination "~3.1.6"
     rc-picker "~2.5.10"
     rc-progress "~3.1.0"
@@ -11655,10 +11655,23 @@ rc-mentions@~1.6.1:
     rc-trigger "^5.0.4"
     rc-util "^5.0.1"
 
-rc-menu@^9.0.0, rc-menu@~9.0.0:
+rc-menu@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-9.0.0.tgz#3cd84240b8e1353add4833c671774aab3df20112"
   integrity sha512-awvARLIyMjgvrRiPrRqOgyN4MGQYWa3+lAEjUcf9D3zH/3EGlgvzuD497DKIHYbHDwjtDQah4Hg91m8vNytc8Q==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "2.x"
+    rc-motion "^2.4.3"
+    rc-overflow "^1.2.0"
+    rc-trigger "^5.1.2"
+    rc-util "^5.12.0"
+    shallowequal "^1.1.0"
+
+rc-menu@~9.0.9:
+  version "9.0.11"
+  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-9.0.11.tgz#5c6c994a3df70f1e69ec7996ceb5067b2c335d45"
+  integrity sha512-lwE6Zrs3ZpK9XKuk8+AOsQI3QXQFybzANvTNU2DIZQuqi53aEJIzNtibfq9j68DosKhKcxV++GcK9K6pL9Ku8A==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
@@ -11695,10 +11708,10 @@ rc-motion@^2.4.3:
     classnames "^2.2.1"
     rc-util "^5.2.1"
 
-rc-notification@~4.5.2:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/rc-notification/-/rc-notification-4.5.4.tgz#1292e163003db4b9162c856a4630e5d0f1359356"
-  integrity sha512-VsN0ouF4uglE5g3C9oDsXLNYX0Sz++ZNUFYCswkxhpImYJ9u6nJOpyA71uOYDVCu6bAF54Y5Hi/b+EcnMzkepg==
+rc-notification@~4.5.7:
+  version "4.5.7"
+  resolved "https://registry.yarnpkg.com/rc-notification/-/rc-notification-4.5.7.tgz#265e6e6a0c1a0fac63d6abd4d832eb8ff31522f1"
+  integrity sha512-zhTGUjBIItbx96SiRu3KVURcLOydLUHZCPpYEn1zvh+re//Tnq/wSxN4FKgp38n4HOgHSVxcLEeSxBMTeBBDdw==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
