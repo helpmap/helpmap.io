@@ -3763,10 +3763,10 @@ anymatch@^3.0.3, anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appbase-js@4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.3.tgz#7139a616e97632ec515099493b9e702a12d8ef3f"
-  integrity sha512-EeAyhfsC7pWS7O1C8CVeEgOWV54BGNrCfIEY/IiNWzAru+efv7ql3aXk/MmwCvON+GFk3QVFWTQhUz+F7WW60g==
+appbase-js@4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.4.tgz#37c02e2b251658927dc3ab8294d47947b0e8a87d"
+  integrity sha512-b+fQ74WeTgBKOgCSE/5QmRMW1OzJhfPhrUZBj/o8IsSlUUsnuUiEgjBTAM/pRFbSoPIA0CC9IqvB3Vk9VSDxbg==
   dependencies:
     cross-fetch "^2.2.2"
     json-stable-stringify "^1.0.1"
