@@ -3795,10 +3795,10 @@ anymatch@^3.0.3, anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appbase-js@4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.4.tgz#37c02e2b251658927dc3ab8294d47947b0e8a87d"
-  integrity sha512-b+fQ74WeTgBKOgCSE/5QmRMW1OzJhfPhrUZBj/o8IsSlUUsnuUiEgjBTAM/pRFbSoPIA0CC9IqvB3Vk9VSDxbg==
+appbase-js@4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.5.tgz#d5ff9389762d07ed598a5ebcedff63de0fbb8d23"
+  integrity sha512-j1F/IEKGdX6XDZOuCQrS+KnHmbG5VRd7Ja4TuClaWNdRhTr4mwz044bVYG0pmkV5A+yR1XV8slhlUM1S2N09gg==
   dependencies:
     cross-fetch "^2.2.2"
     json-stable-stringify "^1.0.1"
