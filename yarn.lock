@@ -11068,10 +11068,10 @@ react-google-maps@9.4.5:
     scriptjs "^2.5.8"
     warning "^3.0.0"
 
-react-google-places-suggest@3.12.1:
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/react-google-places-suggest/-/react-google-places-suggest-3.12.1.tgz#3546168fd18b1e00413fcdc10e8fbbe19c8345be"
-  integrity sha512-sC9Pt+B99z3C+YWEs7nb+Bx0cPEMjvQ0XLqyOB6M2u8hfmYehV6ZTj7EK3/EoTU2w5i1SBeBDU22Lg1E8Psa3Q==
+react-google-places-suggest@3.12.2:
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/react-google-places-suggest/-/react-google-places-suggest-3.12.2.tgz#52698c9c163d8a6de4311993f4e4d3f135ea6894"
+  integrity sha512-UpDsIl+2zUlu5aO8GggXGO+U3uqWZ6ESLWe/MiU4axjle1RYsDtAMbsCcQ/X2+/gcg+dJpTI3NDZ9hdlG+nuuA==
   dependencies:
     styled-components "^5.2.1"
 
