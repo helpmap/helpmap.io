@@ -22,7 +22,7 @@
     "react-intl": "5.25.0",
     "react-linkify": "1.0.0-alpha",
     "react-places-autocomplete": "7.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "2.1.2"
   },
