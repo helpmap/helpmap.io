@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { hydrateRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 
 import 'antd/dist/reset.css';
 
@@ -11,23 +11,14 @@ import { IntlProvider } from './IntlContext';
 
 const rootElement = document.getElementById('root');
 
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
     <IntlProvider>
       <App />
-    </IntlProvider>,
-    rootElement
-  );
-} else {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
-      <IntlProvider>
-        <App />
-      </IntlProvider>
-    </React.StrictMode>
-  );
-}
+    </IntlProvider>
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
