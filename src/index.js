@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM, { hydrate } from 'react-dom';
+import ReactDOM, { hydrateRoot } from 'react-dom/client';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 
 import './index.css';
 import App from './components/App';
@@ -12,7 +12,7 @@ import { IntlProvider } from './IntlContext';
 const rootElement = document.getElementById('root');
 
 if (rootElement.hasChildNodes()) {
-  hydrate(
+  hydrateRoot(
     <IntlProvider>
       <App />
     </IntlProvider>,
@@ -22,7 +22,9 @@ if (rootElement.hasChildNodes()) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <App />
+      <IntlProvider>
+        <App />
+      </IntlProvider>
     </React.StrictMode>
   );
 }
