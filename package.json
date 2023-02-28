@@ -50,7 +50,7 @@
   "devDependencies": {
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.1",
+    "prettier": "2.8.4",
     "react-snap": "https://github.com/natahouse/react-snap"
   },
   "reactSnap": {
