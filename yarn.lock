@@ -10268,10 +10268,10 @@ react-fast-compare@^3.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-google-maps-loader@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/react-google-maps-loader/-/react-google-maps-loader-4.3.0.tgz#5844c7eb04990030532f3c2a3d4312da521703f0"
-  integrity sha512-tt5pyiRbKtAKHWCIqUX/yfAa5SRNgMCCGeLMnqyqS9OmE44Nu3kelAYcyBB8/o60pOIkIsh5PECafaQtbX00nQ==
+react-google-maps-loader@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-google-maps-loader/-/react-google-maps-loader-4.3.1.tgz#8d9fa1db9bbc7f4c8bec3109c5146b4ca3b1455b"
+  integrity sha512-ekTZOPTm3qjMWtcpdmjBr6fMeIPE1D3OGrZ0hYRReKewnaRCsS0bMipmSEYKHPDwQ/KUA2GVE/JBMha60zL3Ow==
   dependencies:
     little-loader "~0.2.0"
     prop-types "^15.7.2"
