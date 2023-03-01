@@ -3850,7 +3850,16 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appbase-js@4.1.5, appbase-js@^4.1.0:
+appbase-js@4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.5.1.tgz#0b9eb0bcb6fdb8655b38066d3f21ef24427e3b9f"
+  integrity sha512-IYShIL3J9PlyMcTEm35iPFSeQZBUW6pCJEwXKvUVjx89p/npA4UVlmYfEfRWweAJEaercbq3zhRskouEJLw2BA==
+  dependencies:
+    cross-fetch "^2.2.2"
+    querystring "^0.2.0"
+    url-parser-lite "^0.1.0"
+
+appbase-js@^4.1.0:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.5.tgz#d5ff9389762d07ed598a5ebcedff63de0fbb8d23"
   integrity sha512-j1F/IEKGdX6XDZOuCQrS+KnHmbG5VRd7Ja4TuClaWNdRhTr4mwz044bVYG0pmkV5A+yR1XV8slhlUM1S2N09gg==
